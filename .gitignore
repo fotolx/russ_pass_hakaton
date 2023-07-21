@@ -1,3 +1,9 @@
 /.DS_Store
 /.vscode
 /venv
+venv/
+.gitignore
+.env
+errors.log
+general.log
+security.log
