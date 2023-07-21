@@ -6,6 +6,42 @@
 {% endblock title %}
  
 {% block content %}
-<h1>Все объявления</h1>
-
+<h1>{{ page_header }}</h1>
+{{ ads | length}} шт.
+        <!-- Section-->
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                {% if ads %} 
+                {% for ad in ads %}
+                <div class="col mb-5">
+                    <div class="card h-100">
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder">{{ ad.header }}</h5>
+                                  <!-- Product price-->
+                                  {{ ad.main_text | striptags | truncatechars:50}}
+                                  {% for each in ad.category.filter %}
+                                  <p>[ {{each}} ]</p>
+                                  {% endfor %}
+                                  <p>[ {{ ad.author.username.first_name}} {{ ad.author.username.last_name}} ]</p>
+                                  <i>{{ ad.date_time| date:'d-M-Y g:i' }}</i>
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/ads/{{ ad.id }}">Посмотреть</a></div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h2>Объявлений нет!</h2>
+            {% endif %}
+                </div>
+            </div>
+        </section>
+<hr>
 {% endblock content %}

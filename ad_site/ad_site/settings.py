@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'django_apscheduler',
+    'django_summernote',
 ]
 
 MIDDLEWARE = [
@@ -148,9 +149,29 @@ SITE_ID = 1
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # This logs any emails sent to the console
 
+EMAIL_HOST = str(os.getenv('EMAIL_HOST'))
+EMAIL_PORT = str(os.getenv('EMAIL_PORT'))
+EMAIL_HOST_USER = str(os.getenv('EMAIL_HOST_USER'))
+EMAIL_HOST_PASSWORD = str(os.getenv('EMAIL_HOST_PASSWORD'))
+EMAIL_USE_SSL = str(os.getenv('EMAIL_USE_SSL'))
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30 # 30 days
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
+
+# def FILTERS_VERBOSE_LOOKUPS():
+#     from django_filters.conf import DEFAULTS
+
+#     verbose_lookups = DEFAULTS['VERBOSE_LOOKUPS'].copy()
+#     verbose_lookups.update({
+#         'exact': 'is equal to',
+#         'contains': 'содержит',
+#     })
+#     return verbose_lookups
+
+APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"
+APSCHEDULER_RUN_NOW_TIMEOUT = 25

@@ -1,0 +1,77 @@
+{% extends 'flatpages/mainpage.html' %} 
+
+{% block title %}
+Подробности
+{% endblock title %}
+
+{% block content %}
+    <!--     header = models.CharField(max_length=255, null=False, verbose_name="Заголовок")
+    main_text = models.TextField(verbose_name="Текст объявления")
+    author = models.ForeignKey(Users, null=False, on_delete = models.CASCADE, verbose_name="Автор")
+    date_time = models.DateTimeField(auto_now_add = True)
+    category = models.ManyToManyField(Category, through = 'AdsCategory', verbose_name="Категория")
+    end_up = models.DateTimeField(verbose_name="Окончание срока публикации")-->
+        <!-- Product section-->
+        <section class="py-5">
+            <div class="container">
+                <div class="row">
+                <div class="col align-items-center">
+                    <h1>{{ page_header }} ({{ filter.qs | length }})</h1>
+                    {% if filter %} 
+                    <div class="col-6">
+                    <form method="GET">
+                        {{ form.ad }}
+                        <button class="btn btn-outline-dark mt-auto" type="submit"><span class="bi bi-search"></span> Найти</button>
+                    </form> 
+                    </div>
+                    <div class="col-3">
+                        <a href="{% url 'replies' %}" class="btn btn-outline-dark mt-auto">Все отклики</a></div>
+                    {% for reply in filter.qs %}
+                    {% if not reply.accepted %}
+                    <!-- <div class="row gx-4 gx-lg-5 align-items-center"></div> -->
+                    <div class="card w-auto gy-3 px-0">
+                        <h5 class="card-header">Отклик на "{{ reply.ad.header }} [{{ reply.ad.author}}]"</h5>
+                        <div class="card-body">
+                          <h5 class="card-title">Отклик пользователя [({{ reply.user}}) {{ reply.user.first_name}} {{ reply.user.last_name}}]</h5>
+                          <h6 class="card-subtitle mb-2 text-muted">{{ reply.date_time| date:'d-M-Y g:i' }}</h6>
+                          <p class="card-text">{{ reply.text }}</p>
+                          <a href="{% url 'delete_reply' reply.id %}" class="btn btn-outline-dark mt-auto">Удалить</a>
+                          <a href="{% url 'accept_reply' reply.id %}" class="btn btn-success mt-auto">Принять</a>
+                        </div>
+                      </div>
+                    <!-- </div> -->
+                    {% endif %}
+                      {% endfor %}
+                </div>
+                <div class="col-1 align-items-center">
+                </div>
+                    <!-- <div class="row col-5 align-items-center">  -->
+                    <div class="col align-items-center">
+                    <div class="col">
+                        <h1>Принятые отклики</h1>
+                    </div>
+                    {% for reply in filter.qs %}
+                    {% if reply.accepted %}
+                    <!-- <div class="row gx-4 gx-lg-5 align-items-center"></div> -->
+                    <div class="card w-auto gy-3 px-0">
+                        <h5 class="card-header">Отклик на "{{ reply.ad.header }} [{{ reply.ad.author}}]"</h5>
+                        <div class="card-body">
+                          <h5 class="card-title">Отклик пользователя [({{ reply.user}}) {{ reply.user.first_name}} {{ reply.user.last_name}}]</h5>
+                          <h6 class="card-subtitle mb-2 text-muted">{{ reply.date_time| date:'d-M-Y g:i' }}</h6>
+                          <p class="card-text">{{ reply.text }}</p>
+                          <a href="{% url 'delete_reply' reply.id %}" class="btn btn-outline-dark mt-auto">Удалить</a>
+                        </div>
+                      </div>
+                    <!-- </div> -->
+                    {% endif %}
+                      {% endfor %}
+                    </div>
+
+
+                      {% else %}
+                          <h2>Объявлений нет!</h2>
+                      {% endif %}
+                </div>
+            </div>
+        </section>
+{% endblock content %}

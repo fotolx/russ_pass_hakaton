@@ -39,6 +39,7 @@ urlpatterns = [
     path('password-change/', ChangePasswordView.as_view(), name='password_change'),
     path('', include('ads_for_sale.urls')),
     path('pages/', include('django.contrib.flatpages.urls')),
+    path('summernote/', include('django_summernote.urls')),
     # path('profile/', profile, name='users-profile'),
     # path('password-change/', ChangePasswordView.as_view(), name='password_change'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

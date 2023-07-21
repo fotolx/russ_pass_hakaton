@@ -1,0 +1,39 @@
+{% extends 'flatpages/mainpage.html' %} 
+
+{% block title %}
+Сообщение
+{% endblock title %}
+
+        {% block content %}
+        <!-- Product section-->
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="row gx-4 gx-lg-5 align-items-center">
+                    <div class="col-md-12">
+                        <div class="small mb-1">{{ ads.date_time }}</div>
+                        <h2 class="display-7 fw-bold">Отклик на:</h2>
+                        <a href="{% url 'details' ads.id %}">
+                        <h1 class="display-5 fw-bolder">{{ads.header}}</h1>
+                        </a>
+                        <div class="fs-5 mb-5">
+                            <span>({{ ads.author.username }}) {{ads.author.username.first_name}} {{ads.author.username.last_name}}</span>
+                        </div>
+                        <div class="d-flex col-md-6">
+                            <form method="POST">
+                                {% csrf_token %}
+                                <div class="form-group flex-fill">
+                                <label for="text" class="fw-bold">Сообщение от ({{user.username}}) {{user.first_name}} {{user.last_name}}:</label>
+                                <textarea class="form-control" id="text" name="text" rows="5"></textarea>
+
+                                <button class="btn btn-outline-dark flex-shrink-0" type="submit">
+                                    <i class="bi-chat-right-text me-1"></i>
+                                    Отправить
+                                </button>
+                            </form>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% endblock content %}

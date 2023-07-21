@@ -1,0 +1,14 @@
+{% extends 'flatpages/mainpage.html' %} 
+ 
+{% block title %}
+Добавление объявления
+{% endblock title %}
+ 
+{% block content %}
+<form action = "" method = "post">
+    {% csrf_token %}
+    <h3>[{{ name }}] {{ first_name }} {{ last_name }}</h3>
+    {{form.as_p }}
+    <input type="submit" value="Отправить">
+</form>
+{% endblock content %}

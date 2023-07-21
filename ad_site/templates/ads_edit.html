@@ -1,0 +1,17 @@
+{% extends 'flatpages/mainpage.html' %} 
+ 
+{% block title %}
+Изменить объявление
+{% endblock title %}
+ 
+{% block content %}
+{% if ads.author.id == user.users.id %}
+<form method="POST">
+    {% csrf_token %} 
+    {{ form.as_p }}
+    <input type="submit" value="Изменить объявление">
+</form>
+{% else %}
+<div class="container px-4 px-lg-5 my-5"><h1>Редактирование невозможно</h1></div>
+{% endif %}
+{% endblock content %}

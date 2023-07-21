@@ -1,0 +1,28 @@
+{% extends 'flatpages/mainpage.html' %} 
+
+{% block title %}
+Удаление отклика
+{% endblock title %}
+ 
+{% block content %}
+<h1>Удаление отклика</h1>
+<section class="py-5">
+    <div class="container">
+        <div class="row col-8 align-items-center">
+<h2>Вы действительно хотите удалить этот отклик?</h2>
+<div class="card w-auto gy-3 px-0">
+    <h5 class="card-header">Отклик на "{{ replies.ad.header }} [{{ replies.ad.author}}]"</h5>
+    <div class="card-body">
+      <h5 class="card-title">Отклик пользователя [({{ replies.user}}) {{ replies.user.first_name}} {{ replies.user.last_name}}]</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{ replies.date_time| date:'d-M-Y g:i' }}</h6>
+      <p class="card-text">{{ replies.text }}</p>
+      <form method="POST">
+        {% csrf_token %}
+        <input type="submit" class="btn btn-danger mt-auto" value="Удалить отклик"> 
+    </form> 
+    </div>
+  </div>
+</div>
+</div>
+</div>
+{% endblock content %}

@@ -1,18 +1,18 @@
 from django.urls import path
-from .views import home, RegisterView, AdsList
+from .views import *
 from django.views.decorators.cache import cache_page
 
 urlpatterns = [
-    path('', home, name='users-home'),
+    # path('', home, name='users-home'),
     path('register/', RegisterView.as_view(), name='users-register'),
-    # path('', cache_page(60*5) (PostsList.as_view())), 
-    path('ads/', AdsList.as_view()), 
-    # # path('<int:pk>', cache_page(60*5) (PostDetail.as_view()), name='details'),
-    # path('<int:pk>', PostDetail.as_view(), name='details'),
-    # path('search', SearchList.as_view(), name='search'),
-    # path('add', PostsAdd.as_view()), 
-    # path('<int:pk>/edit/', PostEdit.as_view(), name='edit_post'),
-    # path('<int:pk>/delete/', PostDelete.as_view(), name='delete_post'),
-    # path('<int:pk>/subscribe/', SubscribeToCategory.as_view(), name = 'subscribe'),
-    # path('<int:pk>/unsubscribe/', UnSubscribeToCategory.as_view(), name = 'unsubscribe'),
+    path('', AdsList.as_view()),
+    path('ads/', AdsList.as_view(), name='ads_list'), 
+    path('myads/', UserAdsList.as_view(), name='user_ads'), 
+    path('replies/', RepliesList.as_view(), name='replies'), 
+    path('replies/<int:pk>/accept/', ReplyAccept.as_view(), name='accept_reply'), 
+    path('replies/<int:pk>/delete/', ReplyDelete.as_view(), name='delete_reply'), 
+    path('ads/<int:pk>', AdDetails.as_view(), name='details'),
+    path('add', AdsAdd.as_view(), name='add'), 
+    path('ads/<int:pk>/reply', SendMessage.as_view(), name='send_message'),
+    path('ads/<int:pk>/edit/', AdsEdit.as_view(), name='edit_ad'),
 ]

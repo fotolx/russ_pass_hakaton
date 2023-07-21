@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
+from django.urls import reverse
 
 # Create your models here.
 class Users(models.Model):
@@ -38,10 +39,16 @@ class Ads(models.Model):
     blocked = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
-        pass
+        super().save(*args, **kwargs)
 
     def preview(self):
-        pass
+        return self.main_text[:20]+'...'
+    
+    def __str__(self):
+        return f'{self.id} {self.header} [{self.author}]'
+    
+    def get_absolute_url(self): 
+        return reverse('ads_list', kwargs={'id': self.id})
 
 class AdsCategory(models.Model):
     ad = models.ForeignKey(Ads, on_delete = models.CASCADE, verbose_name="Объявление")
@@ -56,9 +63,16 @@ class UsersSubscribed(models.Model):
     
 class Replies(models.Model): 
     user = models.ForeignKey(User, on_delete = models.CASCADE)
-    ad = models.ForeignKey(Ads, on_delete = models.CASCADE)
-    text = models.TextField()
-    
+    ad = models.ForeignKey(Ads, on_delete = models.CASCADE, verbose_name="Объявление")
+    text = models.TextField(verbose_name="Текст")
+    date_time = models.DateTimeField(auto_now_add = True)
+    viewed = models.BooleanField(default=False)
+    accepted = models.BooleanField(default=False)
+
+    def replies_to_ads(user):
+        return Replies.objects.filter(ad__author=user.users)
+        pass
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     avatar = models.ImageField(default='default_userpic.png', upload_to='images/profile/')
