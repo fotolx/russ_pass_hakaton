@@ -32,7 +32,7 @@ from .filters import ReplyFilter
 
 
 def home(request):
-    return render(request, 'flatpages/mainpage.html')
+    return render(request, 'russpass/index.html')
 
 # class RegisterView(View):
 #     form_class = RegisterForm
@@ -102,7 +102,7 @@ def home(request):
 class AdsList(ListView):
     model = Ads
     context_object_name = 'ads'
-    template_name = 'ads_list.html'
+    template_name = 'russpass/index.html'
     pass
 
     def get_context_data(self, **kwargs): 
