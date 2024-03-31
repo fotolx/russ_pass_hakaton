@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPAS - Employee performance analyzer software</title>
+    <!-- Yandex.Metrika counter --> <script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date(); for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }} k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(95980557, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/95980557" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,700;0,800;0,900;1,600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <!-- AUTHORIZATION -->
+        <section class="authorization">
+            <div class="container container-authorization">
+                <div class="authorization-content">
+                    <div class="authorization-content__form">
+                        <div class="header-authorization">
+                            <div class="logo">
+                                <img src="{% static 'img/icon/logo.png' %}" alt="logo">
+                            </div>
+                        </div>
+
+                        <div class="body-authorization">
+                            <div class="body-authorization__title">Sign In</div>
+                            <form action="#" method="post" id="authorizationForm" class="form-authorization">
+                                {% csrf_token %}
+                                <div class="form-authorization__group">
+                                    <label for="authorization-name">Your login</label>
+                                    <input type="text" 
+                                           id="authorization-name" 
+                                           name="username" 
+                                           class="form-authorization__input"
+                                           placeholder="Enter login" required>
+                                </div>
+                                <div class="form-authorization__group">
+                                    <label for="authorization-password">Password</label>
+                                    <input type="password" 
+                                           id="authorization-password" 
+                                           name="password"
+                                           class="form-authorization__input" 
+                                           placeholder="Enter password" required>
+                                </div>
+                                <button type="submit" id="authorizationBtn" class="btn" disabled>Enter</button>
+                            </form>
+                            <a href="#" class="remember-password">Forgot password</a>
+                        </div>
+
+                        <div class="footer-content">
+                            <div class="footer-content__text">Don't have an account yet?</div>
+                            <a href="{% url 'users-register' %}" class="footer-content__authorization">Sign Up</a>
+                        </div>
+                    </div>
+                    <div class="authorization-content__illustr">
+                        <div class="technologies-image">
+                            <img src="{% static 'img/main/technologies.png' %}" alt="technologies">
+                        </div>
+                        <div class="technologies-text">
+                            <span>Service for predicting layoffs </span>
+                        </div>
+                        <div class="technologies-text">based on employee engagement</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- AUTHORIZATION -->
+    </main>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+
+</html>

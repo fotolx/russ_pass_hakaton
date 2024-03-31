@@ -1,0 +1,123 @@
+{% extends "template.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}{% trans 'Employee performance analyzer' %}{% endblock title%}
+{% block menu_main %}menu-list__link--active{% endblock %}
+{% block additional_scripts %}
+<script src="{% static 'js/onload-people-good.js' %}"></script>
+<script src="{% static 'js/onload-people-badly.js' %}"></script>
+<script src="{% static 'js/loading-bg.js' %}"></script>
+<script src="{% static 'js/sort-table.js' %}"></script>
+{% endblock %}
+{% block content %}
+                        <!-- START PAGE CONTENT -->
+                        <div class="all-information__body">
+                            <div class="efficiency">
+                                <div class="efficiency__item">
+                                    <div class="circle circle--good" id="download-btn">
+                                        <img src="{% static 'img/icon/good.png' %}" class="efficiency__img" alt="icon">
+                                        <div class="circle-mask">
+                                            <span>{% trans 'Download the report' %}</span>
+                                            <span class="cursor"></span>
+                                        </div>
+                                    </div>
+                                    <div class="efficiency__group">
+                                        <div class="efficiency__title">{% trans 'Successful performance' %}</div>
+                                        <div class="efficiency-quantity">
+                                            <div class="efficiency-quantity__text"><span class="max">{{successful_workers}}</span> {% trans 'employees' %}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="efficiency__item">
+                                    <div class="circle circle--bad" id="download-button">
+                                        <img src="{% static 'img/icon/bad.png' %}" class="efficiency__img" alt="icon">
+                                        <div class="circle-mask">
+                                            <span>{% trans 'Download the report' %}</span>
+                                            <span class="cursor"></span>
+                                        </div>
+                                    </div>
+                                    <div class="efficiency__group">
+                                        <div class="efficiency__title">{% trans 'Low performance' %}</div>
+                                        <div class="efficiency-quantity">
+                                            <div class="efficiency-quantity__text"><span class="min">{{bad_workers}}</span> {% trans 'employees' %}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="efficiency__item">
+                                    <a href="{% url 'analizator' %}" class="efficiency__link">
+                                        <div class="efficiency__title">{% trans 'Upload file' %}</div>
+                                        <div class="circle circle--csv" id="download-btn">
+                                            <img src="{% static 'img/icon/plus.png' %}" class="efficiency__img" alt="icon">
+                                        </div>
+                                        <div class="efficiency__text">{% trans 'File format .CSV' %}</div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            {% if no_info %}
+                            <div class="analizator">
+                                <h2>{% trans 'List empty!' %}</h2>
+                                <div class="efficiency-quantity__text">{% trans 'Upload info into' %}&nbsp;<a href="{% url 'analizator' %}" class="name-column__link">{% trans 'Analizer' %}</a></div>
+                             </div>
+                            {% else %}
+                            <div class="wrapper-table">
+                                <table class="table-people" id="table-people">
+                                    <thead class="table-header">
+                                        <tr class="table-header__item name-column" id="name-column">
+                                            <td class="table-header__title">{% trans 'Employee name' %}</td>
+                                            <td><img src="{% static 'img/icon/arrow.svg' %}" class="table-header__icon" id="name-sort" alt="arrow"></td>
+                                        </tr>
+                                        <tr class="table-header__item forecast-column" id="forecast-column">
+                                            <td class="table-header__title">{% trans 'Dissmisal risk' %}</td>
+                                            <td><img src="{% static 'img/icon/arrow.svg' %}" class="table-header__icon" id="forecast-sort" alt="arrow"></td>
+                                        </tr>
+                                        <tr class="table-header__item deportament-column" id="deportament-column">
+                                            <td class="table-header__title">{% trans 'Department' %}</td>
+                                            <td><img src="{% static 'img/icon/arrow.svg' %}" class="table-header__icon" id="deportament-sort" alt="arrow"></td>
+                                        </tr>
+                                        <tr class="table-header__item director-column" id="director-column">
+                                            <td class="table-header__title">{% trans 'Director' %}</td>
+                                            <td><img src="{% static 'img/icon/arrow.svg' %}" class="table-header__icon" id="director-sort" alt="arrow"></td>
+                                        </tr>
+                                        <tr class="table-header__item data-column" id="data-column">
+                                            <td class="table-header__title">{% trans 'Date' %}</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-tbody">
+                                        {% for worker in workers %}
+                                        <tr class="table-tbody__item" data-id="1">
+                                            <td class="name-column">
+                                                <a href="{% url 'details' worker.id %}" class="name-column__link">
+                                                    <img src="{% static 'img/icon/percon-icon.png' %}" class="name-column__img" alt="avatar">
+                                                    <div class="name-column__group">
+                                                        <div class="name-column__title">{{ worker.name }}</div>
+                                                        <div class="name-column__email">{{ worker.email}}</div>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td class="forecast-column">
+                                                <div class="number-probability number-probability__red" id="probability-1">{{ latest_info|get_percent:worker.worker_id }}</div>
+                                                <div class="load"><div class="load__bg"></div></div>
+                                            </td>
+                                            <td class="deportament-column">
+                                                <div class="deportament-column__text">{{ worker.department }}</div>
+                                            </td>
+                                            <td class="director-column">
+                                                {% for director in directors %}
+                                                {% if worker.department == director.department.name %}
+                                                <div class="director-column__text">{{ director.name }}</div>
+                                                {% endif %}
+                                                {% endfor %}
+                                            </td>
+                                            <td class="data-column">
+                                                <div class="data-column__text">{{ period_info|get_item:worker.worker_id|date:'d/m/Y' }}</div>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                        {% endif %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- TRY TO CUT PAGE CONTENT HERE -->
+                            {% endblock content %}
+                            

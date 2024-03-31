@@ -1,0 +1,52 @@
+{% extends "template.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}{% trans 'Employee performance analyzer' %}{% endblock title%}
+{% block menu_department %}menu-list__link--active{% endblock %}
+{% block additional_scripts %}
+<script src="{% static 'js/loading-bg.js' %}"></script>
+<script src="{% static 'js/sort-table.js' %}"></script>
+{% endblock %}
+{% block content %}
+                        <div class="all-information__body">
+                            {% if no_info %}
+                            <div class="analizator">
+                                <h2>{% trans 'List empty!' %}</h2>
+                                <div class="efficiency-quantity__text">{% trans 'Add departments' %}</div>
+                             </div>
+                            {% else %}
+                            <div class="wrapper-table">
+                                <table class="table-people" id="table-people">
+                                    <thead class="table-header">
+                                        <tr class="table-header__item name-column" id="name-column">
+                                            <td class="table-header__title">{% trans 'Department' %}</td>
+                                            <td><img src="{% static 'img/icon/arrow.svg' %}" class="table-header__icon" id="name-sort" alt="arrow"></td>
+                                        </tr>
+                                        <tr class="table-header__item director-column" id="director-column">
+                                            <td class="table-header__title">{% trans 'Director' %}</td>
+                                            <td><img src="{% static 'img/icon/arrow.svg' %}" class="table-header__icon" id="director-sort" alt="arrow"></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-tbody">
+                                        {% for department in departments %}
+                                        <tr class="table-tbody__item" data-id="1">
+                                            <td class="name-column">
+                                                <a href="#" class="name-column__link">
+                                                    <img src="{% static 'img/icon/percon-icon.png' %}" class="name-column__img" alt="avatar">
+                                                    <div class="name-column__group">
+                                                        <div class="name-column__title">{{ department.name }}</div>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td class="director-column">
+                                                {% for director in department.director_set.all %}
+                                                <div class="director-column__text">{{ director.name }}</div>
+                                                {% endfor %}
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                        {% endif %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            {% endblock content %}

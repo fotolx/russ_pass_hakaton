@@ -1,0 +1,185 @@
+{% extends "template.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}{% trans 'Employee performance analyzer' %}{% endblock title%}
+{% block menu_worker %}menu-list__link--active{% endblock %}
+{% block additional_scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'js/chart.js' %}"></script>
+<script src="{% static 'js/load-card.js' %}"></script>
+{% endblock %}
+{% block content %}
+                        <div class="all-information__body">
+                            <div class="person-analizator">
+                                <div class="wrapper-select-data">
+                                    <div class="select-data-text">{% trans 'Timeframe' %}:</div>
+                                    <select name="select-data" class="select-data" id="select-data">
+                                        {% if dismiss_periods %}
+                                        {% for period in dismiss_periods %}
+                                        <option value="{{period}}">{{period}}</option>
+                                        {% endfor %}
+                                        {% endif %}
+                                    </select>
+                                </div>
+                                <div class="wrapper-person-analizator">
+                                    <div class="about-chart">
+                                        <div class="chart-header">
+                                            <div class="chart-header__column">
+                                                <div class="chart-header__text">
+                                                    {% trans 'Number of messages sent in the period' %}:
+                                                </div>
+                                                <div class="chart-header__group send-message">
+                                                    <div class="chart-header__number">{{ wdata.msgs_sent }}</div>
+                                                    <div class="chart-header__percent">{{percent.msgs_sent}}</div>
+                                                </div>
+                                            </div>
+                                            <div class="chart-header__column">
+                                                <div class="chart-header__text">
+                                                    {% trans 'Number of messages received in the period' %}:
+                                                </div>
+                                                <div class="chart-header__group received-message">
+                                                    <div class="chart-header__number">{{ wdata.msgs_recvd }}</div>
+                                                    <div class="chart-header__percent">{{percent.msgs_recvd}}</div>
+                                                </div>
+                                            </div>
+                                            <div class="chart-header__column">
+                                                <div class="chart-header__text">{% trans 'Number of recipients in sent messages' %}:</div>
+                                                <div class="chart-header__group">
+                                                    <div class="chart-header__number">{{ wdata.msgs_sent_recipients }}</div>
+                                                    <div class="chart-header__percent">{{percent.msgs_sent_recipients}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="about-chart__body">
+                                            <div class="about-chart__illustration">
+                                                <div class="massage-adress">
+                                                    <div class="massage-adress__title">
+                                                        {% trans 'Number of messages with recipients in the field' %}:
+                                                    </div>
+                                                    <div class="hidden-copy">
+                                                        <div class="hidden-copy__text">"{% trans 'carbon copy' %}"</div>
+                                                        <div class="hidden-copy__load"></div>
+                                                        <div class="hidden-copy__group">
+                                                            <div class="hidden-copy__number">{{ wdata.msgs_sent_recipients_hidden }}</div>
+                                                            <div class="hidden-copy__percent">{{percent.msgs_sent_recipients_hidden}}</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="copy">
+                                                        <div class="copy__text">"{% trans 'copy' %}"</div>
+                                                        <div class="copy__load"></div>
+                                                        <div class="copy__group">
+                                                            <div class="copy__number">{{ wdata.msgs_sent_recipients_copy }}</div>
+                                                            <div class="copy__percent">{{percent.msgs_sent_recipients_copy}}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="analizator-Chart">
+                                                    <div class="analizator-Chart__title">
+                                                        {% trans 'Ratio of sent and received messages' %}
+                                                    </div>
+                                                    <canvas class="analizator-Chart__chart" id="analizator-Chart"></canvas>
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="about-chart__other">
+                                                <div class="volume-ratio">
+                                                    <div class="volume-ratio__title">
+                                                        {% trans 'Ratio of volume sent and received messages' %}
+                                                    </div>
+                                                    <div class="volume-ratio-area">
+                                                        <div class="volume-ratio__text">{% trans 'in bytes' %}</div>
+                                                        <div class="volume-ratio-group">
+                                                            <div class="volume-ratio-group__min">58</div>
+                                                            <div class="volume-ratio-group__max">132</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="time-reading">
+                                                    <div class="time-reading__title">
+                                                        {% trans 'Days between the date of receipt and the date of reading the message' %}
+                                                    </div>
+                                                    <div class="time-reading__area">
+                                                        <div class="time-reading__nember">{{ wdata.msg_days2read }}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-person">
+                                            <div class="card-person__title">{% trans 'Employee' %}</div>
+                                            <div class="card-person__avatar">
+                                                <img src="{% static 'img/icon/percon-icon.png' %}" class="card-person__img" alt="avatar">
+                                            </div>
+                                            <div class="card-person__title">{{ wdata.fio }}</div>
+                                            <div class="card-person__group">
+                                                <div class="card-person__text"><span>{% trans 'Director' %}:</span></div>
+                                                <div class="card-person__text">{{ director.name }}</div>
+                                            </div>
+                                            <div class="card-person__group">
+                                                <div class="card-person__text"><span>{% trans 'Department' %}:</span></div>
+                                                <div class="card-person__text">{{ wdata.department }}</div>
+                                            </div>
+                                            <div class="card-person__group">
+                                                <div class="card-person__text"><span>{% trans 'Position' %}:</span></div>
+                                                <div class="card-person__text">Manager</div>
+                                            </div>
+                                            <div class="line"></div>
+                                            <div class="card-person__title">{% trans 'Dissmisal risk' %}:</div>
+                                            <td class="card-person__forecast">
+                                                <div class="card-person__percent">{{ wdata.dismiss }}%</div>
+                                                <div class="card-person__load"><div class="card-person__load-bg"></div></div>
+                                            </td>
+                                        </div>
+                                        <div class="massage-after-work">
+                                            <div class="massage-after-work__title">
+                                                {% trans 'Number of messages sent after working hours' %}
+                                            </div>
+                                            <div class="massage-after-work__area">
+                                                <div class="massage-after-work__number">{{ wdata.msgs_sent_afterwork }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="person-analizator-info">
+                                    <div class="later-deadline person-analizator-info__column">
+                                        <div class="later-deadline__title">
+                                            {% trans 'Number of messages read after the time of receipt' %}:
+                                        </div>
+                                        <div class="later-deadline-area area">
+                                            <div class="later-deadline-area__number">{{ wdata.msgs_late_read }}</div>
+                                            <div class="later-deadline-area__percent">{{percent.msgs_late_read}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="number-characters person-analizator-info__column">
+                                        <div class="number-characters__title">
+                                            {% trans 'Length of text in outgoing messages' %}:
+                                        </div>
+                                        <div class="number-characters-area area">
+                                            <div class="number-characters-area__number">{{ wdata.msgs_sent_length }}</div>
+                                            <div class="number-characters-area__percent">{{percent.msgs_sent_length}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="massage-signs person-analizator-info__column">
+                                        <div class="massage-signs__title">
+                                            {% trans 'Number of incoming messages that have question marks in the text, but to which no response has been sent' %}:
+                                        </div>
+                                        <div class="massage-signs-area area">
+                                            <div class="massage-signs-area__number">{{ wdata.msgs_rcvd_question_no_respns }}</div>
+                                            <div class="massage-signs-area__percent">{{percent.msgs_rcvd_question_no_respns}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="massage-answer person-analizator-info__column">
+                                        <div class="massage-answer__title">
+                                            {% trans 'Number of messages that have been answered' %}:
+                                        </div>
+                                        <div class="massage-answer-area area">
+                                            <div class="massage-answer-area__number">{{ wdata.msg_responded }}</div>
+                                            <div class="massage-answer-area__percent">{{percent.msg_responded}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endblock content %}

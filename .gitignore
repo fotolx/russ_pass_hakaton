@@ -7,3 +7,4 @@ venv/
 errors.log
 general.log
 security.log
+.DS_Store

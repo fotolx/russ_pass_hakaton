@@ -1,0 +1,133 @@
+{% extends "template.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}{% trans 'Employee performance analyzer' %}{% endblock title%}
+{% block menu_analyzer %}menu-list__link--active{% endblock %}
+{% block additional_scripts %}
+<script src="{% static 'js/onload-people-good.js' %}"></script>
+<script src="{% static 'js/onload-people-badly.js' %}"></script>
+<script src="{% static 'js/loading-bg.js' %}"></script>
+<script src="{% static 'js/sort-table.js' %}"></script>
+<script src="{% static 'js/form-analizator.js' %}"></script>
+<script src="{% static 'js/load-analizator.js' %}"></script>
+<script src="{% static 'js/send-analizator.js' %}"></script>
+{% endblock %}
+{% block content %}
+                            <div class="all-information__body">
+                            <div class="analizator">
+                                <div class="load-analizator">
+                                    <div class="load-analizator__title">{% trans 'Upload file' %}</div>
+                                    <div class="load-analizator__text">{% trans 'File format .CSV' %}</div>
+                                    <form action="#" method="post" class="analizator-form" id="analizator-form" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <input type="file" name="myfile" id="analizator-file" class="analizator-form__file" required>
+                                        <label for="analizator-file" class="analizator-form__label">
+                                            <img src="{% static 'img/icon/plus.png' %}" class="analizator-form__img analizator-form__img--load" alt="icon">
+                                            <img src="{% static 'img/icon/save.png' %}" class="analizator-form__img analizator-form__img--save" alt="icon">
+                                        </label>
+                                        <div class="analizator-form__alert"></div>
+                                        <button class="btn" id="analizator-btn" disabled>{% trans 'Run employee analysis' %}</button>
+                                    </form>
+                                    <div class="load-analizator__subtext"> .CSV</div>
+                                </div>
+                                <div class="save-analizator">
+                                    <div class="save-analizator__title">{% trans 'Save data' %}</div>
+                                    <form  action="mail/mail.php" autocomplete="off" method="post" class="save-form">
+                                        <div class="save-form__group">
+                                            <label for="save-form-director" class="save-form__label">{% trans 'Director' %}</label>
+                                            <select name="save-form-director" id="save-form-director" class="save-form__select">
+                                                <option value="">{% trans 'Choose director' %}</option>
+                                                {% for director in directors %}
+                                                <option value="{{ director.name }}">{{ director.name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <div class="save-form__group">
+                                            <label for="save-form__deportament" class="save-form__label">{% trans 'Department' %}</label>
+                                            <select name="save-form__deportament" id="save-form__deportament" class="save-form__select">
+                                                <option value="">{% trans 'Choose department' %}</option>
+                                                {% for department in departments %}
+                                                <option value="{{ department.name }}">{{ department.name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <div class="save-form__group">
+                                            <label for="save-form__massage" class="save-form__label">{% trans 'Comment' %}</label>
+                                            <textarea name="save-form__massage" id="save-form__massage" 
+                                               class="save-form__massage" 
+                                               placeholder="{% trans 'Dear colleagues! Please pay attention to the data received.' %}"></textarea>
+                                        </div>
+                                        <button type="submit" class="btn">{% trans 'Send' %}</button>
+                                    </form>
+                                </div>
+                            </div>
+                            {% if message %}
+                            <div class="analizator">
+                                <div class="load-analizator__title">{% trans 'The result of uploading data' %}</div>
+                                <div class="analizator__text">{% trans 'New rows' %}: {{new}}</div>
+                                <div class="analizator__text">{% trans 'Skipped rows' %}: {{skipped}}</div>
+                                <div class="analizator__text">{% trans 'Updated rows' %}: {{update}}</div>
+                                <div class="analizator__text">{% trans 'Rows with errors' %}: {{error}}</div>
+                            </div>
+                            {% endif %}
+                            {% if analized %}
+                            <div class="wrapper-table wrapper-table--block">
+                                <table class="table-people" id="table-people">
+                                    <thead class="table-header">
+                                        <tr class="table-header__item name-column" id="name-column">
+                                            <td class="table-header__title">{% trans 'Employee name' %}</td>
+                                            <td><img src="{% static 'img/icon/arrow.svg' %}" class="table-header__icon" id="name-sort" alt="arrow"></td>
+                                        </tr>
+                                        <tr class="table-header__item forecast-column" id="forecast-column">
+                                            <td class="table-header__title">{% trans 'Dissmisal risk' %}</td>
+                                            <td><img src="{% static 'img/icon/arrow.svg' %}" class="table-header__icon" id="forecast-sort" alt="arrow"></td>
+                                        </tr>
+                                        <tr class="table-header__item deportament-column" id="deportament-column">
+                                            <td class="table-header__title">{% trans 'Department' %}</td>
+                                            <td><img src="{% static 'img/icon/arrow.svg' %}" class="table-header__icon" id="deportament-sort" alt="arrow"></td>
+                                        </tr>
+                                        <tr class="table-header__item director-column" id="director-column">
+                                            <td class="table-header__title">{% trans 'Director' %}</td>
+                                            <td><img src="{% static 'img/icon/arrow.svg' %}" class="table-header__icon" id="director-sort" alt="arrow"></td>
+                                        </tr>
+                                        <tr class="table-header__item data-column" id="data-column">
+                                            <td class="table-header__title">{% trans 'Date' %}</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-tbody">
+                                        {% for worker in workers_analized %}
+                                        <tr class="table-tbody__item" data-id="{{worker.id}}">
+                                            <td class="name-column">
+                                                <a href="{% url 'details' worker.w_id %}" class="name-column__link">
+                                                    <img src="{% static 'img/icon/percon-icon.png' %}" class="name-column__img" alt="avatar">
+                                                    <div class="name-column__group">
+                                                        <div class="name-column__title">{{ worker.fio }}</div>
+                                                        <div class="name-column__email">{{ worker.email}}</div>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td class="forecast-column">
+                                                <div class="number-probability">{{ worker.dismiss}}%</div>
+                                                <div class="load"><div class="load__bg"></div></div>
+                                            </td>
+                                            <td class="deportament-column">
+                                                <div class="deportament-column__text">{{ worker.department }}</div>
+                                            </td>
+                                            <td class="director-column">
+                                                {% for director in directors %}
+                                                {% if worker.department == director.department.name %}
+                                                <div class="director-column__text">{{ director.name }}</div>
+                                                {% endif %}
+                                                {% endfor %}
+                                            </td>
+                                            <td class="data-column">
+                                                <div class="data-column__text">{{ worker.period|date:'d/m/Y' }}</div>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% endblock content %}

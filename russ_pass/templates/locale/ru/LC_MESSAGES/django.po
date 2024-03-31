@@ -1,0 +1,244 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-13 12:00+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: analizator.html:4 department_list.html:4 directors_list.html:4 main.html:4
+#: person.html:4 person_list.html:4
+msgid "Employee performance analyzer"
+msgstr ""
+
+#: analizator.html:19 main.html:48 person_list.html:47
+msgid "Upload file"
+msgstr ""
+
+#: analizator.html:20 main.html:52 person_list.html:51
+msgid "File format .CSV"
+msgstr ""
+
+#: analizator.html:29
+msgid "Run employee analysis"
+msgstr ""
+
+#: analizator.html:34
+msgid "Save data"
+msgstr ""
+
+#: analizator.html:37 analizator.html:90 department_list.html:26 main.html:79
+#: person.html:117 person_list.html:78
+msgid "Director"
+msgstr ""
+
+#: analizator.html:39
+msgid "Choose director"
+msgstr ""
+
+#: analizator.html:46 analizator.html:86 department_list.html:22
+#: directors_list.html:26 main.html:75 person.html:121 person_list.html:74
+#: template.html:72
+msgid "Department"
+msgstr ""
+
+#: analizator.html:48
+msgid "Choose department"
+msgstr ""
+
+#: analizator.html:55
+msgid "Comment"
+msgstr ""
+
+#: analizator.html:58
+msgid "Dear colleagues! Please pay attention to the data received."
+msgstr ""
+
+#: analizator.html:60
+msgid "Send"
+msgstr ""
+
+#: analizator.html:66
+msgid "The result of uploading data"
+msgstr ""
+
+#: analizator.html:67
+msgid "New rows"
+msgstr ""
+
+#: analizator.html:68
+msgid "Skipped rows"
+msgstr ""
+
+#: analizator.html:69
+msgid "Updated rows"
+msgstr ""
+
+#: analizator.html:70
+msgid "Rows with errors"
+msgstr ""
+
+#: analizator.html:78 main.html:67 person_list.html:66
+msgid "Employee name"
+msgstr ""
+
+#: analizator.html:82 main.html:71 person.html:129 person_list.html:70
+msgid "Dissmisal risk"
+msgstr ""
+
+#: analizator.html:94 main.html:83 person_list.html:82
+msgid "Date"
+msgstr ""
+
+#: department_list.html:14 directors_list.html:14 main.html:59
+#: person_list.html:58
+msgid "List empty!"
+msgstr ""
+
+#: department_list.html:15
+msgid "Add departments"
+msgstr ""
+
+#: directors_list.html:15
+msgid "Add directors"
+msgstr ""
+
+#: directors_list.html:22
+msgid "Director name"
+msgstr ""
+
+#: main.html:20 main.html:35 person_list.html:19 person_list.html:34
+msgid "Download the report"
+msgstr ""
+
+#: main.html:25 person_list.html:24
+msgid "Successful performance"
+msgstr ""
+
+#: main.html:27 main.html:42 person_list.html:26 person_list.html:41
+msgid "employees"
+msgstr ""
+
+#: main.html:40 person_list.html:39
+msgid "Low performance"
+msgstr ""
+
+#: main.html:60 person_list.html:59
+msgid "Upload info into"
+msgstr ""
+
+#: main.html:60 person_list.html:59
+msgid "Analizer"
+msgstr ""
+
+#: person.html:16
+msgid "Timeframe"
+msgstr ""
+
+#: person.html:30
+msgid "Number of messages sent in the period"
+msgstr ""
+
+#: person.html:39
+msgid "Number of messages received in the period"
+msgstr ""
+
+#: person.html:47
+msgid "Number of recipients in sent messages"
+msgstr ""
+
+#: person.html:58
+msgid "Number of messages with recipients in the field"
+msgstr ""
+
+#: person.html:61
+msgid "carbon copy"
+msgstr ""
+
+#: person.html:69
+msgid "copy"
+msgstr ""
+
+#: person.html:79
+msgid "Ratio of sent and received messages"
+msgstr ""
+
+#: person.html:88
+msgid "Ratio of volume sent and received messages"
+msgstr ""
+
+#: person.html:91
+msgid "in bytes"
+msgstr ""
+
+#: person.html:100
+msgid "Days between the date of receipt and the date of reading the message"
+msgstr ""
+
+#: person.html:111 template.html:82
+msgid "Employee"
+msgstr ""
+
+#: person.html:125
+msgid "Position"
+msgstr ""
+
+#: person.html:137
+msgid "Number of messages sent after working hours"
+msgstr ""
+
+#: person.html:148
+msgid "Number of messages read after the time of receipt"
+msgstr ""
+
+#: person.html:157
+msgid "Length of text in outgoing messages"
+msgstr ""
+
+#: person.html:166
+msgid ""
+"Number of incoming messages that have question marks in the text, but to "
+"which no response has been sent"
+msgstr ""
+
+#: person.html:175
+msgid "Number of messages that have been answered"
+msgstr ""
+
+#: template.html:43
+msgid "Main"
+msgstr ""
+
+#: template.html:52
+msgid "Analyzer"
+msgstr ""
+
+#: template.html:62
+msgid "Directors"
+msgstr ""
+
+#: template.html:96
+msgid "Settings"
+msgstr ""
+
+#: template.html:106
+msgid "Sign Out"
+msgstr ""
+
+#: template.html:118
+msgid "Search"
+msgstr ""
