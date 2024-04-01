@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Переместить карусель на новую позицию
         function moveCarousel(position) {
-            carousel.style.transform = `translateX(-${position + 30}px)`;
+            carousel.style.transform = `translateX(-${position + 10}px)`;
             carousel.style.transition = `all 0.5s ease`;
             currentPosition = position;
             // Проверяем, достигли ли конца карусели, чтобы скрыть или показать соответствующие кнопки
