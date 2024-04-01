@@ -941,19 +941,20 @@
         </section>
     </main>
 
-
-    <script src="{% static 'russpass/js/teams.js' %}"></script>
-    <script src="{% static 'russpass/js/local.js' %}"></script>
-    <script src="{% static 'russpass/js/slider.js' %}"></script>
-    <script src="{% static 'russpass/js/carusel.js' %}"></script>
-    <script src="{% static 'russpass/js/tab.js' %}"></script>
-    <script src="{% static 'russpass/js/pogoda.js' %}"></script>
-    <script src="{% static 'russpass/js/tab-2.js' %}"></script>
+    <script src="{% static 'russpass/js/teams.js %}"></script>
+    <script src="{% static 'russpass/js/local.js %}"></script>
+    <script src="{% static 'russpass/js/slider.js %}"></script>
+    <script src="{% static 'russpass/js/carusel.js %}"></script>
+    <script src="{% static 'russpass/js/tab.js %}"></script>
+    <script src="{% static 'russpass/js/pogoda.js %}"></script>
+    <script src="{% static 'russpass/js/tab-2.js %}"></script>
+    <script src="{% static 'russpass/js/card.js %}"></script>
+    <script src="{% static 'russpass/js/card-delete.js %}"></script>
 
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function () {
-                navigator.serviceWorker.register('sw.js').then(function (registration) {
+                navigator.serviceWorker.register('{% static 'russpass/sw.js %}').then(function (registration) {
                     console.log('ServiceWorker registration successful with scope: ', registration.scope);
                 }, function (err) {
                     console.log('ServiceWorker registration failed: ', err);
