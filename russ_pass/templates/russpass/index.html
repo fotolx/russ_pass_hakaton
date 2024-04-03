@@ -1509,6 +1509,29 @@
             </div>
         </section>
         <!-- // BLOG -->
+
+        <div class="list-location carusel product-list" style="display: none;"></div>
+
+        <!-- MOBILE -->
+        <div class="mobile-wrapper">
+            <div class="mobile">
+                <div class="mobile-content">
+                    <a href="{% url 'main' %}" class="mobile-content__link mobile-content__link--active">
+                        <img src="{% static 'russpass/img/icon/Home.png %}" alt="">
+                    </a>
+                    <a href="{% url 'marhrut' %}" class="mobile-content__link">
+                        <img src="{% static 'russpass/img/icon/map-marked-alt.png %}" alt="">
+                    </a>
+                    <a href="#" class="mobile-content__link">
+                        <img src="{% static 'russpass/img/icon/Chat.png %}" alt="">
+                    </a>
+                    <a href="{% url 'dashboard' %}" class="mobile-content__link">
+                        <img src="{% static 'russpass/img/icon/Profile.png %}" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- MOBILE -->
     </main>
 
     <!-- FOOTER -->
