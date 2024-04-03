@@ -47,7 +47,7 @@ urlpatterns = [
     path('password-change/', ChangePasswordView.as_view(), name='password_change'),
 
     path('register/', RegisterView.as_view(), name='users-register'),
-    path('login/', CustomLoginView.as_view(redirect_authenticated_user=True, template_name='users/authorization.html',
+    path('login/', CustomLoginView.as_view(redirect_authenticated_user=True, template_name='russpass/authorization.html',
                                            authentication_form=LoginForm), name='login'),
     # path('logout/', auth_views.LogoutView.as_view(template_name='flatpages/mainpage.html'), name='logout'),
     path('logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),

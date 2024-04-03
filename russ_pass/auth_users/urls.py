@@ -10,8 +10,8 @@ from auth_users.forms import LoginForm
 urlpatterns = [
     # path('', home, name='users-home'),
 #     path('register/', RegisterView.as_view(), name='users-register'),
-    path('login/', CustomLoginView.as_view(redirect_authenticated_user=True, template_name='russpass/authorization.html',
-                                           authentication_form=LoginForm), name='login'),
+    # path('login/', CustomLoginView.as_view(redirect_authenticated_user=True, template_name='russpass/authorization.html',
+    #                                        authentication_form=LoginForm), name='login'),
 #     path('logout/', auth_views.LogoutView.as_view(template_name='flatpages/mainpage.html'), name='logout'),
 #     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
 #     path('logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
