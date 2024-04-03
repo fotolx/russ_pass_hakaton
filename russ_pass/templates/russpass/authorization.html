@@ -6,14 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Авторизация RUSSPASS</title>
     <meta name="description" content="" />
-    <link rel="stylesheet" href="{% static 'russpass/css/normalize.css %}">
-    <link rel="stylesheet" href="{% static 'russpass/css/style.css %}">
-    <link rel="icon" type="image/png" href="{% static 'russpass/img/icon/logo.svg %}">
+    <link rel="stylesheet" href="{% static 'russpass/css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'russpass/css/style.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'russpass/img/icon/logo.svg' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=372dac5d-dbec-4965-918f-80bb88f9c884"
-        type="text/javascript"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=372dac5d-dbec-4965-918f-80bb88f9c884" type="text/javascript"></script>
 </head>
 
 <body>
@@ -26,7 +25,7 @@
             <div class="header-content">
                 <div class="logo logo--auto">
                     <a href="{% url 'main' %}">
-                        <img src="{% static 'russpass/img/icon/logo.svg %}" class="logo__img" alt="logo">
+                        <img src="{% static 'russpass/img/icon/logo.svg' %}" class="logo__img" alt="logo">
                     </a>
                 </div>
                 <div class="main-navigation main-navigation--dashbord">
@@ -62,7 +61,7 @@
                 <div class="storag storag--dashbord">
                     <div class="login login--dashbord">
                         <div class="flag-country">
-                            <img src="{% static 'russpass/img/icon/flag.png" class="flag-country__img %}" alt="">
+                            <img src="{% static 'russpass/img/icon/flag.png' %}" class="flag-country__img" alt="">
                             <span> Русский / ₽ </span>
                         </div>
                         <svg width="25" height="32" viewBox="0 0 25 32" fill="none">
@@ -138,15 +137,15 @@
     </main>
 
 
-    <script src="{% static 'russpass/js/teams.js %}"></script>
-    <script src="{% static 'russpass/js/local.js %}"></script>
-    <script src="{% static 'russpass/js/slider.js %}"></script>
-    <script src="{% static 'russpass/js/carusel.js %}"></script>
-    <script src="{% static 'russpass/js/tab.js %}"></script>
-    <script src="{% static 'russpass/js/pogoda.js %}"></script>
-    <script src="{% static 'russpass/js/tab-2.js %}"></script>
-    <script src="{% static 'russpass/js/card.js %}"></script>
-    <script src="{% static 'russpass/js/card-delete.js %}"></script>
+    <script src="{% static 'russpass/js/teams.js' %}"></script>
+    <script src="{% static 'russpass/js/local.js' %}"></script>
+    <script src="{% static 'russpass/js/slider.js' %}"></script>
+    <script src="{% static 'russpass/js/carusel.js' %}"></script>
+    <script src="{% static 'russpass/js/tab.js' %}"></script>
+    <script src="{% static 'russpass/js/pogoda.js' %}"></script>
+    <script src="{% static 'russpass/js/tab-2.js' %}"></script>
+    <script src="{% static 'russpass/js/card.js' %}"></script>
+    <script src="{% static 'russpass/js/card-delete.js' %}"></script>
 
     <script>
         if ('serviceWorker' in navigator) {
