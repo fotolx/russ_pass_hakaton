@@ -55,7 +55,7 @@
                         <span class="burger__text">Меню</span>
                     </button>
                     <div class="location">
-                        <img src="{% static 'russpass/img/icon/map.png %}" class="location__img" alt="">
+                        <img src="{% static 'russpass/img/icon/map.png' %}" class="location__img" alt="">
                         <div class="location__text" id="local">Твой регион</div>
                     </div>
                 </div>
@@ -151,7 +151,7 @@
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function () {
-                navigator.serviceWorker.register('sw.js').then(function (registration) {
+                navigator.serviceWorker.register('{% static "russpass/sw.js" %}').then(function (registration) {
                     console.log('ServiceWorker registration successful with scope: ', registration.scope);
                 }, function (err) {
                     console.log('ServiceWorker registration failed: ', err);
