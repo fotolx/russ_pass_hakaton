@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>RUSSPASS</title>
     <meta name="description" content="" />
     <link rel="stylesheet" href="{% static 'russpass/css/normalize.css' %}">
     <link rel="stylesheet" href="{% static 'russpass/css/style.css' %}">
@@ -14,14 +14,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=372dac5d-dbec-4965-918f-80bb88f9c884"
-        type="text/javascript"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=372dac5d-dbec-4965-918f-80bb88f9c884" type="text/javascript"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 
 <body>
     <!-- HEADER -->
     <header class="header">
         <div class="container container-header">
+            <button class="burger-mob" data-burger>
+                <span class="burger-mob__line"></span>
+            </button>
             <div class="header-content">
                 <div class="logo">
                     <a href="{% url 'main' %}">
@@ -335,7 +338,7 @@
                             </div>
                             <div class="card" data-id="3">
                                 <div class="image-mask image-mask--hover">
-                                    <img src="{% static 'russpass/img/marshrut/surikovo.png' }" class="card__img" alt="">
+                                    <img src="{% static 'russpass/img/marshrut/surikovo.png' %}" class="card__img" alt="">
                                     <div class="mask">
                                         <a href="#" class="mask__link">Добавь<br> в свой маршрут</a>
                                     </div>
@@ -542,7 +545,8 @@
                         </button>
                     </div>
                 </div>
-                <div class="marshrut-content marshrut-content--eda">
+
+                <div class="marshrut-content marshrut-content--eda" id="eda">
                     <div class="group-title">
                         <h2>Еда</h2>
                         <a href="#" class="group-title__link">Показать все</a>
@@ -728,7 +732,7 @@
                             </div>
                             <div class="card" data-id="9">
                                 <img src="{% static 'russpass/img/marshrut/velo.png' %}" class="card__img" alt="">
-                                <a href="#" class="card__link">
+                                <a href="{% url 'park' %}" class="card__link">
                                     <div class="card__title">Природный парк Ергаки</div>
                                 </a>
                                 <div class="card__text">Вело</div>
@@ -860,7 +864,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="marshrut-content marshrut-content--eda">
+                <div class="marshrut-content marshrut-content--eda" id="gil">
                     <div class="group-title">
                         <h2>Жилье</h2>
                         <a href="#" class="group-title__link">Показать все</a>
@@ -1101,8 +1105,8 @@
                                 </button>
                             </div>
                             <div class="card" data-id="15">
-                                <img src="img/marshrut/ergaki.png" class="card__img" alt="">
-                                <a href="park.html" class="card__link">
+                                <img src="{% static 'russpass/img/marshrut/ergaki.png' %}" class="card__img" alt="">
+                                <a href="{% url 'park' %}" class="card__link">
                                     <div class="card__title">Природный парк Ергаки</div>
                                 </a>
                                 <div class="card__text">Вело</div>
@@ -1193,11 +1197,12 @@
                             <g clip-path="url(#clip0_181_408)">
                                 <path
                                     d="M15.0039 0.5C11.606 0.5 8.85156 3.25439 8.85156 6.65234C8.85156 9.39941 12.8726 14.4062 14.4131 16.2236C14.7251 16.5918 15.2832 16.5918 15.5947 16.2236C17.1353 14.4062 21.1562 9.39941 21.1562 6.65234C21.1562 3.25439 18.4019 0.5 15.0039 0.5ZM15.0039 8.70312C13.8711 8.70312 12.9531 7.78516 12.9531 6.65234C12.9531 5.51953 13.8711 4.60156 15.0039 4.60156C16.1367 4.60156 17.0547 5.51953 17.0547 6.65234C17.0547 7.78516 16.1367 8.70312 15.0039 8.70312ZM1.92383 11.0444C1.63388 11.1604 1.38532 11.3606 1.21021 11.6192C1.0351 11.8777 0.941476 12.1828 0.941406 12.4951L0.941406 24.7178C0.941406 25.2705 1.49951 25.6484 2.0127 25.4434L8.75391 22.375V10.9941C8.32227 10.2139 7.96924 9.4541 7.71631 8.72754L1.92383 11.0444ZM15.0039 18.062C14.3169 18.062 13.667 17.7603 13.2212 17.2339C12.2612 16.1011 11.2402 14.811 10.3164 13.4878V22.3745L19.6914 25.4995V13.4883C18.7676 14.811 17.7471 16.1016 16.7866 17.2344C16.3408 17.7603 15.6909 18.062 15.0039 18.062ZM27.9951 8.36914L21.2539 11.4375V25.5L28.084 22.7681C28.374 22.6521 28.6226 22.452 28.7977 22.1934C28.9728 21.9348 29.0664 21.6297 29.0664 21.3174V9.09473C29.0664 8.54199 28.5083 8.16406 27.9951 8.36914Z"
-                                    fill="white" />
+                                    fill="#2D3134" />
                             </g>
                             <defs>
                                 <clipPath id="clip0_181_408">
-                                    <rect width="28.125" height="25" fill="white" transform="translate(0.941406 0.5)" />
+                                    <<rect width="28.125" height="25" fill="#2D3134"
+                                        transform="translate(0.941406 0.5)" />
                                 </clipPath>
                             </defs>
                         </svg>
@@ -1480,7 +1485,7 @@
                                 <div class="card-content-blog__subtext">
                                     Покормить уток у Вантового моста, зайти в музей-теплоход Святителя Николая, сфотографироваться...
                                 </div>
-                            </div>
+                                </div>
                             </div>
                             <div class="card card--blog">
                                 <div class="card-content-blog">
@@ -1494,14 +1499,14 @@
                         </div>
                         <button type="button" class="prev btn-slider">
                             <svg width="11" height="19" viewBox="0 0 11 19" fill="none" class="svg">
-                                <path d="M1.61914 1.33398L9.61914 9.33398L1.61914 17.334"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M1.61914 1.33398L9.61914 9.33398L1.61914 17.334" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </button>
                         <button type="button" class="next btn-slider">
                             <svg width="11" height="19" viewBox="0 0 11 19" fill="none" class="svg">
-                                <path d="M1.61914 1.33398L9.61914 9.33398L1.61914 17.334" 
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M1.61914 1.33398L9.61914 9.33398L1.61914 17.334" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </button>
                     </div>
@@ -1586,7 +1591,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <div class="logo">
+                <div class="logo-footer">
                     <img src="{% static 'russpass/img/icon/logo-footer.svg' %}" class="footer-logo" alt="">
                 </div>
                 <div class="politica">
