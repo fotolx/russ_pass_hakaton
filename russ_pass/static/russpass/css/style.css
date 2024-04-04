@@ -45,7 +45,7 @@ h2 {
   }
 }
 .header--dasbord {
-  position: static;
+  border-bottom: 2px solid #F0F0F0;
 }
 
 .container-header {
@@ -988,6 +988,7 @@ h2 {
 .card--dasbord {
   padding: 8px;
   padding-bottom: 20px;
+  flex: 0 0 calc(40% - 10px);
 }
 .card--blog:nth-child(1) {
   background-image: url(../img/blog/1.png);
@@ -1414,6 +1415,8 @@ h2 {
   bottom: 50%;
   transform: translateY(50%);
   right: -100px;
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out;
 }
 @media (max-width: 1740px) {
   .next {
@@ -1422,6 +1425,10 @@ h2 {
 }
 .next--dasbord {
   right: -50px;
+}
+
+.next--active {
+  opacity: 1;
 }
 
 /*--- MARSHRUT ---*/
@@ -2372,7 +2379,7 @@ h2 {
 }
 
 .container-dasbord {
-  padding-top: 50px;
+  padding-top: 93px;
   padding-bottom: 70px;
 }
 
@@ -2385,32 +2392,26 @@ h2 {
   background-color: #fff;
   box-sizing: border-box;
   padding: 0 50px;
+  padding-top: 40px;
 }
 .dasbord-wrapper__content {
-  width: calc(100% - 650px);
+  width: calc(100% - 750px);
   background-color: rgba(90, 95, 98, 0.05);
-  border-radius: 21px;
   box-sizing: border-box;
   padding: 60px;
   overflow: hidden;
 }
 .dasbord-wrapper__freind {
-  width: 300px;
+  width: 400px;
   background-color: #fff;
   box-sizing: border-box;
   padding: 24px;
-  padding-top: 0;
+  padding-top: 40px;
 }
 
 .hi-person {
   display: flex;
   margin-bottom: 60px;
-}
-.hi-person__item:first-child {
-  width: 55%;
-}
-.hi-person__item:last-child {
-  width: 45%;
 }
 .hi-person__title {
   font-weight: 700;
@@ -2441,6 +2442,7 @@ h2 {
   align-items: center;
   flex-direction: column;
   text-decoration: none;
+  border-bottom: 2.41px solid #f0f0f0;
 }
 .ii__link span {
   font-weight: 600;
@@ -2492,6 +2494,18 @@ h2 {
   height: 33px;
   background-color: #F66F4D;
   left: -20px;
+}
+.menu-dasbord-list__link--dot {
+  position: relative;
+}
+.menu-dasbord-list__link--dot::after {
+  position: absolute;
+  content: "";
+  width: 13px;
+  height: 13px;
+  border-radius: 100%;
+  background-color: #F66F4D;
+  right: 0;
 }
 .menu-dasbord-list__link svg {
   margin-right: 5px;
@@ -2554,7 +2568,7 @@ h2 {
   transform: translateX(70%);
 }
 .group-freind__img {
-  width: 55px;
+  width: 63px;
   margin-right: 10px;
 }
 
@@ -2572,6 +2586,11 @@ h2 {
   font-size: 16px;
   color: #5b5f62;
 }
+.name-content__time {
+  font-size: 18px;
+  color: #5b5f62;
+  font-weight: 300;
+}
 .popular-marshrut {
   margin-top: 80px;
 }
@@ -2588,31 +2607,46 @@ h2 {
   border-radius: 19px;
   box-sizing: border-box;
   padding: 17px 5px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 .group-popular__item {
   display: flex;
   align-items: center;
 }
 .group-popular__img {
-  width: 40px;
-  height: 40px;
-  margin-right: 6px;
+  width: 70px;
+  height: 70px;
+  margin-right: 10px;
 }
 .group-popular__title {
   font-weight: 500;
+  font-size: 21px;
+  line-height: 114%;
+  color: #2d3134;
+  margin-bottom: 5px;
+}
+.group-popular .group-popular-bonus {
+  display: flex;
+}
+.group-popular .group-popular-bonus__item {
+  font-size: 14px;
+  display: flex;
+}
+.group-popular .group-popular-bonus__item span {
+  font-weight: 600;
+  margin-left: 4px;
+}
+.group-popular .group-popular-bonus__item:first-child {
+  margin-right: 13px;
 }
 .group-popular .btn {
-  width: 65px;
+  box-sizing: border-box;
+  padding: 11px 25px;
   text-decoration: none;
-  font-size: 14px;
-  padding-top: 10px;
-  padding-bottom: 10px;
   background-color: #FFCF08;
-  color: #2D3134;
-  font-weight: 500;
+  font-weight: 400;
+  font-size: 18px;
+  color: #2d3134;
+  margin-top: 10px;
 }
 
 .group-popular:not(:last-child) {
@@ -2646,7 +2680,7 @@ h2 {
 }
 
 .wrap-all-tab {
-  width: calc(100% - 336px);
+  width: calc(100% - 230px);
   box-sizing: border-box;
   padding-right: 20px;
   /* tab open */
@@ -2664,14 +2698,14 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 15px 20px;
+  padding: 10px;
   background-color: transparent;
   border: 1px solid var(--color-black);
   border-radius: 30px;
   height: 34px;
   margin-bottom: 10px;
   font-weight: 300;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 78%;
   color: var(--color-black);
   cursor: pointer;
@@ -2731,11 +2765,11 @@ h2 {
 }
 .wrap-all-eskursiya .eskursia-content {
   padding: 25px;
-  padding-top: 180px;
-  padding-bottom: 40px;
+  padding-top: 80px;
+  padding-bottom: 140px;
 }
 .wrap-all-eskursiya .eskursia-content h2 {
-  font-size: 38px;
+  font-size: 36px;
   line-height: 115%;
 }
 .wrap-all-eskursiya .text {
