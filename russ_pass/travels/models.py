@@ -98,38 +98,59 @@ class Region(models.Model):
     name = models.CharField(unique=True, max_length=100)
     description = models.TextField(blank=True)
 
+    def __str__(self):
+        return f'{self.name}'
+
 class Transport(models.Model):
     # id = models.AutoField(primary_key=True)
     type = models.CharField(unique=True, max_length=100, verbose_name="Тип транспорта")
     description = models.TextField(blank=True)
+    icon = models.ImageField(upload_to='images/transport_icons/', blank=True)
+
+    def __str__(self):
+        return f'{self.type}'
 
 class RouteType(models.Model):
     # id = models.AutoField(primary_key=True)
     type = models.CharField(unique=True, max_length=100, verbose_name="Тип маршрута")
+    icon = models.ImageField(upload_to='images/route_icons/', blank=True)
+    
+    def __str__(self):
+        return f'{self.type}'
 
 class Tags(models.Model):
     # id = models.AutoField(primary_key=True)
     name = models.CharField(unique=True, max_length=100)
     description = models.TextField(blank=True)
+    icon = models.ImageField(upload_to='images/tag_icons/', blank=True)
+
+    def __str__(self):
+        return f'{self.name}'
 
 class Route(models.Model):
     # id = models.AutoField(primary_key=True)
     name = models.CharField(unique=True, max_length=100)
-    region = models.ForeignKey(Region, on_delete=models.CASCADE)
-    type = models.ForeignKey(RouteType, on_delete=models.CASCADE, verbose_name="Тип маршрута")
-    tags = models.ManyToManyField(Tags, through='RouteTags')
+    region = models.ForeignKey(Region, on_delete=models.CASCADE, blank=True, null=True)
+    type = models.ForeignKey(RouteType, on_delete=models.CASCADE, verbose_name="Тип маршрута", blank=True, null=True)
+    tags = models.ManyToManyField(Tags, through='RouteTags', blank=True)
     image = models.ImageField(upload_to='images/', blank=True)
     preview_small = models.ImageField(upload_to='images/small/', blank=True)
     preview_big = models.ImageField(upload_to='images/big/', blank=True)
-    exp_points = models.IntegerField(blank=True)
-    bonuses = models.IntegerField(blank=True)
-    transport = models.ForeignKey(Transport, on_delete=models.CASCADE)
+    exp_points = models.IntegerField(blank=True, null=True)
+    bonuses = models.IntegerField(blank=True, null=True)
+    transport = models.ForeignKey(Transport, on_delete=models.CASCADE, blank=True, null=True)
     description = models.TextField(blank=True)
+
+    def __str__(self):
+        return f'{self.name}'
 
 class RouteTags(models.Model):
     # id = models.AutoField(primary_key=True)
     route_id = models.ForeignKey(Route, on_delete=models.CASCADE)
     tag_id = models.ForeignKey(Tags, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.route_id.name+" - "+self.tag_id.name}'
 
 # class Users(models.Model):
 #     # id = models.AutoField(primary_key=True)
@@ -165,6 +186,9 @@ class Favourites(models.Model):
     route_id = models.ForeignKey(Route, on_delete=models.CASCADE)
     date_added = models.DateField(auto_now_add=True)
 
+    def __str__(self):
+        return f'{self.route_id.name+" - "+self.user.username}'
+
 class CompletedRoutes(models.Model):
     # id = models.AutoField(primary_key=True)
     date_created = models.DateField(auto_now_add=True)
@@ -175,10 +199,10 @@ class CompletedRoutes(models.Model):
 
 class Point(models.Model):
     # id = models.AutoField(primary_key=True)
-    geo = models.CharField(max_length=100, blank=True)
     name = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='images/', blank=True)
     description = models.TextField(blank=True)
+    geo = models.CharField(max_length=100, blank=True)
+    image = models.ImageField(upload_to='images/', blank=True)
     type = models.CharField(max_length=100, blank=True, verbose_name="Тип точки")
     
     def __str__(self):
@@ -189,10 +213,14 @@ class RoutePoints(models.Model):
     route_id = models.ForeignKey(Route, on_delete=models.CASCADE)
     point_id = models.ForeignKey(Point, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f'{self.route_id.name+" - "+self.point_id.name}'
+
 class Selection(models.Model):
     # id = models.AutoField(primary_key=True)
     name = models.CharField(unique=True, max_length=100)
     description = models.TextField(blank=True)
+    image = models.ImageField(upload_to='images/', blank=True)
 
     def __str__(self):
         return f'{self.name}'
@@ -202,12 +230,15 @@ class SelectionContent(models.Model):
     route_id = models.ForeignKey(Route, on_delete=models.CASCADE)
     selection_id = models.ForeignKey(Selection, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f'{self.route_id.name+" - "+self.selection_id.name}'
+
 class Event(models.Model):
     # id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    description = models.TextField(blank=True)
     date = models.DateField(auto_now_add=True)
     time = models.TimeField(auto_now_add=True)
-    description = models.TextField(blank=True)
-    name = models.CharField(max_length=100)
     image = models.ImageField(upload_to='images/', blank=True)
     start_time = models.TimeField(blank=True)
     end_Time = models.TimeField(blank=True)
@@ -219,9 +250,10 @@ class Options(models.Model):
     # id = models.AutoField(primary_key=True)
     type = models.CharField(unique=True, max_length=100)
     name = models.CharField(max_length=100, blank=True)
+    icon = models.ImageField(upload_to='images/options_icons/', blank=True)
 
     def __str__(self):
-        return f'{self.type}'
+        return f'{self.type+" "+self.name}'
 
 class FoodTypes(models.Model):
     # id = models.AutoField(primary_key=True)
@@ -232,10 +264,10 @@ class FoodTypes(models.Model):
 
 class Food(models.Model):
     # id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
     type = models.ForeignKey(FoodTypes, on_delete=models.CASCADE, verbose_name="Тип питания")
     cost = models.DecimalField(max_digits=10, decimal_places=2, blank=True)
     rating = models.FloatField(default=4.5)
-    name = models.CharField(max_length=100)
     options = models.ManyToManyField(Options, through='FoodOptions')
     image_preview = models.ImageField(upload_to='images/small/', blank=True)
     image_big = models.ImageField(upload_to='images/big/', blank=True)
@@ -243,10 +275,13 @@ class Food(models.Model):
     def __str__(self):
         return f'{self.name}'
 
-class AccomodationOptions(models.Model):
+class FoodOptions(models.Model):
     # id = models.AutoField(primary_key=True)
     options_id = models.ForeignKey(Options, on_delete=models.CASCADE)
-    accomodation_id = models.ForeignKey(Food, on_delete=models.CASCADE)
+    food_id = models.ForeignKey(Food, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.options_id.type+" - "+self.food_id.name}'
 
 class AccommodationType(models.Model):
     # id = models.AutoField(primary_key=True)
@@ -258,10 +293,10 @@ class AccommodationType(models.Model):
 
 class Accommodation(models.Model):
     # id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
     type = models.ForeignKey(AccommodationType, on_delete=models.CASCADE, verbose_name="Тип жилья")
     price = models.DecimalField(max_digits=10, decimal_places=2, blank=True)
     rating = models.FloatField(blank=True)
-    name = models.CharField(max_length=100)
     description = models.TextField(blank=True)
     image_preview = models.ImageField(upload_to='images/small/', blank=True)
     image_big = models.ImageField(upload_to='images/big/', blank=True)
@@ -276,12 +311,16 @@ class AccomodationOptions(models.Model):
     # id = models.AutoField(primary_key=True)
     options_id = models.ForeignKey(Options, on_delete=models.CASCADE)
     accomodation_id = models.ForeignKey(Accommodation, on_delete=models.CASCADE)
+    icon = models.ImageField(upload_to='images/accomodation_icons/', blank=True)
+
+    def __str__(self):
+        return f'{self.options_id.type+" - "+self.accomodation_id.name}'
 
 class Excursion(models.Model):
     # id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
     date = models.DateField(auto_now_add=True)
     guide = models.CharField(max_length=100, blank=True)
-    name = models.CharField(max_length=100)
     description = models.TextField(blank=True)
     date_start = models.DateField(blank=True)
     date_end = models.DateField(blank=True)

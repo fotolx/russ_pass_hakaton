@@ -3,6 +3,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm 
 from auth_users.models import Profile #, Ads, Replies
+from .models import *
 from django_summernote.widgets import SummernoteWidget
 
 class RegisterForm(UserCreationForm):
@@ -113,3 +114,12 @@ class UpdateProfileForm(forms.ModelForm):
 #         super().__init__(*args, **kwargs)
 #         self.fields['ad'].queryset = Ads.objects.filter(author=ad_author['ad_author'])
 #         self.fields['ad'].empty_label = 'Выберите объявление...'
+        
+class RouteForm(forms.ModelForm):
+    class Meta:
+        model = Route
+        widgets = {
+            'description': SummernoteWidget(),
+        }
+        fields = ['name', 'region', 'type', 'tags', 'image', 'preview_small', 'preview_big',
+                   'exp_points', 'bonuses', 'transport', 'description']

@@ -4,6 +4,7 @@ from django.views.decorators.cache import cache_page
 from django.views.generic import TemplateView
 
 urlpatterns = [
+    path("route_add/", RouteAdd.as_view(template_name="russpass/dyn/route_add.html"), name='route_add'),
     # path('', home, name='users-home'),
     # path('register/', RegisterView.as_view(), name='users-register'),
     # path('', AdsList.as_view(), name='main'),

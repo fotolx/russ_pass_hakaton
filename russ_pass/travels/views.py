@@ -125,6 +125,7 @@ def home(request):
 #     def get_queryset(self):
 #             return Ads.objects.filter(author=self.request.user.users)
 
+
 # class AdsAdd(LoginRequiredMixin, CreateView):
 #     model = Ads
 #     template_name = 'ads_add.html'
@@ -237,3 +238,13 @@ def home(request):
     
 #     def get_success_url(self):
 #         return reverse('replies')
+
+
+class RouteAdd(LoginRequiredMixin, CreateView):
+    model = Route
+    context_object_name = 'route_add'
+    queryset = Route.objects.order_by('-id')
+    form_class = RouteForm
+
+    def get_success_url(self):
+        return reverse('main')
