@@ -18,11 +18,12 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
-from travels.views import AdsList #,CustomLoginView, ResetPasswordView, profile, ChangePasswordView
+from travels.views import * # AdsList #,CustomLoginView, ResetPasswordView, profile, ChangePasswordView
 from django.contrib.auth import views as auth_views
-from travels.forms import LoginForm
+from auth_users.forms import LoginForm, RegisterForm
 from auth_users.views import CustomLoginView, ResetPasswordView, profile, ChangePasswordView, ChangePasswordView, CustomLoginView, ResetPasswordView, RegisterView 
 # from .views import ChangePasswordView, CustomLoginView, ResetPasswordView, home, RegisterView 
+from django.views.generic import TemplateView
 
 urlpatterns = [
     # path('', AdsList.as_view()), 
@@ -46,7 +47,9 @@ urlpatterns = [
     path('profile/', profile, name='users-profile'),
     path('password-change/', ChangePasswordView.as_view(), name='password_change'),
 
-    path('register/', RegisterView.as_view(), name='users-register'),
+    # path('register/', RegisterView.as_view(), name='users-register'),
+    path('register/', CustomLoginView.as_view(redirect_authenticated_user=True, template_name='russpass/registration.html',
+                                           authentication_form=RegisterForm), name='register'),
     path('login/', CustomLoginView.as_view(redirect_authenticated_user=True, template_name='russpass/authorization.html',
                                            authentication_form=LoginForm), name='login'),
     # path('logout/', auth_views.LogoutView.as_view(template_name='flatpages/mainpage.html'), name='logout'),
@@ -60,4 +63,10 @@ urlpatterns = [
          name='password_reset_complete'),
     path('profile/', profile, name='users-profile'),
     path('password-change/', ChangePasswordView.as_view(), name='password_change'),
+
+    # Static pages
+    path("", TemplateView.as_view(template_name="russpass/index.html"), name='main'),
+    path("dashboard/", TemplateView.as_view(template_name="russpass/dashboard.html"), name='dashboard'),
+    path("marshrut/", TemplateView.as_view(template_name="russpass/marshrut.html"), name='marshrut'),
+    path("park/", TemplateView.as_view(template_name="russpass/park.html"), name='park'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

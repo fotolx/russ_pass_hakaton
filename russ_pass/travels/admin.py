@@ -1,17 +1,17 @@
 from django.contrib import admin
 from .models import *
 
-class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('name', 'userssubscribed', '_users', )
-    list_filter = ('name',)
+# class CategoryAdmin(admin.ModelAdmin):
+#     list_display = ('name', 'userssubscribed', '_users', )
+#     list_filter = ('name',)
 
-    @admin.display(description='Users list',)
-    def	_users(self, row):
-        return ', '.join([x.username for x in row.user.all()])
+#     @admin.display(description='Users list',)
+#     def	_users(self, row):
+#         return ', '.join([x.username for x in row.user.all()])
 
-    @admin.display(description='Subscribers count',)
-    def userssubscribed(self, row):
-        return f'{row.userssubscribed_set.all().count()}' 
+#     @admin.display(description='Subscribers count',)
+#     def userssubscribed(self, row):
+#         return f'{row.userssubscribed_set.all().count()}' 
     
 # class ProfileAdmin(admin.ModelAdmin):
 #     # fields_admin = Profile._meta.get_fields()
@@ -22,15 +22,38 @@ class CategoryAdmin(admin.ModelAdmin):
 #     def fio(self, row):
 #         return f'{row.user.first_name} {row.user.last_name}'
 
-class UsersSubscribedAdmin(admin.ModelAdmin):
-    list_display = [field.name for field in UsersSubscribed._meta.get_fields()]
-    list_filter = ('user', 'category',)
+# class UsersSubscribedAdmin(admin.ModelAdmin):
+#     list_display = [field.name for field in UsersSubscribed._meta.get_fields()]
+#     list_filter = ('user', 'category',)
     
 # Register your models here.
-admin.site.register(Category) #, CategoryAdmin)
+# admin.site.register(Category) #, CategoryAdmin)
 # admin.site.register(Profile) #, ProfileAdmin)
-admin.site.register(UsersSubscribed) #, UsersSubscribedAdmin)
+# admin.site.register(UsersSubscribed) #, UsersSubscribedAdmin)
 # admin.site.register(Users)
-admin.site.register(Ads)
-admin.site.register(AdsCategory)
-admin.site.register(Replies)
+# admin.site.register(Ads)
+# admin.site.register(AdsCategory)
+# admin.site.register(Replies)
+
+
+admin.site.register(Region)
+admin.site.register(Transport)
+admin.site.register(RouteType)
+admin.site.register(Tags)
+admin.site.register(RouteTags)
+admin.site.register(Route)
+# admin.site.register(Users)
+admin.site.register(Favourites)
+admin.site.register(CompletedRoutes)
+admin.site.register(Point)
+admin.site.register(RoutePoints)
+admin.site.register(Selection)
+admin.site.register(SelectionContent)
+admin.site.register(Event)
+admin.site.register(FoodTypes)
+admin.site.register(Food)
+admin.site.register(AccommodationType)
+admin.site.register(Options)
+admin.site.register(Accommodation)
+admin.site.register(AccomodationOptions)
+admin.site.register(Excursion)

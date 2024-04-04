@@ -2,7 +2,7 @@ import datetime
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm 
-from .models import Profile, Ads, Replies
+from auth_users.models import Profile #, Ads, Replies
 from django_summernote.widgets import SummernoteWidget
 
 class RegisterForm(UserCreationForm):
@@ -87,29 +87,29 @@ class UpdateProfileForm(forms.ModelForm):
         model = Profile
         fields = ['avatar', 'bio']
 
-class AdForm(forms.ModelForm):
+# class AdForm(forms.ModelForm):
 
-    class Meta:
-        model = Ads
-        widgets = {
-            'main_text': SummernoteWidget(),
-            'category': forms.RadioSelect(),
-            'end_up' : forms.DateTimeInput(format='%Y-%m-%d %H:%M:%S', attrs={'type': 'datetime-local', 'value':format(datetime.date.today()+datetime.timedelta(days=3),'%Y-%m-%dT%H:%M')}),
-        }
-        fields = ['category', 'header', 'main_text', 'end_up']
+#     class Meta:
+#         model = Ads
+#         widgets = {
+#             'main_text': SummernoteWidget(),
+#             'category': forms.RadioSelect(),
+#             'end_up' : forms.DateTimeInput(format='%Y-%m-%d %H:%M:%S', attrs={'type': 'datetime-local', 'value':format(datetime.date.today()+datetime.timedelta(days=3),'%Y-%m-%dT%H:%M')}),
+#         }
+#         fields = ['category', 'header', 'main_text', 'end_up']
 
-class ReplyForm(forms.ModelForm):
-    class Meta:
-        model = Replies
-        fields = ['user', 'ad', 'text']
+# class ReplyForm(forms.ModelForm):
+#     class Meta:
+#         model = Replies
+#         fields = ['user', 'ad', 'text']
         
 
-class FilterReplyForm(forms.ModelForm):
-    class Meta:
-        model = Replies
-        fields = ['ad']
+# class FilterReplyForm(forms.ModelForm):
+#     class Meta:
+#         model = Replies
+#         fields = ['ad']
 
-    def __init__(self, ad_author, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['ad'].queryset = Ads.objects.filter(author=ad_author['ad_author'])
-        self.fields['ad'].empty_label = 'Выберите объявление...'
+#     def __init__(self, ad_author, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#         self.fields['ad'].queryset = Ads.objects.filter(author=ad_author['ad_author'])
+#         self.fields['ad'].empty_label = 'Выберите объявление...'

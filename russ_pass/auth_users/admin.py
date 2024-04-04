@@ -16,8 +16,8 @@ from .models import *
 class ProfileAdmin(admin.ModelAdmin):
     # fields_admin = Profile._meta.get_fields()
     # list_display = [field.name for field in Profile._meta.get_fields()]
-    list_display = ('id', 'fio', 'user', 'avatar', 'bio',)
-    list_filter = ('avatar', 'bio',)
+    list_display = ('id', 'fio', 'user', 'avatar', 'about',)
+    list_filter = ('avatar', 'about',)
 
     def fio(self, row):
         return f'{row.user.first_name} {row.user.last_name}'

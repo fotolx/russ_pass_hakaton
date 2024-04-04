@@ -38,7 +38,10 @@ class RegisterForm(UserCreationForm):
                                                                   'data-toggle': 'password',
                                                                   'id': 'password',
                                                                   }))
-
+    def __init__(self, request, *args, **kwargs):
+            # simply do not pass 'request' to the parent
+            super().__init__(*args, **kwargs)
+            
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'username', 'email', 'password1', 'password2']
