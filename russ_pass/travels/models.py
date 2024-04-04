@@ -122,7 +122,7 @@ class Route(models.Model):
     preview_small = models.ImageField(upload_to='images/small/', blank=True)
     preview_big = models.ImageField(upload_to='images/big/', blank=True)
     exp_points = models.IntegerField(blank=True)
-    bonuses = models.TextField(blank=True)
+    bonuses = models.IntegerField(blank=True)
     transport = models.ForeignKey(Transport, on_delete=models.CASCADE)
     description = models.TextField(blank=True)
 
@@ -215,6 +215,14 @@ class Event(models.Model):
     def __str__(self):
         return f'{self.name}'
 
+class Options(models.Model):
+    # id = models.AutoField(primary_key=True)
+    type = models.CharField(unique=True, max_length=100)
+    name = models.CharField(max_length=100, blank=True)
+
+    def __str__(self):
+        return f'{self.type}'
+
 class FoodTypes(models.Model):
     # id = models.AutoField(primary_key=True)
     name = models.CharField(unique=True, max_length=100)
@@ -228,12 +236,17 @@ class Food(models.Model):
     cost = models.DecimalField(max_digits=10, decimal_places=2, blank=True)
     rating = models.FloatField(default=4.5)
     name = models.CharField(max_length=100)
-    options = models.TextField(blank=True)
+    options = models.ManyToManyField(Options, through='FoodOptions')
     image_preview = models.ImageField(upload_to='images/small/', blank=True)
     image_big = models.ImageField(upload_to='images/big/', blank=True)
 
     def __str__(self):
         return f'{self.name}'
+
+class AccomodationOptions(models.Model):
+    # id = models.AutoField(primary_key=True)
+    options_id = models.ForeignKey(Options, on_delete=models.CASCADE)
+    accomodation_id = models.ForeignKey(Food, on_delete=models.CASCADE)
 
 class AccommodationType(models.Model):
     # id = models.AutoField(primary_key=True)
@@ -242,14 +255,6 @@ class AccommodationType(models.Model):
 
     def __str__(self):
         return f'{self.name}'
-
-class Options(models.Model):
-    # id = models.AutoField(primary_key=True)
-    type = models.CharField(unique=True, max_length=100)
-    name = models.CharField(max_length=100, blank=True)
-
-    def __str__(self):
-        return f'{self.type}'
 
 class Accommodation(models.Model):
     # id = models.AutoField(primary_key=True)
