@@ -8,7 +8,7 @@ class Users(models.Model):
     username = models.OneToOneField(User, on_delete=models.CASCADE)
     FirstName = models.CharField(max_length=100)
     LastName = models.CharField(max_length=100)
-    Reg_date = models.DateField()
+    Reg_date = models.DateField(auto_now=True)
     # Region = models.ForeignKey(Region, on_delete=models.CASCADE)
     gender = models.CharField(max_length=10)
     # user_rating = models.IntegerField(default=0)
@@ -25,9 +25,9 @@ class Users(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    phone = models.CharField(max_length=15)
+    phone = models.CharField(max_length=15, blank=True)
     avatar = models.ImageField(default='account.png', upload_to='images/profile/')
-    about = models.TextField(blank=True)
+    about = models.TextField(default='',blank=True)
 
     def __str__(self):
         return self.user.username
