@@ -3426,6 +3426,7 @@ h2 {
 
 .diagram-container {
   display: block;
+  margin-top: 30px;
 }
 
 .pie {
@@ -3533,7 +3534,7 @@ h2 {
   display: flex;
   align-content: center;
   justify-content: space-between;
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 .btn-bonus {
@@ -3560,4 +3561,62 @@ h2 {
   box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.3), 0 12px 24px 0 rgba(255, 207, 8, 0.15);
   background-color: #FFCF08;
   margin-top: 8px;
+}
+
+.bonus-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.bonus-title__btn {
+  border-radius: 99px;
+  padding: 0px 20px;
+  width: 133px;
+  height: 45px;
+  box-shadow: 0 8px 16px 0 rgba(255, 207, 8, 0.1);
+  background-color: #FFCF08;
+  border: none;
+  cursor: pointer;
+  margin-top: -25px;
+}
+
+.wrap-bon__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 25px;
+  padding-bottom: 13px;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.wrap-bon-group {
+  display: flex;
+  align-items: center;
+}
+.wrap-bon-group__title {
+  font-weight: 500;
+  font-size: 21px;
+  line-height: 114%;
+  color: #2d3134;
+  margin-left: 20px;
+}
+
+.bonus-fullprice {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 18px;
+}
+.bonus-fullprice__title {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 75%;
+  color: #2d3134;
+}
+.bonus-fullprice__text {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 100%;
+  text-align: right;
+  color: #2d3134;
 }
