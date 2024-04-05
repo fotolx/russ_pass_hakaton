@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Регтстрация RUSSPASS</title>
+    <title>Регистрация RUSSPASS</title>
     <meta name="description" content="" />
     <link rel="stylesheet" href="{% static 'russpass/css/normalize.css' %}">
     <link rel="stylesheet" href="{% static 'russpass/css/style.css' %}">
@@ -27,7 +27,7 @@
             <div class="header-content">
                 <div class="logo logo--auto">
                     <a href="{% url 'main' %}">
-                        <img src="="{% static 'russpass/img/icon/logo.svg' %}" class="logo__img" alt="logo">
+                        <img src="{% static 'russpass/img/icon/logo.svg' %}" class="logo__img" alt="logo">
                     </a>
                 </div>
                 <div class="main-navigation main-navigation--dashbord">
@@ -56,14 +56,14 @@
                         <span class="burger__text">Меню</span>
                     </button>
                     <div class="location">
-                        <img src="="{% static 'russpass/img/icon/map.png' %}" class="location__img" alt="">
+                        <img src="{% static 'russpass/img/icon/map.png' %}" class="location__img" alt="">
                         <div class="location__text" id="local">Твой регион</div>
                     </div>
                 </div>
                 <div class="storag storag--dashbord">
                     <div class="login login--dashbord">
                         <div class="flag-country">
-                            <img src="="{% static 'russpass/img/icon/flag.png' %}" class="flag-country__img" alt="">
+                            <img src="{% static 'russpass/img/icon/flag.png' %}" class="flag-country__img" alt="">
                             <span> Русский / ₽ </span>
                         </div>
                         <svg width="25" height="32" viewBox="0 0 25 32" fill="none">
@@ -97,14 +97,31 @@
         </div>
         <div class="authorization-content__form">
             <div class="body-authorization">
-                <img src="="{% static 'russpass/img/icon/logo.svg' }" class="body-authorization__img" alt="">
+                <img src="{% static 'russpass/img/icon/logo.svg' %}" class="body-authorization__img" alt="">
                 <div class="body-authorization__title">Добро пожаловать!</div>
                 <form action="#" method="post" id="authorizationForm" class="form-authorization">
+                    {% csrf_token %}
                     <div class="form-authorization__group">
-                        <label for="authorization-name">Введите Имя Фамилию</label>
+                        <label for="authorization-name">Введите Имя</label>
                         <input type="text" 
                                id="authorization-name" 
-                               name="name" 
+                               name="first_name" 
+                               class="form-authorization__input"
+                               required>
+                    </div>
+                    <div class="form-authorization__group">
+                        <label for="authorization-name">Введите Фамилию</label>
+                        <input type="text" 
+                               id="authorization-name" 
+                               name="last_name" 
+                               class="form-authorization__input"
+                               required>
+                    </div>
+                    <div class="form-authorization__group">
+                        <label for="authorization-name">Введите Ваш Ник</label>
+                        <input type="text" 
+                               id="authorization-name" 
+                               name="username" 
                                class="form-authorization__input"
                                required>
                     </div>
@@ -112,7 +129,7 @@
                         <label for="authorization-name">Введите Email</label>
                         <input type="email" 
                                id="authorization-name" 
-                               name="name" 
+                               name="email" 
                                class="form-authorization__input"
                                required>
                     </div>
@@ -120,19 +137,20 @@
                         <label for="authorization-password">Введите Ваш пароль</label>
                         <input type="password" 
                                id="authorization-password" 
-                               name="password"
+                               name="password1"
                                class="form-authorization__input" 
                                required>
                     </div>
+                    {{ form.errors.password }}
                     <div class="form-authorization__group">
                         <label for="authorization-password">Повторите Ваш пароль</label>
                         <input type="password" 
                                id="authorization-password" 
-                               name="password"
+                               name="password2"
                                class="form-authorization__input" 
                                required>
                     </div>
-                    <button type="submit" id="authorizationBtn" class="btn" disabled>Зарегистрироваться</button>
+                    <button type="submit" id="authorizationBtn" class="btn" >Зарегистрироваться</button>
                 </form>
             </div>
         </div>

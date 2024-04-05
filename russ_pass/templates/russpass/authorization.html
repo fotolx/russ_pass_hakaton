@@ -100,11 +100,12 @@
                 <div class="body-authorization__title">Добро пожаловать!</div>
                 <div class="body-authorization__text">Войдите в Ваш аккаунт</div>
                 <form action="#" method="post" id="authorizationForm" class="form-authorization">
+                    {% csrf_token %}
                     <div class="form-authorization__group">
-                        <label for="authorization-name">Введите Номер телефона или Email</label>
+                        <label for="authorization-name">Введите свой Ник</label>
                         <input type="text" 
                                id="authorization-name" 
-                               name="name" 
+                               name="username" 
                                class="form-authorization__input"
                                required>
                     </div>
@@ -125,7 +126,7 @@
                             <a href="#" class="memory-wrapper__link">Восстановить пароль</a>
                         </div>
                     </div>
-                    <button type="submit" id="authorizationBtn" class="btn" disabled>Войти в аккаунт</button>
+                    <button type="submit" id="authorizationBtn" class="btn">Войти в аккаунт</button>
                 </form>
             </div>
 

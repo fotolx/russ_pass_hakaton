@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django_summernote.admin import SummernoteModelAdmin
 from .models import *
 
 # class CategoryAdmin(admin.ModelAdmin):
@@ -35,13 +36,17 @@ from .models import *
 # admin.site.register(AdsCategory)
 # admin.site.register(Replies)
 
+class RouteAdmin(SummernoteModelAdmin):
+    summernote_fields = ('description',)
+
+# admin.site.register(Post, PostAdmin)
 
 admin.site.register(Region)
 admin.site.register(Transport)
 admin.site.register(RouteType)
 admin.site.register(Tags)
 admin.site.register(RouteTags)
-admin.site.register(Route)
+admin.site.register(Route, RouteAdmin)
 # admin.site.register(Users)
 admin.site.register(Favourites)
 admin.site.register(CompletedRoutes)

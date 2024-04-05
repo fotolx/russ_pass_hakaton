@@ -38,13 +38,13 @@ def home(request):
 class RegisterView(View):
     form_class = RegisterForm
     initial = {'key': 'value'}
-    template_name = 'users/registration.html'
+    template_name = 'russpass/registration.html'
 
     def dispatch(self, request, *args, **kwargs):
         # will redirect to the home page if a user tries to access the register page while logged in
         if request.user.is_authenticated:
-            # return redirect(to='/')
-            return reverse_lazy('main')
+            return redirect(to='main')
+            # return reverse_lazy('main')
 
         # else process dispatch as it otherwise normally would
         return super(RegisterView, self).dispatch(request, *args, **kwargs)
@@ -64,8 +64,8 @@ class RegisterView(View):
 
             username = form.cleaned_data.get('username')
             Users.objects.create(username=User.objects.get(username=username))
-            # messages.success(request, f'Аккаунт создан для {username}')
-            messages.success(request, f'Account for {username} created')
+            messages.success(request, f'Аккаунт создан для {username}')
+            # messages.success(request, f'Account for {username} created')
 
             return redirect(to='login')
 

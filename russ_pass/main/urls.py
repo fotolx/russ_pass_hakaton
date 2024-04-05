@@ -47,9 +47,9 @@ urlpatterns = [
     path('profile/', profile, name='users-profile'),
     path('password-change/', ChangePasswordView.as_view(), name='password_change'),
 
-    # path('register/', RegisterView.as_view(), name='users-register'),
-    path('register/', CustomLoginView.as_view(redirect_authenticated_user=True, template_name='russpass/registration.html',
-                                           authentication_form=RegisterForm), name='register'),
+    path('register/', RegisterView.as_view(), name='register'),
+    # path('register/', CustomLoginView.as_view(redirect_authenticated_user=True, template_name='russpass/registration.html',
+    #                                        authentication_form=RegisterForm), name='register'),
     path('login/', CustomLoginView.as_view(redirect_authenticated_user=True, template_name='russpass/authorization.html',
                                            authentication_form=LoginForm), name='login'),
     # path('logout/', auth_views.LogoutView.as_view(template_name='flatpages/mainpage.html'), name='logout'),
