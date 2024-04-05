@@ -69,5 +69,7 @@ urlpatterns = [
     path("dashboard/", TemplateView.as_view(template_name="russpass/dashboard.html"), name='dashboard'),
     path("marshrut/", TemplateView.as_view(template_name="russpass/marshrut.html"), name='marshrut'),
     path("park/", TemplateView.as_view(template_name="russpass/park.html"), name='park'),
+    path("plan/", TemplateView.as_view(template_name="russpass/plan.html"), name='plan'),
+    path("bonus/", TemplateView.as_view(template_name="russpass/bonus.html"), name='bonus'),
     # path("route_add/", TemplateView.as_view(template_name="russpass/dyn/route_add.html"), name='route_add'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

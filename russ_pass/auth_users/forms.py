@@ -44,7 +44,7 @@ class RegisterForm(UserCreationForm):
             
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'username', 'email', 'password1', 'password2']
+        fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']
 
 
 class LoginForm(AuthenticationForm):
@@ -53,6 +53,10 @@ class LoginForm(AuthenticationForm):
                                widget=forms.TextInput(attrs={'placeholder': 'Username',
                                                              'class': 'form-control',
                                                              }))
+    # email = forms.EmailField(required=True,
+    #                          widget=forms.TextInput(attrs={'placeholder': 'Email',
+    #                                                        'class': 'form-control',
+    #                                                        }))
     password = forms.CharField(max_length=50,
                                required=True,
                                widget=forms.PasswordInput(attrs={'placeholder': 'Password',
@@ -65,7 +69,7 @@ class LoginForm(AuthenticationForm):
 
     class Meta:
         model = User
-        fields = ['username', 'password', 'remember_me']
+        fields = ['username', 'email', 'password', 'remember_me']
 
 
 class UpdateUserForm(forms.ModelForm):

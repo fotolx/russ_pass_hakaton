@@ -106,9 +106,16 @@
                                 </clipPath>
                             </defs>
                         </svg>
+                        {% if user.is_authenticated %}
+                        <div class="login__text">{{ user.first_name }}</div>
+                        <a href="{% url 'logout' %}" class="plan-link">
+                            <div class="login__text">[ Выйти] </div>
+                        </a>
+                      {% else %}
                         <a href="{% url 'login' %}" class="plan-link">
-                        <div class="login__text">Войти</div>
-                    </a>
+                            <div class="login__text">Войти</div>
+                        </a>
+                      {% endif %}
                     </div>
                     <div class="flag-country">
                         <img src="{% static 'russpass/img/icon/flag.png' %}" class="flag-country__img" alt="">
@@ -1613,6 +1620,7 @@
     <script src="{% static 'russpass/js/popup.js' %}"></script>
     <script src="{% static 'russpass/js/burger.js' %}"></script>
     <script src="{% static 'russpass/js/sroll.js' %}"></script>
+    <script src="{% static 'russpass/js/opacity-all.js' %}"></script>
     <script>
         $('.like').on('click', function () {
 

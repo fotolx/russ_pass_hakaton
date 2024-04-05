@@ -6,9 +6,10 @@ from PIL import Image
 # Create your models here.
 class Users(models.Model):
     username = models.OneToOneField(User, on_delete=models.CASCADE)
-    FirstName = models.CharField(max_length=100)
-    LastName = models.CharField(max_length=100)
-    Reg_date = models.DateField(auto_now=True)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    email = models.EmailField(unique=True)
+    reg_date = models.DateField(auto_now=True)
     # Region = models.ForeignKey(Region, on_delete=models.CASCADE)
     gender = models.CharField(max_length=10)
     # user_rating = models.IntegerField(default=0)
@@ -16,9 +17,10 @@ class Users(models.Model):
     # subsribed_to_newsletter = models.BooleanField(default=False)
     # mail_confirmed = models.BooleanField(default=False)
     banned = models.BooleanField(default=False)
+    # USERNAME_FIELD = 'email'
 
     def __str__(self):
-        return f'{self.username}'
+        return f'{self.first_name} {self.last_name}'
     
     def update_rating(self):
         pass
@@ -30,7 +32,7 @@ class Profile(models.Model):
     about = models.TextField(default='',blank=True)
 
     def __str__(self):
-        return self.user.username
+        return self.user
     
     # resizing images
     def save(self, *args, **kwargs):

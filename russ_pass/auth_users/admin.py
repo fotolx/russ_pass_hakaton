@@ -22,6 +22,18 @@ class ProfileAdmin(admin.ModelAdmin):
     def fio(self, row):
         return f'{row.user.first_name} {row.user.last_name}'
 
+class UsersAdmin(admin.ModelAdmin):
+    # fields_admin = Profile._meta.get_fields()
+    # list_display = [field.name for field in Profile._meta.get_fields()]
+    list_display = ('id', 'username', 'first_name', 'last_name', 'email', 'reg_date', 'gender',)
+    list_filter = ('reg_date', 'gender',)
+
+    def fio(self, row):
+        return f'{row.user.first_name} {row.user.last_name}'
+    
+    def __str__(self, row):
+        return f'{row.user.first_name} {row.user.last_name}'
+    
 # class UsersSubscribedAdmin(admin.ModelAdmin):
 #     list_display = [field.name for field in UsersSubscribed._meta.get_fields()]
 #     list_filter = ('user', 'category',)
@@ -30,7 +42,7 @@ class ProfileAdmin(admin.ModelAdmin):
 # admin.site.register(Category) #, CategoryAdmin)
 admin.site.register(Profile, ProfileAdmin)
 # admin.site.register(UsersSubscribed) #, UsersSubscribedAdmin)
-admin.site.register(Users)
+admin.site.register(Users, UsersAdmin)
 # admin.site.register(Ads)
 # admin.site.register(AdsCategory)
 # admin.site.register(Replies)

@@ -78,8 +78,16 @@
                                 </clipPath>
                             </defs>
                         </svg>
-
-                        <div class="login__text">Светлана Г. </div>
+                        {% if user.is_authenticated %}
+                        <div class="login__text">{{ user.first_name }}</div>
+                        <a href="{% url 'logout' %}" class="plan-link">
+                            <div class="login__text">[ Выйти] </div>
+                        </a>
+                      {% else %}
+                        <a href="{% url 'login' %}" class="plan-link">
+                            <div class="login__text">Войти</div>
+                        </a>
+                      {% endif %}
                     </div>
                 </div>
             </div>
@@ -100,11 +108,12 @@
                 <div class="body-authorization__title">Добро пожаловать!</div>
                 <div class="body-authorization__text">Войдите в Ваш аккаунт</div>
                 <form action="#" method="post" id="authorizationForm" class="form-authorization">
+                    {% csrf_token %}
                     <div class="form-authorization__group">
-                        <label for="authorization-name">Введите Номер телефона или Email</label>
+                        <label for="authorization-name">Введите свой Ник</label>
                         <input type="text" 
                                id="authorization-name" 
-                               name="name" 
+                               name="username" 
                                class="form-authorization__input"
                                required>
                     </div>
@@ -125,12 +134,12 @@
                             <a href="#" class="memory-wrapper__link">Восстановить пароль</a>
                         </div>
                     </div>
-                    <button type="submit" id="authorizationBtn" class="btn" disabled>Войти в аккаунт</button>
+                    <button type="submit" id="authorizationBtn" class="btn">Войти в аккаунт</button>
                 </form>
             </div>
 
             <div class="footer-content">
-                <a href="{% url 'users-register' %}" class="footer-content__authorization">У Вас нет аккаунта? <span>Зарегистрируйтесь!</span></a>
+                <a href="{% url 'register' %}" class="footer-content__authorization">У Вас нет аккаунта? <span>Зарегистрируйтесь!</span></a>
             </div>
         </div>
     </div>

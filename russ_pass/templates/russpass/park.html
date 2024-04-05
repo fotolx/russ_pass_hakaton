@@ -101,8 +101,16 @@
                                 </clipPath>
                             </defs>
                         </svg>
-
-                        <div class="login__text">Войти</div>
+                        {% if user.is_authenticated %}
+                        <div class="login__text">{{ user.first_name }}</div>
+                        <a href="{% url 'logout' %}" class="plan-link">
+                            <div class="login__text">[Выйти] </div>
+                        </a>
+                      {% else %}
+                        <a href="{% url 'login' %}" class="plan-link">
+                            <div class="login__text">Войти</div>
+                        </a>
+                      {% endif %}
                     </div>
                     <div class="flag-country">
                         <img src="{% static 'russpass/img/icon/flag.png' %}" class="flag-country__img" alt="">

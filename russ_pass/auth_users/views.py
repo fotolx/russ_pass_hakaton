@@ -63,8 +63,14 @@ class RegisterView(View):
             form.save()
 
             username = form.cleaned_data.get('username')
+            # email = form.cleaned_data.get('email')
             Users.objects.create(username=User.objects.get(username=username))
-            messages.success(request, f'Аккаунт создан для {username}')
+            # user.email = form.cleaned_data.get('email')
+            # user.first_name = form.cleaned_data.get('first_name')
+            # user.last_name = form.cleaned_data.get('last_name')
+            # user.save()
+            # Users.objects.create(email=User.objects.get(email=email))#, username = email)
+            # messages.success(request, f'Аккаунт создан для {username}')
             # messages.success(request, f'Account for {username} created')
 
             return redirect(to='login')

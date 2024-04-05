@@ -187,7 +187,7 @@ class Favourites(models.Model):
     date_added = models.DateField(auto_now_add=True, verbose_name="Дата добавления")
 
     def __str__(self):
-        return f'{self.route_id.name+" - "+self.user.username}'
+        return f'{self.route_id.name+" - "+self.user}'
 
 class CompletedRoutes(models.Model):
     # id = models.AutoField(primary_key=True)
@@ -331,3 +331,19 @@ class Excursion(models.Model):
 
     def __str__(self):
         return f'{self.name}'
+    
+class Todo_list(models.Model):
+    user = models.ForeignKey(Users, on_delete=models.CASCADE, verbose_name="Пользователь")
+    name = models.CharField(max_length=100, verbose_name="Дело")
+    done = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'{self.user.name+" "+self.name}'
+    
+class Stuff_list(models.Model):
+    user = models.ForeignKey(Users, on_delete=models.CASCADE, verbose_name="Пользователь")
+    name = models.CharField(max_length=100, verbose_name="Вещь в дорогу")
+    done = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'{self.user.name+" "+self.name}'
