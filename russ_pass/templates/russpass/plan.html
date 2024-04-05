@@ -1,3 +1,5 @@
+{% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -6,14 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Планирувщик дел</title>
     <meta name="description" content="" />
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/png" href="img/icon/logo.svg">
+    <link rel="stylesheet" href="{% static 'russpass/css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'russpass/css/style.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'russpass/img/icon/logo.svg' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=372dac5d-dbec-4965-918f-80bb88f9c884"
-        type="text/javascript"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=372dac5d-dbec-4965-918f-80bb88f9c884" type="text/javascript"></script>
 </head>
 
 <body>
@@ -24,7 +25,7 @@
                 <div class="main-navigation main-navigation--dashbord">
                     <div class="logo">
                         <a href="index.html">
-                            <img src="img/icon/logo.svg" class="logo__img" alt="logo">
+                            <img src="{% static 'russpass/img/icon/logo.svgэ %}" class="logo__img" alt="logo">
                         </a>
                     </div>
                     <svg width="35" height="48" viewBox="0 0 35 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -52,14 +53,14 @@
                         <span class="burger__text">Меню</span>
                     </button>
                     <div class="location">
-                        <img src="img/icon/map.png" class="location__img" alt="">
+                        <img src="{% static 'russpass/img/icon/map.png' %}" class="location__img" alt="">
                         <div class="location__text" id="local">Твой регион</div>
                     </div>
                 </div>
                 <div class="storag storag--dashbord">
                     <div class="login login--dashbord">
                         <div class="flag-country">
-                            <img src="img/icon/flag.png" class="flag-country__img" alt="">
+                            <img src="{% static 'russpass/img/icon/flag.png' %}" class="flag-country__img" alt="">
                             <span> Русский / ₽  </span>
                         </div>
                         <svg width="25" height="32" viewBox="0 0 25 32" fill="none">
@@ -89,7 +90,7 @@
                     <div class="dasbord-wrapper__menu">
                         <div class="ii">
                             <a href="#" class="ii__link">
-                                <img src="img/icon/ii.png" class="ii__img" alt="">
+                                <img src="{% static 'russpass/img/icon/ii.png' %}" class="ii__img" alt="">
                             </a>
                         </div>
                         <nav class="menu-dasbord">
@@ -284,7 +285,7 @@
                                 </div>
                             </ul>
                             <a href="#" class="social-cart">
-                                <img src="img/person/10.png" class="social-cart__img" alt="">
+                                <img src="{% static 'russpass/img/person/10.png' %}" class="social-cart__img" alt="">
                             </a>
                             <a href="#" class="menu-dasbord-link">
                                 <svg width="39" height="39" viewBox="0 0 39 39" fill="none"
@@ -343,10 +344,10 @@
                                         <label for="checkbox-plan" class="label-plan label-plan--r"><span>Купить<br>страховку</span></label>
                                     </div>
                                     <div class="wrapper-plan-group__item">
-                                        <img src="img/plan-brend/mafin.svg" class="wrapper-plan-group__img" alt="">
+                                        <img src="{% static 'russpass/img/plan-brend/mafin.svg' %}" class="wrapper-plan-group__img" alt="">
                                         <div class="wrapper-icon">
-                                            <img src="img/plan-brend/1.svg" class="wrapper-icon__img" alt="">
-                                            <img src="img/plan-brend/2.svg" class="wrapper-icon__img" alt="">
+                                            <img src="{% static 'russpass/img/plan-brend/1.svg' %}" class="wrapper-icon__img" alt="">
+                                            <img src="{% static 'russpass/img/plan-brend/2.svg' %}" class="wrapper-icon__img" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -356,10 +357,10 @@
                                         <label for="checkbox-plan-1" class="label-plan"><span>Пополнить<br> тройку</span></label>
                                     </div>
                                     <div class="wrapper-plan-group__item">
-                                        <img src="img/plan-brend/btn.png" class="wrapper-plan-group__img" alt="">
+                                        <img src="{% static 'russpass/img/plan-brend/btn.png' %}" class="wrapper-plan-group__img" alt="">
                                         <div class="wrapper-icon">
-                                            <img src="img/plan-brend/1.svg" class="wrapper-icon__img" alt="">
-                                            <img src="img/plan-brend/2.svg" class="wrapper-icon__img" alt="">
+                                            <img src="{% static 'russpass/img/plan-brend/1.svg' %}" class="wrapper-icon__img" alt="">
+                                            <img src="{% static 'russpass/img/plan-brend/2.svg' %}" class="wrapper-icon__img" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -369,10 +370,10 @@
                                         <label for="checkbox-plan-2" class="label-plan"><span>Написать<br> заявление на отпуск</span></label>
                                     </div>
                                     <div class="wrapper-plan-group__item">
-                                        <img src="img/plan-brend/btn.png" class="wrapper-plan-group__img" alt="">
+                                        <img src="{% static 'russpass/img/plan-brend/btn.png' %}" class="wrapper-plan-group__img" alt="">
                                         <div class="wrapper-icon">
-                                            <img src="img/plan-brend/1.svg" class="wrapper-icon__img" alt="">
-                                            <img src="img/plan-brend/2.svg" class="wrapper-icon__img" alt="">
+                                            <img src="{% static 'russpass/img/plan-brend/1.svg' %}" class="wrapper-icon__img" alt="">
+                                            <img src="{% static 'russpass/img/plan-brend/2.svg' %}" class="wrapper-icon__img" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -382,10 +383,10 @@
                                         <label for="checkbox-plan-3" class="label-plan"><span>Пристроить<br> Мотю</span></label>
                                     </div>
                                     <div class="wrapper-plan-group__item">
-                                        <img src="img/plan-brend/g.png" class="wrapper-plan-group__img" alt="">
+                                        <img src="{% static 'russpass/img/plan-brend/g.png' %}" class="wrapper-plan-group__img" alt="">
                                         <div class="wrapper-icon">
-                                            <img src="img/plan-brend/1.svg" class="wrapper-icon__img" alt="">
-                                            <img src="img/plan-brend/2.svg" class="wrapper-icon__img" alt="">
+                                            <img src="{% static 'russpass/img/plan-brend/1.svg' %}" class="wrapper-icon__img" alt="">
+                                            <img src="{% static 'russpass/img/plan-brend/2.svg' %}" class="wrapper-icon__img" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -395,10 +396,10 @@
                                         <label for="checkbox-plan-4" class="label-plan"><span>Заправить<br> авто</span></label>
                                     </div>
                                     <div class="wrapper-plan-group__item">
-                                        <img src="img/plan-brend/y.png" class="wrapper-plan-group__img" alt="">
+                                        <img src="{% static 'russpass/img/plan-brend/y.png' %}" class="wrapper-plan-group__img" alt="">
                                         <div class="wrapper-icon">
-                                            <img src="img/plan-brend/1.svg" class="wrapper-icon__img" alt="">
-                                            <img src="img/plan-brend/2.svg" class="wrapper-icon__img" alt="">
+                                            <img src="{% static 'russpass/img/plan-brend/1.svg' %}" class="wrapper-icon__img" alt="">
+                                            <img src="{% static 'russpass/img/plan-brend/2.svg' %}" class="wrapper-icon__img" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -408,10 +409,10 @@
                                         <label for="checkbox-plan-5" class="label-plan"><span>Отремонтировать<br> обувь</span></label>
                                     </div>
                                     <div class="wrapper-plan-group__item">
-                                        <img src="img/plan-brend/btn.png" class="wrapper-plan-group__img" alt="">
+                                        <img src="{% static 'russpass/img/plan-brend/btn.png' %}" class="wrapper-plan-group__img" alt="">
                                         <div class="wrapper-icon">
-                                            <img src="img/plan-brend/1.svg" class="wrapper-icon__img" alt="">
-                                            <img src="img/plan-brend/2.svg" class="wrapper-icon__img" alt="">
+                                            <img src="{% static 'russpass/img/plan-brend/1.svg' %}" class="wrapper-icon__img" alt="">
+                                            <img src="{% static 'russpass/img/plan-brend/2.svg' %}" class="wrapper-icon__img" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -421,10 +422,10 @@
                                         <label for="checkbox-plan-6" class="label-plan"><span>Записаться<br> на чек-ап</span></label>
                                     </div>
                                     <div class="wrapper-plan-group__item">
-                                        <img src="img/plan-brend/m.png" class="wrapper-plan-group__img" alt="">
+                                        <img src="{% static 'russpass/img/plan-brend/m.png' %}" class="wrapper-plan-group__img" alt="">
                                         <div class="wrapper-icon">
-                                            <img src="img/plan-brend/1.svg" class="wrapper-icon__img" alt="">
-                                            <img src="img/plan-brend/2.svg" class="wrapper-icon__img" alt="">
+                                            <img src="{% static 'russpass/img/plan-brend/1.svg' %}" class="wrapper-icon__img" alt="">
+                                            <img src="{% static 'russpass/img/plan-brend/2.svg' %}" class="wrapper-icon__img" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -434,10 +435,10 @@
                                         <label for="checkbox-plan-7" class="label-plan"><span>Собрать<br> плей-лист в дорогу</span></label>
                                     </div>
                                     <div class="wrapper-plan-group__item">
-                                        <img src="img/plan-brend/m.png" class="wrapper-plan-group__img" alt="">
+                                        <img src="{% static 'img/plan-brend/m.png' %}" class="wrapper-plan-group__img" alt="">
                                         <div class="wrapper-icon">
-                                            <img src="img/plan-brend/1.svg" class="wrapper-icon__img" alt="">
-                                            <img src="img/plan-brend/2.svg" class="wrapper-icon__img" alt="">
+                                            <img src="{% static 'img/plan-brend/1.svg' %}" class="wrapper-icon__img" alt="">
+                                            <img src="{% static 'img/plan-brend/2.svg' %}" class="wrapper-icon__img" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -447,10 +448,10 @@
                                         <label for="checkbox-plan-8" class="label-plan"><span>Заказать еду<br> в дорогу</span></label>
                                     </div>
                                     <div class="wrapper-plan-group__item">
-                                        <img src="img/plan-brend/s.png" class="wrapper-plan-group__img" alt="">
+                                        <img src="{% static 'img/plan-brend/s.png' %}" class="wrapper-plan-group__img" alt="">
                                         <div class="wrapper-icon">
-                                            <img src="img/plan-brend/1.svg" class="wrapper-icon__img" alt="">
-                                            <img src="img/plan-brend/2.svg" class="wrapper-icon__img" alt="">
+                                            <img src="{% static 'img/plan-brend/1.svg' %}" class="wrapper-icon__img" alt="">
+                                            <img src="{% static 'img/plan-brend/2.svg' %}" class="wrapper-icon__img" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -460,10 +461,10 @@
                                         <label for="checkbox-plan-9" class="label-plan"><span>Выбрать статьи<br> на RUSSPASS Mag</span></label>
                                     </div>
                                     <div class="wrapper-plan-group__item">
-                                        <img src="img/plan-brend/j.png" class="wrapper-plan-group__img" alt="">
+                                        <img src="{% static 'russpass/img/plan-brend/j.png' %}" class="wrapper-plan-group__img" alt="">
                                         <div class="wrapper-icon">
-                                            <img src="img/plan-brend/1.svg" class="wrapper-icon__img" alt="">
-                                            <img src="img/plan-brend/2.svg" class="wrapper-icon__img" alt="">
+                                            <img src="{% static 'russpass/img/plan-brend/1.svg' %}" class="wrapper-icon__img" alt="">
+                                            <img src="{% static 'russpass/img/plan-brend/2.svg' %}" class="wrapper-icon__img" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -484,9 +485,9 @@
                                         <label for="checkbox-plan-10" class="label-plan label-plan--r"><span>Аптечка</span></label>
                                     </div>
                                     <div class="wrapper-plan-group__item">
-                                        <img src="img/plan-brend/ep.png" class="wrapper-plan-group__img" alt="">
+                                        <img src="{% static 'russpass/img/plan-brend/ep.png' %}" class="wrapper-plan-group__img" alt="">
                                         <div class="wrapper-icon">
-                                            <img src="img/plan-brend/2.svg" class="wrapper-icon__img" alt="">
+                                            <img src="{% static 'russpass/img/plan-brend/2.svg' %}" class="wrapper-icon__img" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -496,9 +497,9 @@
                                         <label for="checkbox-plan-11" class="label-plan label-plan--r"><span>Зонт</span></label>
                                     </div>
                                     <div class="wrapper-plan-group__item">
-                                        <img src="img/plan-brend/meg.png" class="wrapper-plan-group__img" alt="">
+                                        <img src="{% static 'russpass/img/plan-brend/meg.png' %}" class="wrapper-plan-group__img" alt="">
                                         <div class="wrapper-icon">
-                                            <img src="img/plan-brend/2.svg" class="wrapper-icon__img" alt="">
+                                            <img src="{% static 'russpass/img/plan-brend/2.svg' %}" class="wrapper-icon__img" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -508,9 +509,9 @@
                                         <label for="checkbox-plan-12" class="label-plan label-plan--r"><span>Настольная игра</span></label>
                                     </div>
                                     <div class="wrapper-plan-group__item">
-                                        <img src="img/plan-brend/mos.png" class="wrapper-plan-group__img" alt="">
+                                        <img src="{% static 'russpass/img/plan-brend/mos.png' %}" class="wrapper-plan-group__img" alt="">
                                         <div class="wrapper-icon">
-                                            <img src="img/plan-brend/2.svg" class="wrapper-icon__img" alt="">
+                                            <img src="{% static 'russpass/img/plan-brend/2.svg' %}" class="wrapper-icon__img" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -520,9 +521,9 @@
                                         <label for="checkbox-plan-13" class="label-plan label-plan--r"><span>Документы</span></label>
                                     </div>
                                     <div class="wrapper-plan-group__item">
-                                        <img src="img/plan-brend/gos.png" class="wrapper-plan-group__img" alt="">
+                                        <img src="{% static 'russpass/img/plan-brend/gos.png' %}" class="wrapper-plan-group__img" alt="">
                                         <div class="wrapper-icon">
-                                            <img src="img/plan-brend/2.svg" class="wrapper-icon__img" alt="">
+                                            <img src="{% static 'russpass/img/plan-brend/2.svg' %}" class="wrapper-icon__img" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -532,9 +533,9 @@
                                         <label for="checkbox-plan-14" class="label-plan label-plan--r"><span>Чемодан</span></label>
                                     </div>
                                     <div class="wrapper-plan-group__item">
-                                        <img src="img/plan-brend/meg.png" class="wrapper-plan-group__img" alt="">
+                                        <img src="{% static 'russpass/img/plan-brend/meg.png' %}" class="wrapper-plan-group__img" alt="">
                                         <div class="wrapper-icon">
-                                            <img src="img/plan-brend/2.svg" class="wrapper-icon__img" alt="">
+                                            <img src="{% static 'russpass/img/plan-brend/2.svg' %}" class="wrapper-icon__img" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -544,9 +545,9 @@
                                         <label for="checkbox-plan-15" class="label-plan label-plan--r"><span>Кроссовки</span></label>
                                     </div>
                                     <div class="wrapper-plan-group__item">
-                                        <img src="img/plan-brend/k.png" class="wrapper-plan-group__img" alt="">
+                                        <img src="{% static 'russpass/img/plan-brend/k.png' %}" class="wrapper-plan-group__img" alt="">
                                         <div class="wrapper-icon">
-                                            <img src="img/plan-brend/2.svg" class="wrapper-icon__img" alt="">
+                                            <img src="{% static 'russpass/img/plan-brend/2.svg' %}" class="wrapper-icon__img" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -560,7 +561,7 @@
                             <div class="my-freind__title">Мои друзья</div>
                             <div class="group-freind">
                                 <div class="group-freind__item">
-                                    <span><img src="img/person/1.png" class="group-freind__img" alt=""></span>
+                                    <span><img src="{% static 'russpass/img/person/1.png' %}" class="group-freind__img" alt=""></span>
                                     <div class="name-content">
                                         <div class="name-content__title">Ирина</div>
                                         <div class="name-content__text">Москва</div>
@@ -575,7 +576,7 @@
                             </div>
                             <div class="group-freind">
                                 <div class="group-freind__item">
-                                    <span><img src="img/person/2.png" class="group-freind__img" alt=""></span>
+                                    <span><{% static 'russpass/img src="img/person/2.png' %}" class="group-freind__img" alt=""></span>
                                     <div class="name-content">
                                         <div class="name-content__title">Кирилл</div>
                                         <div class="name-content__text">Санкт-Петербург</div>
@@ -590,7 +591,7 @@
                             </div>
                             <div class="group-freind">
                                 <div class="group-freind__item">
-                                    <span><img src="img/person/3.png" class="group-freind__img" alt=""></span>
+                                    <span><img src="{% static 'russpass/img/person/3.png' %}" class="group-freind__img" alt=""></span>
                                     <div class="name-content">
                                         <div class="name-content__title">Роман</div>
                                         <div class="name-content__text">Иваново</div>
@@ -603,7 +604,7 @@
                             </div>
                             <div class="group-freind">
                                 <div class="group-freind__item">
-                                    <span><img src="img/person/4.png" class="group-freind__img" alt=""></span>
+                                    <span><img src="{% static 'russpass/img/person/4.png' %}" class="group-freind__img" alt=""></span>
                                     <div class="name-content">
                                         <div class="name-content__title">Дарья</div>
                                         <div class="name-content__text">Калуга</div>
@@ -616,7 +617,7 @@
                             </div>
                             <div class="group-freind">
                                 <div class="group-freind__item">
-                                    <span><img src="img/person/5.png" class="group-freind__img" alt=""></span>
+                                    <span><img src="{% static 'russpass/img/person/5.png' %}" class="group-freind__img" alt=""></span>
                                     <div class="name-content">
                                         <div class="name-content__title">Николай</div>
                                         <div class="name-content__text">Казань</div>
@@ -632,7 +633,7 @@
                             <div class="popular-marshrut__title">Пройденные маршруты</div>
                             <div class="group-popular">
                                 <div class="group-popular__item">
-                                    <img src="img/person/6.png" class="group-popular__img" alt="">
+                                    <img src="{% static 'russpass/img/person/6.png' %}" class="group-popular__img" alt="">
                                     <div class="group-popular__content">
                                         <div class="group-popular__title">Природный парк Ергаки</div>
                                         <div class="group-popular-bonus">
@@ -649,7 +650,7 @@
                             </div>
                             <div class="group-popular">
                                 <div class="group-popular__item">
-                                    <img src="img/person/7.png" class="group-popular__img" alt="">
+                                    <img src="{% static 'russpass/img/person/7.png' %}" class="group-popular__img" alt="">
                                     <div class="group-popular__content">
                                         <div class="group-popular__title">Спящий вулкан Карадак</div>
                                         <div class="group-popular-bonus">
@@ -666,7 +667,7 @@
                             </div>
                             <div class="group-popular">
                                 <div class="group-popular__item">
-                                    <img src="img/person/8.png" class="group-popular__img" alt="">
+                                    <img src="{% static 'russpass/img/person/8.png' %}" class="group-popular__img" alt="">
                                     <div class="group-popular__content">
                                         <div class="group-popular__title">Музей-усадьба В.Сурикова</div>
                                         <div class="group-popular-bonus">
@@ -681,7 +682,7 @@
                                 </div>
                                 <a href="#" class="btn">Оставить отзыв</a>
                             </div>
-                            <a href="" class="btn-load">Загрузить ещё</a>
+                            <a href="#" class="btn-load">Загрузить ещё</a>
                         </div>
                     </div>
                 </div>
@@ -690,16 +691,16 @@
     </main>
 
 
-    <script src="js/teams.js"></script>
-    <script src="js/local.js"></script>
-    <script src="js/slider.js"></script>
-    <script src="js/carusel.js"></script>
-    <script src="js/tab.js"></script>
-    <script src="js/pogoda.js"></script>
-    <script src="js/tab-2.js"></script>
-    <script src="js/card.js"></script>
-    <script src="js/card-delete.js"></script>
-    <script src="js/opacity-btn.js"></script>
+    <script src="{% static 'russpass/js/teams.js' %}"></script>
+    <script src="{% static 'russpass/js/local.js' %}"></script>
+    <script src="{% static 'russpass/js/slider.js' %}"></script>
+    <script src="{% static 'russpass/js/carusel.js' %}"></script>
+    <script src="{% static 'russpass/js/tab.js' %}"></script>
+    <script src="{% static 'russpass/js/pogoda.js' %}"></script>
+    <script src="{% static 'russpass/js/tab-2.js' %}"></script>
+    <script src="{% static 'russpass/js/card.js' %}"></script>
+    <script src="{% static 'russpass/js/card-delete.js' %}"></script>
+    <script src="{% static 'russpass/js/opacity-btn.js' %}"></script>
 
     <script>
         if ('serviceWorker' in navigator) {
