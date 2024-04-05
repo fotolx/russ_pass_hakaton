@@ -1,3 +1,5 @@
+{% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -6,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Бонусы</title>
     <meta name="description" content="" />
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/png" href="img/icon/logo.svg">
+    <link rel="stylesheet" href="{% static 'russpass/css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'russpass/css/style.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'russpass/img/icon/logo.svg' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
@@ -23,8 +25,8 @@
             <div class="header-content">
                 <div class="main-navigation main-navigation--dashbord">
                     <div class="logo">
-                        <a href="index.html">
-                            <img src="img/icon/logo.svg" class="logo__img" alt="logo">
+                        <a href="{% url 'main' %}">
+                            <img src="{% static 'russpass/img/icon/logo.svg' %}" class="logo__img" alt="logo">
                         </a>
                     </div>
                     <svg width="35" height="48" viewBox="0 0 35 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -52,14 +54,14 @@
                         <span class="burger__text">Меню</span>
                     </button>
                     <div class="location">
-                        <img src="img/icon/map.png" class="location__img" alt="">
+                        <img src="{% static 'russpass/img/icon/map.png' %}" class="location__img" alt="">
                         <div class="location__text" id="local">Твой регион</div>
                     </div>
                 </div>
                 <div class="storag storag--dashbord">
                     <div class="login login--dashbord">
                         <div class="flag-country">
-                            <img src="img/icon/flag.png" class="flag-country__img" alt="">
+                            <img src="{% static 'russpass/img/icon/flag.png' %}" class="flag-country__img" alt="">
                             <span> Русский / ₽  </span>
                         </div>
                         <svg width="25" height="32" viewBox="0 0 25 32" fill="none">
@@ -89,13 +91,13 @@
                     <div class="dasbord-wrapper__menu">
                         <div class="ii">
                             <a href="#" class="ii__link">
-                                <img src="img/icon/ii.png" class="ii__img" alt="">
+                                <img src="{% static 'russpass/img/icon/ii.png' %}" class="ii__img" alt="">
                             </a>
                         </div>
                         <nav class="menu-dasbord">
                             <ul class="menu-dasbord-list">
                                 <div class="menu-dasbord-list__item">
-                                    <a href="dashbord.html" class="menu-dasbord-list__link">
+                                    <a href="{% url 'dashboard' %}" class="menu-dasbord-list__link">
                                         <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <g clip-path="url(#clip0_502_270)">
@@ -153,7 +155,7 @@
                                     </a>
                                 </div>
                                 <div class="menu-dasbord-list__item">
-                                    <a href="#" class="menu-dasbord-list__link menu-dasbord-list__link--active">
+                                    <a href="{% url 'bonus' %}" class="menu-dasbord-list__link menu-dasbord-list__link--active">
 
                                         <svg width="39" height="39" viewBox="0 0 39 39" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -179,7 +181,7 @@
                                     </a>
                                 </div>
                                 <div class="menu-dasbord-list__item">
-                                    <a href="plan.html" class="menu-dasbord-list__link">
+                                    <a href="{% url 'plan' %}" class="menu-dasbord-list__link">
                                         <svg width="29" height="29" viewBox="0 0 29 29" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -282,7 +284,7 @@
                                 </div>
                             </ul>
                             <a href="#" class="social-cart">
-                                <img src="img/person/10.png" class="social-cart__img" alt="">
+                                <img src="{% static 'russpass/img/person/10.png' %}" class="social-cart__img" alt="">
                             </a>
                             <a href="#" class="menu-dasbord-link">
                                 <svg width="39" height="39" viewBox="0 0 39 39" fill="none"
@@ -388,51 +390,51 @@
                                 <div class="wrap-bon">
                                     <div class="wrap-bon__item">
                                         <div class="wrap-bon-group">
-                                            <img src="img/bonus/1.png" class="wrap-bon-group__img" alt="">
+                                            <img src="{% static 'russpass/img/bonus/1.png' %}" class="wrap-bon-group__img" alt="">
                                             <div class="wrap-bon-group__title">Билеты</div>
                                         </div>
                                         <div class="wrap-bon-group">
-                                            <img src="img/bonus/6.png" class="wrap-bon-group__img" alt="">
+                                            <img src="{% static 'russpass/img/bonus/6.png' %}" class="wrap-bon-group__img" alt="">
                                             <div class="wrap-bon-group__title wrap-bon-group__title--num">+113</div>
                                         </div>
                                     </div>
                                     <div class="wrap-bon__item">
                                         <div class="wrap-bon-group">
-                                            <img src="img/bonus/2.png" class="wrap-bon-group__img" alt="">
+                                            <img src="{% static 'russpass/img/bonus/2.png' %}" class="wrap-bon-group__img" alt="">
                                             <div class="wrap-bon-group__title">Жилье</div>
                                         </div>
                                         <div class="wrap-bon-group">
-                                            <img src="img/bonus/7.png" class="wrap-bon-group__img" alt="">
+                                            <img src="{% static 'russpass/img/bonus/7.png' %}" class="wrap-bon-group__img" alt="">
                                             <div class="wrap-bon-group__title wrap-bon-group__title--num">+82</div>
                                         </div>
                                     </div>
                                     <div class="wrap-bon__item">
                                         <div class="wrap-bon-group">
-                                            <img src="img/bonus/3.png" class="wrap-bon-group__img" alt="">
+                                            <img src="{% static 'russpass/img/bonus/3.png' %}" class="wrap-bon-group__img" alt="">
                                             <div class="wrap-bon-group__title">Еда</div>
                                         </div>
                                         <div class="wrap-bon-group">
-                                            <img src="img/bonus/6.png" class="wrap-bon-group__img" alt="">
+                                            <img src="{% static 'russpass/img/bonus/6.png' %}" class="wrap-bon-group__img" alt="">
                                             <div class="wrap-bon-group__title wrap-bon-group__title--num">+245</div>
                                         </div>
                                     </div>
                                     <div class="wrap-bon__item">
                                         <div class="wrap-bon-group">
-                                            <img src="img/bonus/4.png" class="wrap-bon-group__img" alt="">
+                                            <img src="{% static 'russpass/img/bonus/4.png' %}" class="wrap-bon-group__img" alt="">
                                             <div class="wrap-bon-group__title">События</div>
                                         </div>
                                         <div class="wrap-bon-group">
-                                            <img src="img/bonus/7.png" class="wrap-bon-group__img" alt="">
+                                            <img src="{% static 'russpass/img/bonus/7.png' %}" class="wrap-bon-group__img" alt="">
                                             <div class="wrap-bon-group__title wrap-bon-group__title--num">+56</div>
                                         </div>
                                     </div>
                                     <div class="wrap-bon__item">
                                         <div class="wrap-bon-group">
-                                            <img src="img/bonus/5.png" class="wrap-bon-group__img" alt="">
+                                            <img src="{% static 'russpass/img/bonus/5.png' %}" class="wrap-bon-group__img" alt="">
                                             <div class="wrap-bon-group__title">Маршруты</div>
                                         </div>
                                         <div class="wrap-bon-group">
-                                            <img src="img/bonus/7.png" class="wrap-bon-group__img" alt="">
+                                            <img src="{% static 'russpass/img/bonus/7.png' %}" class="wrap-bon-group__img" alt="">
                                             <div class="wrap-bon-group__title wrap-bon-group__title--num">+175</div>
                                         </div>
                                     </div>
@@ -459,7 +461,7 @@
                                     <div class="tabs-content">
                                         <div class="tab-content">
                                             <div class="tab-content-wrapper">
-                                                <img src="img/grid/1.png" class="tab-content__img" alt="">
+                                                <img src="{% static 'russpass/img/grid/1.png' %}" class="tab-content__img" alt="">
                                                 <div class="tab-content-group">
                                                     <div class="tab-content-group__title">Название</div>
                                                     <div class="tab-content-group__text">@nickname</div>
@@ -475,7 +477,7 @@
                                                 </div>
                                             </div>
                                             <div class="tab-content-wrapper">
-                                                <img src="img/grid/2.png" class="tab-content__img" alt="">
+                                                <img src="{% static 'russpass/img/grid/2.png' %}" class="tab-content__img" alt="">
                                                 <div class="tab-content-group">
                                                     <div class="tab-content-group__title">Название</div>
                                                     <div class="tab-content-group__text">@nickname</div>
@@ -550,7 +552,7 @@
                             <div class="my-freind__title">Мои друзья</div>
                             <div class="group-freind">
                                 <div class="group-freind__item">
-                                    <span><img src="img/person/1.png" class="group-freind__img" alt=""></span>
+                                    <span><img src="{% static 'russpass/img/person/1.png' %}" class="group-freind__img" alt=""></span>
                                     <div class="name-content">
                                         <div class="name-content__title">Ирина</div>
                                         <div class="name-content__text">Москва</div>
@@ -565,7 +567,7 @@
                             </div>
                             <div class="group-freind">
                                 <div class="group-freind__item">
-                                    <span><img src="img/person/2.png" class="group-freind__img" alt=""></span>
+                                    <span><img src="{% static 'russpass/img/person/2.png' %}" class="group-freind__img" alt=""></span>
                                     <div class="name-content">
                                         <div class="name-content__title">Кирилл</div>
                                         <div class="name-content__text">Санкт-Петербург</div>
@@ -580,7 +582,7 @@
                             </div>
                             <div class="group-freind">
                                 <div class="group-freind__item">
-                                    <span><img src="img/person/3.png" class="group-freind__img" alt=""></span>
+                                    <span><img src="{% static 'russpass/img/person/3.png' %}" class="group-freind__img" alt=""></span>
                                     <div class="name-content">
                                         <div class="name-content__title">Роман</div>
                                         <div class="name-content__text">Иваново</div>
@@ -593,7 +595,7 @@
                             </div>
                             <div class="group-freind">
                                 <div class="group-freind__item">
-                                    <span><img src="img/person/4.png" class="group-freind__img" alt=""></span>
+                                    <span><img src="{% static 'russpass/img/person/4.png' %}" class="group-freind__img" alt=""></span>
                                     <div class="name-content">
                                         <div class="name-content__title">Дарья</div>
                                         <div class="name-content__text">Калуга</div>
@@ -606,7 +608,7 @@
                             </div>
                             <div class="group-freind">
                                 <div class="group-freind__item">
-                                    <span><img src="img/person/5.png" class="group-freind__img" alt=""></span>
+                                    <span><img src="{% static 'russpass/img/person/5.png' %}" class="group-freind__img" alt=""></span>
                                     <div class="name-content">
                                         <div class="name-content__title">Николай</div>
                                         <div class="name-content__text">Казань</div>
@@ -622,7 +624,7 @@
                             <div class="popular-marshrut__title">Пройденные маршруты</div>
                             <div class="group-popular">
                                 <div class="group-popular__item">
-                                    <img src="img/person/6.png" class="group-popular__img" alt="">
+                                    <img src="{% static 'russpass/img/person/6.png' %}" class="group-popular__img" alt="">
                                     <div class="group-popular__content">
                                         <div class="group-popular__title">Природный парк Ергаки</div>
                                         <div class="group-popular-bonus">
@@ -639,7 +641,7 @@
                             </div>
                             <div class="group-popular">
                                 <div class="group-popular__item">
-                                    <img src="img/person/7.png" class="group-popular__img" alt="">
+                                    <img src="{% static 'russpass/img/person/7.png' %}" class="group-popular__img" alt="">
                                     <div class="group-popular__content">
                                         <div class="group-popular__title">Спящий вулкан Карадак</div>
                                         <div class="group-popular-bonus">
@@ -656,7 +658,7 @@
                             </div>
                             <div class="group-popular">
                                 <div class="group-popular__item">
-                                    <img src="img/person/8.png" class="group-popular__img" alt="">
+                                    <img src="{% static 'russpass/img/person/8.png' %}" class="group-popular__img" alt="">
                                     <div class="group-popular__content">
                                         <div class="group-popular__title">Музей-усадьба В.Сурикова</div>
                                         <div class="group-popular-bonus">
@@ -680,16 +682,16 @@
     </main>
 
 
-    <script src="js/teams.js"></script>
-    <script src="js/local.js"></script>
-    <script src="js/slider.js"></script>
-    <script src="js/carusel.js"></script>
-    <script src="js/tab.js"></script>
-    <script src="js/pogoda.js"></script>
-    <script src="js/tab-2.js"></script>
-    <script src="js/card.js"></script>
-    <script src="js/card-delete.js"></script>
-    <script src="js/opacity-btn.js"></script>
+    <script src="{% static 'russpass/js/teams.js' %}"></script>
+    <script src="{% static 'russpass/js/local.js' %}"></script>
+    <script src="{% static 'russpass/js/slider.js' %}"></script>
+    <script src="{% static 'russpass/js/carusel.js' %}"></script>
+    <script src="{% static 'russpass/js/tab.js' %}"></script>
+    <script src="{% static 'russpass/js/pogoda.js' %}"></script>
+    <script src="{% static 'russpass/js/tab-2.js' %}"></script>
+    <script src="{% static 'russpass/js/card.js' %}"></script>
+    <script src="{% static 'russpass/js/card-delete.js' %}"></script>
+    <script src="{% static 'russpass/js/opacity-btn.js' %}"></script>
 
     <script>
         if ('serviceWorker' in navigator) {
