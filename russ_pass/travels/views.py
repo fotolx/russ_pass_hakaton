@@ -34,6 +34,15 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 def home(request):
     return render(request, 'russpass/index.html')
 
+def dyn_home(request):
+    return render(request, 'russpass/dyn/index.html')
+
+class ParkDetails(DetailView):
+    template_name = 'russpass/dyn/park.html'
+    queryset = Route.objects.all()
+    pass
+
+
 # class RegisterView(View):
 #     form_class = RegisterForm
 #     initial = {'key': 'value'}
@@ -168,10 +177,6 @@ def home(request):
 #         id = self.kwargs.get('pk')
 #         return Ads.objects.get(pk=id)
 
-# class AdDetails(DetailView):
-#     template_name = 'ad_details.html'
-#     queryset = Ads.objects.all()
-#     pass
 
 # class SendMessage(CreateView):
 #     model = Replies

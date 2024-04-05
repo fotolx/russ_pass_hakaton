@@ -109,7 +109,7 @@
                         {% if user.is_authenticated %}
                         <div class="login__text">{{ user.first_name }}</div>
                         <a href="{% url 'logout' %}" class="plan-link">
-                            <div class="login__text">[ Выйти] </div>
+                            <div class="login__text">[Выйти] </div>
                         </a>
                       {% else %}
                         <a href="{% url 'login' %}" class="plan-link">

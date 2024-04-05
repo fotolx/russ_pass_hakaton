@@ -104,7 +104,7 @@
                         {% if user.is_authenticated %}
                         <div class="login__text">{{ user.first_name }}</div>
                         <a href="{% url 'logout' %}" class="plan-link">
-                            <div class="login__text">[ Выйти] </div>
+                            <div class="login__text">[Выйти] </div>
                         </a>
                       {% else %}
                         <a href="{% url 'login' %}" class="plan-link">
@@ -127,11 +127,11 @@
                 <div class="pages">
                     <a href="" class="pages__link">Россия</a>
                     <span> / </span>
-                    <a href="" class="pages__link">Красноярск</a>
+                    <a href="" class="pages__link">{{ route.region.name }}</a>
                     <span> / </span>
                     <a href="" class="pages__link">Природа</a>
                     <span> / </span>
-                    <div class="text">Природный парк Ергаки</div>
+                    <div class="text">{{ route.name }}</div>
                 </div>
                 <form class="form-hero" id="form-hero">
                     <img src="{% static 'russpass/img/icon/icon.png' %}" alt="">
@@ -146,7 +146,7 @@
         <section class="hero hero--marshrut">
             <div class="container container-hero container-hero--marshrut">
                 <div class="hero-content">
-                    <h1 class="title-hero title-hero--marshrut">Горный пеший маршрут «Природный парк Ергаки»</h1>
+                    <h1 class="title-hero title-hero--marshrut">{{ route.name }}</h1>
                     <div class="hero-reiting">
                         <svg width="35" height="34" viewBox="0 0 35 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -156,7 +156,7 @@
                         <div class="hero-reiting__text">4.5 (45) <span></span> Простой</div>
                     </div>
                     <div class="hero-page">
-                        <a href="" class="hero-page__link">Красноярск</a>
+                        <a href="" class="hero-page__link">{{ route.region.name }}</a>
                         <span> / </span>
                         <a href="" class="hero-page__link">Природа</a>
                     </div>
@@ -306,14 +306,11 @@
                             </div>
                             <div class="group-tip__item">
                                 <div class="group-tip__title">Тип маршрута</div>
-                                <div class="group-tip__text">Из точки в точку</div>
+                                <div class="group-tip__text">{{ route.type }}</div>
                             </div>
                         </div>
                         <p class="text-data">
-                            Природный парк «Ергаки» — это уникальное место, расположенное в Красноярском крае, которое
-                            привлекает туристов со всего мира своими красивыми горами, озерами, реками и хвойными
-                            лесами. В парке есть множество маршрутов для пеших и горных походов, а также для
-                            скалолазания.
+                            {{ route.description | safe }}
                         </p>
                         <a href="#" class="btn-video">
                             <svg width="30" height="30" viewBox="0 0 30 30" fill="none"

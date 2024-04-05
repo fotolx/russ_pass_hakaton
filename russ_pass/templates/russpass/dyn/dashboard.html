@@ -79,7 +79,7 @@
                         {% if user.is_authenticated %}
                         <div class="login__text">{{ user.first_name }}</div>
                         <a href="{% url 'logout' %}" class="plan-link">
-                            <div class="login__text">[ Выйти] </div>
+                            <div class="login__text">[Выйти] </div>
                         </a>
                       {% else %}
                         <a href="{% url 'login' %}" class="plan-link">
@@ -164,7 +164,7 @@
                                     </a>
                                 </div>
                                 <div class="menu-dasbord-list__item">
-                                    <a href="#" class="menu-dasbord-list__link">
+                                    <a href="{% url 'bonus' %}" class="menu-dasbord-list__link">
                                         <svg width="39" height="39" viewBox="0 0 39 39" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <g clip-path="url(#clip0_279_1306)">
@@ -293,7 +293,8 @@
                             <a href="#" class="social-cart">
                                 <img src="{% static 'russpass/img/person/10.png' %}-" class="social-cart__img" alt="">
                             </a>
-                            <a href="#" class="menu-dasbord-link">
+                            {% if user.is_authenticated %}
+                            <a href="{% url 'logout' %}" class="menu-dasbord-link">
                                 <svg width="39" height="39" viewBox="0 0 39 39" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -307,6 +308,7 @@
                                         fill="#292D32" />
                                 </svg>
                                 <span>Выйти</span>
+                                {% endif %}
                             </a>
                         </nav>
                     </div>
@@ -314,7 +316,7 @@
                         <div class="hi-person">
                             <div class="hi-person__item">
                                 <div class="hi-person__title">
-                                    <span>Привет Светлана! 👋</span>
+                                    <span>Привет {{ user.first_name }}! 👋</span>
                                 </div>
                                 <div class="hi-person__text">
                                     Добро пожаловать и давайте спланируем интересное путешествие

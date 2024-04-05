@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Планирувщик дел</title>
+    <title>Планировщик дел</title>
     <meta name="description" content="" />
     <link rel="stylesheet" href="{% static 'russpass/css/normalize.css' %}">
     <link rel="stylesheet" href="{% static 'russpass/css/style.css' %}">
@@ -75,8 +75,16 @@
                                 </clipPath>
                             </defs>
                         </svg>
-
-                        <div class="login__text">Светлана Г. </div>
+                        {% if user.is_authenticated %}
+                        <div class="login__text">{{ user.first_name }}</div>
+                        <a href="{% url 'logout' %}" class="plan-link">
+                            <div class="login__text">[Выйти] </div>
+                        </a>
+                      {% else %}
+                        <a href="{% url 'login' %}" class="plan-link">
+                            <div class="login__text">Войти</div>
+                        </a>
+                      {% endif %}
                     </div>
                 </div>
             </div>
@@ -156,7 +164,7 @@
                                     </a>
                                 </div>
                                 <div class="menu-dasbord-list__item">
-                                    <a href="#" class="menu-dasbord-list__link">
+                                    <a href="{% url 'bonus' %}" class="menu-dasbord-list__link">
                                         <svg width="39" height="39" viewBox="0 0 39 39" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <g clip-path="url(#clip0_279_1306)">
@@ -287,7 +295,8 @@
                             <a href="#" class="social-cart">
                                 <img src="{% static 'russpass/img/person/10.png' %}" class="social-cart__img" alt="">
                             </a>
-                            <a href="#" class="menu-dasbord-link">
+                            {% if user.is_authenticated %}
+                            <a href="{% url 'logout' %}" class="menu-dasbord-link">
                                 <svg width="39" height="39" viewBox="0 0 39 39" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -300,7 +309,8 @@
                                         d="M29.413 12.9997C29.7185 12.9997 30.0241 13.1123 30.2653 13.3535L35.6522 18.7404C36.1185 19.2068 36.1185 19.9786 35.6522 20.445L30.2653 25.8319C29.7989 26.2982 29.0271 26.2982 28.5607 25.8319C28.0944 25.3656 28.0944 24.5937 28.5607 24.1274L33.0954 19.5927L28.5607 15.058C28.0944 14.5917 28.0944 13.8198 28.5607 13.3535C28.7859 13.1123 29.1075 12.9997 29.413 12.9997Z"
                                         fill="#292D32" />
                                 </svg>
-                                <span>Выйти</span>
+                                    <span>Выйти</span>
+                              {% endif %}
                             </a>
                         </nav>
                     </div>
@@ -308,7 +318,7 @@
                         <div class="hi-person">
                             <div class="hi-person__item">
                                 <div class="hi-person__title">
-                                    <span>Привет Светлана! 👋</span>
+                                    <span>Привет {{ user.first_name }}! 👋</span>
                                 </div>
                                 <div class="hi-person__text">
                                     Добро пожаловать и давайте спланируем интересное путешествие
