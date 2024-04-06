@@ -459,7 +459,6 @@ h2 {
 /*--- HEADER ---*/
 /*--- HERO ---*/
 .hero {
-  background-image: url(../img/hero/krasnoyarsk.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -469,13 +468,6 @@ h2 {
     background-image: none;
     background-color: var(--color-boby);
   }
-}
-.hero--catalog {
-  background-image: url(../img/hero/2.png);
-}
-.hero--marshrut {
-  background-image: url(../img/hero/3.png);
-  background-size: cover;
 }
 
 .container-hero {
