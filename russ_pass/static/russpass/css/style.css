@@ -3945,3 +3945,125 @@ h2 {
   text-decoration: none;
   border: 1px solid #2D3134;
 }
+.money {
+  margin-bottom: 40px;
+}
+
+.money-title-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.money-title-group__title {
+  font-weight: 600;
+  font-size: 32px;
+  color: #2d3134;
+}
+.money-title-group__btn {
+  width: 45px;
+  height: 45px;
+  border-radius: 100%;
+  background-color: #FFCF08;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.money-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 26px;
+}
+.money-wrapper__item {
+  width: 49%;
+  border-radius: 20px;
+  background: #60bc63;
+  box-sizing: border-box;
+  padding: 20px 10px;
+}
+.money-wrapper__item:last-child {
+  background: #F66F4D;
+}
+.money-wrapper__title {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 120%;
+  color: #fff;
+}
+.money-wrapper__price {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 75%;
+  letter-spacing: 0.02em;
+  color: #fff;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.old-marshrut {
+  border-top: 1px solid #ECEFF9;
+  padding-top: 25px;
+  margin-top: 25px;
+}
+.old-marshrut__title {
+  font-weight: 600;
+  font-size: 32px;
+  color: #2d3134;
+}
+
+.old-marshrut-group {
+  margin-top: 28px;
+}
+.old-marshrut-group__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 20px 10px;
+  border-radius: 20px;
+}
+.old-marshrut-group__item:not(:last-child) {
+  margin-bottom: 10px;
+}
+.old-marshrut-group-content__title {
+  font-weight: 500;
+  font-size: 18px;
+  color: #2d3134;
+}
+.old-marshrut-group-content__text {
+  font-weight: 500;
+  font-size: 14px;
+  color: rgba(91, 95, 98, 0.75);
+}
+
+.brn-old {
+  box-shadow: 0 8px 16px 0 rgba(255, 207, 8, 0.15);
+  font-weight: 400;
+  font-size: 16px;
+  color: #2d3134;
+  border-radius: 99px;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  background-color: #FFCF08;
+}
+
+.wrapper-date-const {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.wrapper-date-const__img:not(:last-child) {
+  margin-right: 10px;
+}
+.wrapper-сonstr {
+  width: 100%;
+}
+
+.const-image {
+  margin-top: 60px;
+  width: 100%;
+}
