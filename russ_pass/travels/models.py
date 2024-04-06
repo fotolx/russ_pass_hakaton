@@ -55,7 +55,7 @@ class Route(models.Model):
     region = models.ForeignKey(Region, on_delete=models.CASCADE, blank=True, null=True, verbose_name="Регион")
     type = models.ForeignKey(RouteType, on_delete=models.CASCADE, verbose_name="Тип маршрута", blank=True, null=True)
     level = models.ForeignKey(Level, on_delete=models.CASCADE, verbose_name="Уровень маршрута", blank=True, null=True)
-    rating = models.IntegerField(default=4.5, verbose_name="Рейтинг")
+    rating = models.FloatField(default=4.5, verbose_name="Рейтинг")
     route_len = models.CharField(blank=True, max_length=100, verbose_name="Длина маршрута")
     elevation = models.CharField(blank=True, max_length=100, verbose_name="Подъем")
     video_link = models.CharField(blank=True, max_length=500, verbose_name="Ссылка на видео о маршруте")

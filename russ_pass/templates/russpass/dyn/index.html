@@ -222,7 +222,6 @@
                             {% for route in routes %}
                             <div class="card" data-id="1">
                                 <div class="image-mask image-mask--hover">
-                                    <img src="{% static '{{ route.preview_small }}' %}" class="card__img" alt="">
                                     <img src="{{ route.preview_small.url }}" class="card__img" alt="">
                                     <div class="mask">
                                         <a href="#" class="mask__link">Добавь<br> в свой маршрут</a>
@@ -247,24 +246,17 @@
                                                 </clipPath>
                                             </defs>
                                         </svg>
-                                        <span class="reiting-card">4.5</span>
+                                        <span class="reiting-card">{{ route.rating }}</span>
                                     </div>
-                                    <div class="card-lits__item km-card">4.2 км</div>
-                                    <div class="card-lits__item level-card">Простой</div>
+                                    <div class="card-lits__item km-card">{{ route.route_len }}</div>
+                                    <div class="card-lits__item level-card">{{ route.level }}</div>
                                 </div>
                                 <div class="card-group">
+                                    {% for tags in route.tags.all %}
                                     <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/1.png' %}" class="icon-one" alt="">
+                                        <img src="{{ tags.icon.url }}" class="icon-one" alt="">
                                     </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/2.png' %}" class="icon-two" alt="">
-                                    </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/3.png' %}" class="icon-free" alt="">
-                                    </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/4.png' %}" class="icon-fout" alt="">
-                                    </div>
+                                    {% endfor %}
                                 </div>
                                 <button type="button" class="like">
                                     <svg width="25" height="32" viewBox="0 0 25 32" fill="none"

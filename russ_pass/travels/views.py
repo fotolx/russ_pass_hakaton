@@ -40,12 +40,13 @@ def dyn_home(request):
 class ParkDetails(DetailView):
     template_name = 'russpass/dyn/park.html'
     queryset = Route.objects.all()
-    pass
+
     def get_context_data(self, **kwargs): 
         context = super().get_context_data(**kwargs)
         # context['tags'] = RouteTags.objects.all()
         context['tags'] =  RouteTags.objects.filter(route_id=self.object.id)
         return context
+
 class RoutesList(ListView):
     model = Route
     context_object_name = 'routes'
