@@ -1,38 +1,48 @@
-const apiKey = '23422f44d0a84bd05ebd4b7d0cdd0156';
-const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=Moscow&appid=${apiKey}&units=metric`;
+ymaps.ready(init);
 
-fetch(apiUrl)
-  .then(response => response.json())
-  .then(data => {
-    const forecast = data.list.filter(item => item.dt_txt.includes('12:00:00'));
-    const weatherForecast = document.getElementById('weatherForecast');
+function init() {
+    var geolocation = ymaps.geolocation;
 
-    forecast.forEach(item => {
-      const date = new Date(item.dt * 1000);
-      const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-      const dayOfWeek = days[date.getDay()];
+    geolocation.get({
+        provider: 'auto',
+        mapStateAutoApply: true
+    }).then(function (result) {
+        const city = result.geoObjects.get(0).properties.get('name');
+        const country = result.geoObjects.get(0).properties.get('metaDataProperty').GeocoderMetaData.AddressDetails.Country.CountryName;
+        const location = result.geoObjects.get(0).geometry.getCoordinates();
 
-      const card = document.createElement('div');
-      card.classList.add('card');
+        const apiKey = '23422f44d0a84bd05ebd4b7d0cdd0156';
+        const weatherUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&lang=ru&appid=${apiKey}`;
 
-      const icon = document.createElement('img');
-      icon.classList.add('weather-icon');
-      icon.src = `https://openweathermap.org/img/wn/${item.weather[0].icon}.png`;
-      icon.alt = item.weather[0].description;
+        fetch(weatherUrl)
+        .then(function(resp) {return resp.json() })
+        .then(function(data) {
+            console.log(data);
+            const cardsContainer = document.getElementById('weather-cards');
+            for (let i = 0; i < 4; i++) {
+                const weatherData = data.list[i];
+                const card = document.createElement('div');
+                card.classList.add('weather-container__card');
+                card.innerHTML = `
+                    <div class="name-city">${data.city.name}</div>
+                    <div class="features">
+                        <img src="https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png">
+                    </div>
+                    <div class="temp-city">${Math.round(weatherData.main.temp - 273)}&deg;</div>
+                    <div class="current-time">${getNextHourTimeString(weatherData.dt)}</div>
+                `;
+                cardsContainer.appendChild(card);
+            }
+        });
 
-      const temperature = document.createElement('div');
-      temperature.classList.add('temperature');
-      temperature.textContent = `${Math.round(item.main.temp)}°C`;
-
-      const time = document.createElement('div');
-      time.classList.add('time');
-      time.textContent = dayOfWeek;
-
-      card.appendChild(icon);
-      card.appendChild(temperature);
-      card.appendChild(time);
-
-      weatherForecast.appendChild(card);
+        document.getElementById('local').innerHTML = city + ', ' + country;
     });
-  })
-  .catch(error => console.log('Error fetching weather data:', error));
+}
+
+function getNextHourTimeString(timestamp) {
+    const date = new Date(timestamp * 1000);
+    date.setHours(date.getHours() - 3); 
+    const hours = date.getHours();
+    const minutes = (date.getMinutes() < 10 ? '0' : '') + date.getMinutes();
+    return `${hours}:${minutes}`;
+}
