@@ -1,3 +1,5 @@
+{% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -5,14 +7,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Старт маршрта</title>
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/png" href="img/icon/logo.svg">
+    <link rel="stylesheet" href="{% static 'russpass/css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'russpass/css/style.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'russpass/img/icon/logo.svg' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=372dac5d-dbec-4965-918f-80bb88f9c884"
-        type="text/javascript"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=372dac5d-dbec-4965-918f-80bb88f9c884" type="text/javascript"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 
@@ -21,50 +22,50 @@
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <img src="img/mobile/1.png" class="swiper-slide-image" alt="">
+                    <img src="{% static 'russpass/img/mobile/1.png' %}" class="swiper-slide-image" alt="">
                 </div>
                 <div class="swiper-slide">
-                    <img src="img/mobile/2.png" class="swiper-slide-image" alt="">
+                    <img src="{% static 'russpass/img/mobile/2.png' %}" class="swiper-slide-image" alt="">
                 </div>
                 <div class="swiper-slide">
-                    <img src="img/mobile/3.png" class="swiper-slide-image" alt="">
+                    <img src="{% static 'russpass/img/mobile/3.png' %}" class="swiper-slide-image" alt="">
                 </div>
                 <div class="swiper-slide">
-                    <img src="img/mobile/4.png" class="swiper-slide-image" alt="">
+                    <img src="{% static 'russpass/img/mobile/4.png' %}" class="swiper-slide-image" alt="">
                 </div>
                 <div class="swiper-slide">
-                    <img src="img/mobile/5.png" class="swiper-slide-image" alt="">
+                    <img src="{% static 'russpass/img/mobile/5.png' %}" class="swiper-slide-image" alt="">
                 </div>
                 <div class="swiper-slide">
-                    <img src="img/mobile/6.png" class="swiper-slide-image" alt="">
+                    <img src="{% static 'russpass/img/mobile/6.png" class="swiper-slide-image" alt="">
                     <div class="finish">
                         <div class="wrapper-finish">
-                            <img src="img/mobile/10.png" class="wrapper-finish__img" alt="">
+                            <img src="{% static 'russpass/img/mobile/10.png' %}" class="wrapper-finish__img" alt="">
                             <div class="wrapper-finish__title">Вы завершили<br> маршрут</div>
                             <div class="wrapper-finish__reiting">
-                                <img src="img/mobile/11.png" class="wrapper-finish__img" alt="">
+                                <img src="{% static 'russpass/img/mobile/11.png' %}" class="wrapper-finish__img" alt="">
                             </div>
                             <div class="wrapper-finish__text">что вам особенно понравилось?</div>
                             <div class="wrap-smail">
                                 <div class="wrap-smail__item">
-                                    <img src="img/mobile/12.png" class="wrap-smail__img" alt="">
+                                    <img src="{% static 'russpass/img/mobile/12.png' %}" class="wrap-smail__img" alt="">
                                     <div class="wrap-smail__text">Повезло <br> с погодой</div>
                                 </div>
                                 <div class="wrap-smail__item">
-                                    <img src="img/mobile/13.png" class="wrap-smail__img" alt="">
+                                    <img src="{% static 'russpass/img/mobile/13.png' %}" class="wrap-smail__img" alt="">
                                     <div class="wrap-smail__text">Чувствовал себя <br> в безопасности</div>
                                 </div>
                                 <div class="wrap-smail__item">
-                                    <img src="img/mobile/14.png" class="wrap-smail__img" alt="">
+                                    <img src="{% static 'russpass/img/mobile/14.png' %}" class="wrap-smail__img" alt="">
                                     <div class="wrap-smail__text">Удобная навигация</div>
                                 </div>
                                 <div class="wrap-smail__item">
-                                    <img src="img/mobile/15.png" class="wrap-smail__img" alt="">
+                                    <img src="{% static 'russpass/img/mobile/15.png' %}" class="wrap-smail__img" alt="">
                                     <div class="wrap-smail__text">Было чисто <br> и комфортно</div>
                                 </div>
                             </div>
                             <textarea class="textarea" placeholder="Комментарий..."></textarea>
-                            <img src="img/mobile/17.png" class="wrapper-finish__file">
+                            <img src="{% static 'russpass/img/mobile/17.png' %}" class="wrapper-finish__file">
                             <div class="wrapper-finish__subtext">Не было интернета? Загрузи фотографии из каждой точки маршрута и получи очки и бонусы</div>
                             <div class="finish-btn-wrap">
                                 <div class="btn-close">
@@ -84,30 +85,30 @@
             <div class="swiper-pagination"></div>
         </div>
         <div class="start-header">
-            <img src="img/mobile/8.png" class="start-image-fixed" alt="">
+            <img src="{% static 'russpass/img/mobile/8.png' %}" class="start-image-fixed" alt="">
         </div>
         <!-- MOBILE -->
         <div class="mobile-wrapper">
             <div class="mobile">
                 <div class="mobile-content">
-                    <a href="index.html" class="mobile-content__link mobile-content__link--active">
-                        <img src="img/icon/Home.png" alt="">
+                    <a href="{% url 'main' %}" class="mobile-content__link mobile-content__link--active">
+                        <img src="{% static 'russpass/img/icon/Home.png' %}" alt="">
                     </a>
-                    <a href="marhrut.html" class="mobile-content__link">
-                        <img src="img/icon/map-marked-alt.png" alt="">
+                    <a href="{% url 'marhrut' %}" class="mobile-content__link">
+                        <img src="{% static 'russpass/img/icon/map-marked-alt.png' %}" alt="">
                     </a>
                     <a href="#" class="mobile-content__link">
-                        <img src="img/icon/Chat.png" alt="">
+                        <img src="{% static 'russpass/img/icon/Chat.png' %}" alt="">
                     </a>
-                    <a href="dashbord.html" class="mobile-content__link">
-                        <img src="img/icon/Profile.png" alt="">
+                    <a href="{% url 'dashbord' %}" class="mobile-content__link">
+                        <img src="{% static 'russpass/img/icon/Profile.png' %}" alt="">
                     </a>
                 </div>
             </div>
         </div>
         <!-- MOBILE -->
     </section>
-    <script src="js/modal-finish.js"></script>
+    <script src="{% static 'russpass/js/modal-finish.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         var swiper = new Swiper(".mySwiper", {
