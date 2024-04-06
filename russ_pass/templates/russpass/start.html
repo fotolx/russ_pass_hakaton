@@ -1,0 +1,103 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Старт маршрта</title>
+    <link rel="stylesheet" href="{% static 'russpass/css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'russpass/css/style.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'russpass/img/icon/logo.svg' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=372dac5d-dbec-4965-918f-80bb88f9c884" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+
+<body>
+    <section class="start">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="{% static 'russpass/img/mobile/1.png' %}" class="swiper-slide-image" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="{% static 'russpass/img/mobile/2.png' %}" class="swiper-slide-image" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="{% static 'russpass/img/mobile/3.png' %}" class="swiper-slide-image" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="{% static 'russpass/img/mobile/4.png' %}" class="swiper-slide-image" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="{% static 'russpass/img/mobile/5.png' %}" class="swiper-slide-image" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="{% static 'russpass/img/mobile/6.png" class="swiper-slide-image" alt="">
+                    <div class="finish">
+                        <div class="wrapper-finish">
+                            <img src="{% static 'russpass/img/mobile/10.png' %}" class="wrapper-finish__img" alt="">
+                            <div class="wrapper-finish__title">Вы завершили<br> маршрут</div>
+                            <div class="wrapper-finish__reiting">
+                                <img src="{% static 'russpass/img/mobile/11.png' %}" class="wrapper-finish__img" alt="">
+                            </div>
+                            <div class="wrapper-finish__text">что вам особенно понравилось?</div>
+                            <div class="wrap-smail">
+                                <div class="wrap-smail__item">
+                                    <img src="{% static 'russpass/img/mobile/12.png' %}" class="wrap-smail__img" alt="">
+                                    <div class="wrap-smail__text">Повезло <br> с погодой</div>
+                                </div>
+                                <div class="wrap-smail__item">
+                                    <img src="{% static 'russpass/img/mobile/13.png' %}" class="wrap-smail__img" alt="">
+                                    <div class="wrap-smail__text">Чувствовал себя <br> в безопасности</div>
+                                </div>
+                                <div class="wrap-smail__item">
+                                    <img src="{% static 'russpass/img/mobile/14.png' %}" class="wrap-smail__img" alt="">
+                                    <div class="wrap-smail__text">Удобная навигация</div>
+                                </div>
+                                <div class="wrap-smail__item">
+                                    <img src="{% static 'russpass/img/mobile/15.png' %}" class="wrap-smail__img" alt="">
+                                    <div class="wrap-smail__text">Было чисто <br> и комфортно</div>
+                                </div>
+                            </div>
+                            <textarea class="textarea" placeholder="Комментарий..."></textarea>
+                            <img src="{% static 'russpass/img/mobile/17.png' %}" class="wrapper-finish__file">
+                            <div class="wrapper-finish__subtext">Не было интернета? Загрузи фотографии из каждой точки маршрута и получи очки и бонусы</div>
+                            <div class="finish-btn-wrap">
+                                <div class="btn-close">
+                                    <svg width="11" height="11" viewBox="0 0 11 11" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M8.70143 0.833257L5.75204 3.78264L2.80265 0.833257C2.44074 0.471343 1.85373 0.471343 1.49182 0.833257L0.836397 1.48868C0.474483 1.85059 0.474483 2.4376 0.836397 2.79951L3.78578 5.7489L0.836397 8.69829C0.474483 9.0602 0.474483 9.64721 0.836397 10.0091L1.49182 10.6645C1.85373 11.0265 2.44074 11.0265 2.80265 10.6645L5.75204 7.71516L8.70143 10.6645C9.06334 11.0265 9.65035 11.0265 10.0123 10.6645L10.6677 10.0091C11.0296 9.64721 11.0296 9.0602 10.6677 8.69829L7.7183 5.7489L10.6677 2.79951C11.0296 2.4376 11.0296 1.85059 10.6677 1.48868L10.0123 0.833257C9.65035 0.471343 9.06334 0.471343 8.70143 0.833257Z"
+                                            fill="#2D3134" />
+                                    </svg>
+                                </div>
+                                <div class="btn-ok">Готово</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        <div class="start-header">
+            <img src="{% static 'russpass/img/mobile/8.png' %}" class="start-image-fixed" alt="">
+        </div>
+
+    </section>
+    <script src="{% static 'russpass/js/modal-finish.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            pagination: {
+                el: ".swiper-pagination",
+            },
+        });
+    </script>
+</body>
+
+</html>
