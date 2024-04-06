@@ -358,6 +358,27 @@
                                     Радужное. Отвесные гладкие стороны скал — зеркалами. <span>Ещё</span>
                                 </p>
 
+                                <div class="add-person add-person--mobile">
+                                    <div class="add-person__title">Собрать группу</div>
+                                    <div class="add-person-wrapper">
+                                        <img src="{% static 'russpass/img/person/20.png' %}" class="add-person-wrapper__img" alt="">
+                                        <img src="{% static 'russpass/img/person/21.png' %}" class="add-person-wrapper__img" alt="">
+                                        <img src="{% static 'russpass/img/person/22.png' %}" class="add-person-wrapper__img" alt="">
+                                        <img src="{% static 'russpass/img/person/23.png' %}" class="add-person-wrapper__img" alt="">
+                                        <button type="submit" class="add-person-wrapper__btn">
+                                            <svg width="27" height="27" viewBox="0 0 27 27" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M24.8738 10.8593H16.5316V2.51714C16.5316 1.49349 15.7015 0.66333 14.6778 0.66333H12.824C11.8004 0.66333 10.9702 1.49349 10.9702 2.51714V10.8593H2.6281C1.60445 10.8593 0.774292 11.6894 0.774292 12.7131V14.5669C0.774292 15.5905 1.60445 16.4207 2.6281 16.4207H10.9702V24.7628C10.9702 25.7864 11.8004 26.6166 12.824 26.6166H14.6778C15.7015 26.6166 16.5316 25.7864 16.5316 24.7628V16.4207H24.8738C25.8974 16.4207 26.7276 15.5905 26.7276 14.5669V12.7131C26.7276 11.6894 25.8974 10.8593 24.8738 10.8593Z"
+                                                    fill="#2D3134" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <a href="{% url 'start' %}" type="button" class="btn-construction-map">
+                                        <span>Идти по маршруту</span>
+                                    </a>
+                                </div>
+
                                 <button type="button" class="btn-construction">
                                     <svg width="31" height="31" viewBox="0 0 31 31" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -527,7 +548,7 @@
                         </div>
                     </div>
                     <div class="data-marshrut-wrapper__map">
-                        <div id="map" style="width: 100%; height: 400px;"></div>
+                        <div id="map"></div>
                         <a href="#" class="link-map">Скачать маршрут</a>
 
                         <div class="add-person">
@@ -834,6 +855,26 @@
             </div>
         </section>
         <!-- // BLOG -->
+           <!-- MOBILE -->
+          <div class="mobile-wrapper">
+            <div class="mobile">
+                <div class="mobile-content">
+                    <a href="{% url 'main' %}" class="mobile-content__link mobile-content__link--active">
+                        <img src="{% static 'russpass/img/icon/Home.png' %}" alt="">
+                    </a>
+                    <a href="{% url 'marhrut' %}" class="mobile-content__link">
+                        <img src="{% static 'russpass/img/icon/map-marked-alt.png' %}" alt="">
+                    </a>
+                    <a href="#" class="mobile-content__link">
+                        <img src="{% static 'russpass/img/icon/Chat.png' %}" alt="">
+                    </a>
+                    <a href="{% url 'dashbord' %}" class="mobile-content__link">
+                        <img src="{% static 'russpass/img/icon/Profile.png' %}" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- MOBILE -->
     </main>
 
     <!-- FOOTER -->
