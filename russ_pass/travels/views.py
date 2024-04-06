@@ -42,6 +42,16 @@ class ParkDetails(DetailView):
     queryset = Route.objects.all()
     pass
 
+class RoutesList(ListView):
+    model = Route
+    context_object_name = 'routes'
+    template_name = 'russpass/dyn/index.html'
+
+    def get_context_data(self, **kwargs): 
+        context = super().get_context_data(**kwargs)
+        context['page_header'] = "Все путешествия"
+        return context
+
 
 # class RegisterView(View):
 #     form_class = RegisterForm

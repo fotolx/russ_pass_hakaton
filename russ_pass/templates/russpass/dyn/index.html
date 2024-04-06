@@ -126,7 +126,7 @@
     <!-- HEADER -->
     <main>
      <!-- HERO -->
-        <section class="hero">
+     <section class="hero" style="background-image: url({% static 'russpass/img/hero/krasnoyarsk.png' %});">
             <div class="container container-hero">
                 <div class="hero-content">
                     <h1 class="title-hero">Красноярск</h1>
@@ -217,17 +217,21 @@
                     </div>
                     <div class="slider-wrapper ">
                           <div class="list-location carousel">
+                            <!-- CARD START -->
+                            {% if routes %} 
+                            {% for route in routes %}
                             <div class="card" data-id="1">
                                 <div class="image-mask image-mask--hover">
-                                    <img src="{% static 'russpass/img/marshrut/ergaki.png' %}" class="card__img" alt="">
+                                    <img src="{% static '{{ route.preview_small }}' %}" class="card__img" alt="">
+                                    <img src="{{ route.preview_small.url }}" class="card__img" alt="">
                                     <div class="mask">
                                         <a href="#" class="mask__link">Добавь<br> в свой маршрут</a>
                                     </div>
                                 </div>
                                 <a href="{% url 'park' %}" class="card__link">
-                                    <div class="card__title">Природный парк Ергаки</div>
+                                    <div class="card__title">{{ route.name }}</div>
                                 </a>
-                                <div class="card__text">Горный пеший маршрут</div>
+                                <div class="card__text">{{ route.type }}</div>
                                 <div class="card-lits">
                                     <div class="card-lits__item">
                                         <svg width="23" height="20" viewBox="0 0 23 20" fill="none"
@@ -281,6 +285,11 @@
 
                                 </button>
                             </div>
+                            {% endfor %}
+                            {% else %}
+                                <h2>Путешествий нет!</h2>
+                            {% endif %}
+                            <!-- CARD END -->
                             <div class="card" data-id="2">
                                 <div class="image-mask image-mask--hover">
                                     <img src="{% static 'russpass/img/marshrut/vulkan.png' %}" class="card__img" alt="">

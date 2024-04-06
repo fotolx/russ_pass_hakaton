@@ -126,19 +126,35 @@ class Tags(models.Model):
 
     def __str__(self):
         return f'{self.name}'
+    
+class Level(models.Model):
+    # id = models.AutoField(primary_key=True)
+    name = models.CharField(unique=True, max_length=100)
+    description = models.TextField(blank=True)
+    icon = models.ImageField(upload_to='images/level_icons/', blank=True)
+
+    def __str__(self):
+        return f'{self.name}'
 
 class Route(models.Model):
     # id = models.AutoField(primary_key=True)
     name = models.CharField(unique=False, max_length=100, verbose_name="Название")
     region = models.ForeignKey(Region, on_delete=models.CASCADE, blank=True, null=True, verbose_name="Регион")
     type = models.ForeignKey(RouteType, on_delete=models.CASCADE, verbose_name="Тип маршрута", blank=True, null=True)
+    level = models.ForeignKey(Level, on_delete=models.CASCADE, verbose_name="Уровень маршрута", blank=True, null=True)
+    rating = models.IntegerField(default=4.5, verbose_name="Рейтинг")
+    route_len = models.CharField(blank=True, max_length=100, verbose_name="Длина маршрута")
+    elevation = models.CharField(blank=True, max_length=100, verbose_name="Подъем")
+    video_link = models.CharField(blank=True, max_length=500, verbose_name="Ссылка на видео о маршруте")
     tags = models.ManyToManyField(Tags, through='RouteTags', blank=True, verbose_name="Теги")
     image = models.ImageField(default='blank_preview.png', upload_to='images/', blank=True, verbose_name="Изображение")
     preview_small = models.ImageField(default='blank_preview.png', upload_to='images/small/', blank=True, verbose_name="Превью маленькое")
     preview_big = models.ImageField(default='default_hero.png', upload_to='images/big/', blank=True, verbose_name="Превью большое")
+    map_image = models.ImageField(default='default_map.png', upload_to='images/map/', blank=True, verbose_name="Карта")
     exp_points = models.IntegerField(default=0, null=True, verbose_name="Очки опыта")
     bonuses = models.IntegerField(default=0, verbose_name="Бонусы")
     transport = models.ForeignKey(Transport, on_delete=models.CASCADE, blank=True, null=True, verbose_name="Транспорт")
+    description_short = models.CharField(blank=True, max_length=100, verbose_name="Краткое описание")
     description = models.TextField(blank=True, verbose_name="Описание")
 
     def __str__(self):

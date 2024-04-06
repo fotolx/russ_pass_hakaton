@@ -143,7 +143,7 @@
     <!-- HEADER -->
     <main>
         <!-- HERO -->
-        <section class="hero hero--marshrut">
+        <section class="hero hero--marshrut" style="background-image: url('{{ route.preview_big.url }}');">
             <div class="container container-hero container-hero--marshrut">
                 <div class="hero-content">
                     <h1 class="title-hero title-hero--marshrut">{{ route.name }}</h1>
@@ -310,7 +310,9 @@
                             </div>
                         </div>
                         <p class="text-data">
-                            {{ route.description | safe }}
+                            {% autoescape off %}
+                            {{ route.description  }}
+                            {% endautoescape %}
                         </p>
                         <a href="#" class="btn-video">
                             <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
