@@ -541,7 +541,7 @@ h2 {
 
 /*--- HERO ---*/
 .hero {
-
+    background-image: url(../img/hero/krasnoyarsk.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -552,6 +552,7 @@ h2 {
     }
 
     &--catalog {
+        background-image: url(../img/hero/2.png);
 
         @media(max-width: 1120px) {
             background-image: none;
