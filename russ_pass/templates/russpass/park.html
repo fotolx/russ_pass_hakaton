@@ -1,19 +1,20 @@
+{% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="ru">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Горный пеший маршрут «Природный парк Ергаки»</title>
     <meta name="description" content="" />
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/png" href="img/icon/logo.svg">
+    <link rel="stylesheet" href="{% static 'russpass/css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'russpass/css/style.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'russpass/img/icon/logo.svg' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=372dac5d-dbec-4965-918f-80bb88f9c884"
-        type="text/javascript"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=372dac5d-dbec-4965-918f-80bb88f9c884" type="text/javascript"></script>
     <script src="js/map.js"></script>
 </head>
 
@@ -26,8 +27,8 @@
             </button>
             <div class="header-content">
                 <div class="logo">
-                    <a href="index.html">
-                        <img src="img/icon/logo.svg" class="logo__img" alt="logo">
+                   <a href="{% url 'main' %}">
+                         <img src="{% static 'russpass/img/icon/logo.svg' %}" class="logo__img" alt="logo">
                     </a>
                 </div>
                 <div class="main-navigation">
@@ -57,11 +58,11 @@
                         <span class="burger__text">Меню</span>
                     </button>
                     <div class="location">
-                        <img src="img/icon/map.png" class="location__img" alt="">
+                        <img src="{% static 'russpass/img/icon/map.png' %}" class="location__img" alt="">
                         <div class="location__text" id="local">Твой регион</div>
                     </div>
                     <div class="bonus">
-                        <img src="img/icon/bonus.png" class="bonus__img" alt="">
+                         <img src="{% static 'russpass/img/icon/bonus.png' %}" class="bonus__img" alt="">
                         <div class="bonus__text">Бонус</div>
                     </div>
                 </div>
@@ -109,7 +110,7 @@
                     <div class="login__text">Войти</div>
                 </div>
                 <div class="flag-country">
-                    <img src="img/icon/flag.png" class="flag-country__img" alt="">
+                     <img src="{% static 'russpass/img/icon/flag.png' %}" class="flag-country__img" alt="">
                 </div>
             </div>
             <div class="header-bottoom">
@@ -123,7 +124,7 @@
                     <div class="text">Природный парк Ергаки</div>
                 </div>
                 <form class="form-hero" id="form-hero">
-                    <img src="img/icon/icon.png" alt="">
+                     <img src="{% static 'russpass/img/icon/icon.png' %}" alt="">
                     <input type="search" class="search-catalog" placeholder="Напишите название места ">
                 </form>
             </div>
@@ -311,14 +312,14 @@
                             <div class="group-tip__item">
                                 <div class="group-tip__title">Бонусы</div>
                                 <div class="group-tip__text group-tip__text--image">
-                                    <img src="img/icon/bonus.png" class="group-tip__img" alt="">
+                                     <img src="{% static 'russpass/img/icon/bonus.png' %}" class="group-tip__img" alt="">
                                     <span>82</span>
                                 </div>
                             </div>
                             <div class="group-tip__item">
                                 <div class="group-tip__title">Бонусы</div>
                                 <div class="group-tip__text group-tip__text--image">
-                                    <img src="img/icon/ruk.png" class="group-tip__img" alt="">
+                                     <img src="{% static 'russpass/img/icon/ruk.png' %}" class="group-tip__img" alt="">
                                     <span>56</span>
                                 </div>
                             </div>
@@ -435,10 +436,10 @@
                                 <div class="feedback-tab__btn">Фото (1985)</div>
                                 <div class="feedback-tab__btn">Пройдено (254)</div>
                             </div>
-                            <img src="img/feedback/2.png" class="feedback-image" alt="">
+                             <img src="{% static 'russpass/img/feedback/2.png' %}" class="feedback-image" alt="">
                             <div class="feedback__item">
                                 <div class="feedback-group">
-                                    <img src="img/person/2.png" class="feedback-group__img" alt="">
+                                     <img src="{% static 'russpass/img/person/2.png' %}" class="feedback-group__img" alt="">
                                     <div class="feedback-group__item">
                                         <div class="feedback-group__name">Никита Васильев</div>
                                         <div class="feedback-group__date">Август 17, 2023</div>
@@ -477,7 +478,7 @@
                             </div>
                             <div class="feedback__item">
                                 <div class="feedback-group">
-                                    <img src="img/person/4.png" class="feedback-group__img" alt="">
+                                     <img src="{% static 'russpass/img/person/4.png' %}" class="feedback-group__img" alt="">
                                     <div class="feedback-group__item">
                                         <div class="feedback-group__name">Марина Иванова</div>
                                         <div class="feedback-group__date">Май 30, 2023</div>
@@ -519,7 +520,7 @@
                                     Место красивое, но на популярных стоянках туристы буквально друг у друга на головах
                                     сидят.
                                 </div>
-                                <img src="img/feedback/1.png" class="feedback__img" alt="">
+                                 <img src="{% static 'russpass/img/feedback/1.png' %}" class="feedback__img" alt="">
                             </div>
                             <a href="#" class="btn-feedback">Смотреть еще отклики</a>
 
@@ -532,10 +533,10 @@
                         <div class="add-person">
                             <div class="add-person__title">Собрать группу</div>
                             <div class="add-person-wrapper">
-                                <img src="img/person/20.png" class="add-person-wrapper__img" alt="">
-                                <img src="img/person/21.png" class="add-person-wrapper__img" alt="">
-                                <img src="img/person/22.png" class="add-person-wrapper__img" alt="">
-                                <img src="img/person/23.png" class="add-person-wrapper__img" alt="">
+                                 <img src="{% static 'russpass/img/person/20.png' %}" class="add-person-wrapper__img" alt="">
+                                 <img src="{% static 'russpass/img/person/21.png' %}" class="add-person-wrapper__img" alt="">
+                                 <img src="{% static 'russpass/img/person/22.png' %}" class="add-person-wrapper__img" alt="">
+                                 <img src="{% static 'russpass/img/person/23.png' %}" class="add-person-wrapper__img" alt="">
                                 <button type="submit" class="add-person-wrapper__btn">
                                     <svg width="27" height="27" viewBox="0 0 27 27" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -554,7 +555,7 @@
                             </div>
                             <div class="card card--marshrut" data-id="1">
                                 <div class="image-mask image-mask--hover">
-                                    <img src="img/marshrut/ergaki.png" class="card__img" alt="">
+                                     <img src="{% static 'russpass/img/marshrut/ergaki.png" class="card__img" alt="">
                                     <div class="mask">
                                         <a href="#" class="mask__link">Добавь<br> в свой маршрут</a>
                                     </div>
@@ -585,16 +586,16 @@
                                 </div>
                                 <div class="card-group">
                                     <div class="card-group__link">
-                                        <img src="img/icon/1.png" class="icon-one" alt="">
+                                         <img src="{% static 'russpass/img/icon/1.png' %}" class="icon-one" alt="">
                                     </div>
                                     <div class="card-group__link">
-                                        <img src="img/icon/2.png" class="icon-two" alt="">
+                                         <img src="{% static 'russpass/img/icon/2.png' %}" class="icon-two" alt="">
                                     </div>
                                     <div class="card-group__link">
-                                        <img src="img/icon/3.png" class="icon-free" alt="">
+                                         <img src="{% static 'russpass/img/icon/3.png' %}" class="icon-free" alt="">
                                     </div>
                                     <div class="card-group__link">
-                                        <img src="img/icon/4.png" class="icon-fout" alt="">
+                                         <img src="{% static 'russpass/img/icon/4.png' %}" class="icon-fout" alt="">
                                     </div>
                                 </div>
                                 <button type="button" class="like">
@@ -618,7 +619,7 @@
                             </div>
                             <div class="card card--marshrut" data-id="2">
                                 <div class="image-mask image-mask--hover">
-                                    <img src="img/marshrut/vulkan.png" class="card__img" alt="">
+                                     <img src="{% static 'russpass/img/marshrut/vulkan.png' %}" class="card__img" alt="">
                                     <div class="mask">
                                         <a href="#" class="mask__link">Добавь<br> в свой маршрут</a>
                                     </div>
@@ -649,16 +650,16 @@
                                 </div>
                                 <div class="card-group">
                                     <div class="card-group__link">
-                                        <img src="img/icon/1.png" class="icon-one" alt="">
+                                         <img src="{% static 'russpass/img/icon/1.png' %}" class="icon-one" alt="">
                                     </div>
                                     <div class="card-group__link">
-                                        <img src="img/icon/5.png" class="icon-two" alt="">
+                                         <img src="{% static 'russpass/img/icon/5.png' %}" class="icon-two" alt="">
                                     </div>
                                     <div class="card-group__link">
-                                        <img src="img/icon/6.png" class="icon-free" alt="">
+                                         <img src="{% static 'russpass/img/icon/6.png' %}" class="icon-free" alt="">
                                     </div>
                                     <div class="card-group__link">
-                                        <img src="img/icon/4.png" class="icon-fout" alt="">
+                                         <img src="{% static 'russpass/img/icon/4.png' %}" class="icon-fout" alt="">
                                     </div>
                                 </div>
                                 <button type="button" class="like">
@@ -681,7 +682,7 @@
                             </div>
                             <div class="card" data-id="3">
                                 <div class="image-mask image-mask--hover">
-                                    <img src="img/marshrut/surikovo.png" class="card__img" alt="">
+                                     <img src="{% static 'russpass/img/marshrut/surikovo.png' %}" class="card__img" alt="">
                                     <div class="mask">
                                         <a href="#" class="mask__link">Добавь<br> в свой маршрут</a>
                                     </div>
@@ -712,16 +713,16 @@
                                 </div>
                                 <div class="card-group">
                                     <div class="card-group__link">
-                                        <img src="img/icon/1.png" class="icon-one" alt="">
+                                         <img src="{% static 'russpass/img/icon/1.png' %}" class="icon-one" alt="">
                                     </div>
                                     <div class="card-group__link">
-                                        <img src="img/icon/5.png" class="icon-two" alt="">
+                                         <img src="{% static 'russpass/img/icon/5.png' %}" class="icon-two" alt="">
                                     </div>
                                     <div class="card-group__link">
-                                        <img src="img/icon/6.png" class="icon-free" alt="">
+                                         <img src="{% static 'russpass/img/icon/6.png' %}" class="icon-free" alt="">
                                     </div>
                                     <div class="card-group__link">
-                                        <img src="img/icon/4.png" class="icon-fout" alt="">
+                                         <img src="{% static 'russpass/img/icon/4.png' %}" class="icon-fout" alt="">
                                     </div>
                                 </div>
                                 <button type="button" class="like">
@@ -762,7 +763,7 @@
                         Все наши маршруты проверены экспертами и оцениваются нашим сообществом путешественников
                         и искателей приключений, таких как вы.
                     </div>
-                    <img src="img/hero/Iphone.png" class="mabile-marshrut-img" alt="">
+                     <img src="{% static 'russpass/img/hero/Iphone.png' %}" class="mabile-marshrut-img" alt="">
                 </div>
             </div>
         </section>
@@ -888,7 +889,7 @@
             </div>
             <div class="footer-bottom">
                 <div class="logo">
-                    <img src="img/icon/logo-footer.svg" class="footer-logo" alt="">
+                     <img src="{% static 'russpass/img/icon/logo-footer.svg' %}" class="footer-logo" alt="">
                 </div>
                 <div class="politica">
                     <a href="#" class="politica__link">Политика конфиденциальности</a>
@@ -898,16 +899,16 @@
         </div>
     </footer>
     <!-- FOOTER -->
-    <script src="js/teams.js"></script>
-    <script src="js/slider.js"></script>
-    <script src="js/carusel.js"></script>
-    <script src="js/tab.js"></script>
-    <script src="js/card.js"></script>
-    <script src="js/card-delete.js"></script>
-    <script src="js/burger.js"></script>
-    <script src="js/sroll.js"></script>
-    <script src="js/opacity-all.js"></script>
-    <script src="js/pogoda.js"></script>
+    <script src="{% static 'russpass/js/teams.js' %}"></script>
+    <script src="{% static 'russpass/js/slider.js' %}"></script>
+    <script src="{% static 'russpass/js/carusel.js' %}"></script>
+    <script src="{% static 'russpass/js/tab.js' %}"></script>
+    <script src="{% static 'russpass/js/card.js' %}"></script>
+    <script src="{% static 'russpass/js/card-delete.js' %}"></script>
+    <script src="{% static 'russpass/js/burger.js' %}"></script>
+    <script src="{% static 'russpass/js/sroll.js' %}"></script>
+    <script src="{% static 'russpass/js/opacity-all.js' %}"></script>
+    <script src="{% static 'russpass/js/pogoda.js' %}"></script>
 
     <script>
         if ('serviceWorker' in navigator) {
