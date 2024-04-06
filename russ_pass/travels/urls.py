@@ -13,6 +13,6 @@ urlpatterns = [
     # path("park/", TemplateView.as_view(template_name="russpass/park.html"), name='park'),
     
     path('dyn/park/<int:pk>', ParkDetails.as_view(), name='park_details'),
-    path('dyn/index/', RoutesList.as_view(), name='dyn_home'), 
-
+    path('dyn/index/', RoutesList.as_view(template_name="russpass/dyn/index.html"), name='dyn_home'), 
+    path('dyn/marshrut/', RoutesList.as_view(template_name="russpass/dyn/marshrut.html"), name='dyn_marshrut'), 
 ]

@@ -227,7 +227,7 @@
                                         <a href="#" class="mask__link">Добавь<br> в свой маршрут</a>
                                     </div>
                                 </div>
-                                <a href="{% url 'park' %}" class="card__link">
+                                <a href="/dyn/park/{{ route.id }}" class="card__link">
                                     <div class="card__title">{{ route.name }}</div>
                                 </a>
                                 <div class="card__text">{{ route.type }}</div>
@@ -308,12 +308,15 @@
                     </div>
                     <div class="slider-wrapper">
                        <div class="list-location carousel">
+                            <!-- CARD START -->
+                            {% if foods %} 
+                            {% for food in foods %}
                             <div class="card" data-id="6">
-                                <img src="{% static 'russpass/img/marshrut/bul.png' %}" class="card__img" alt="">
+                                <img src="{{ food.image_preview.url }}" class="card__img" alt="">
                                 <a href="#" class="card__link">
-                                    <div class="card__title">Ресторан Булгаков</div>
+                                    <div class="card__title">{{ food.name }}</div>
                                 </a>
-                                <div class="card__text">Пешая прогулка с гидом</div>
+                                <div class="card__text">{{ food.type }}</div>
                                 <div class="card-lits">
                                     <div class="card-lits__item">
                                         <svg width="23" height="20" viewBox="0 0 23 20" fill="none"
@@ -329,9 +332,9 @@
                                                 </clipPath>
                                             </defs>
                                         </svg>
-                                        <span class="reiting-card">4.5</span>
+                                        <span class="reiting-card">{{ food.rating }}</span>
                                     </div>
-                                    <div class="card-lits__item km-card">1 200 ₽</div>
+                                    <div class="card-lits__item km-card">{{ food.cost|floatformat:0 }} ₽</div>
                                     <div class="card-lits__item level-card"></div>
                                 </div>
                                 <div class="card-group">
@@ -367,6 +370,13 @@
 
                                 </button>
                             </div>
+                            {% endfor %}
+                            {% else %}
+                                <h2>Поесть негде. (</h2>
+                            {% endif %}
+                            <!-- CARD END -->
+
+
                             <div class="card" data-id="7">
                                 <img src="{% static 'russpass/img/marshrut/fre.png' %}" class="card__img" alt="">
                                 <a href="#" class="card__link">
