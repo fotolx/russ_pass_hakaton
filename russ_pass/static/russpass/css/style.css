@@ -152,7 +152,6 @@ h2 {
     padding: 20px;
     padding-bottom: 0;
     transition: transform 0.2s ease-in-out;
-    dispaly: none;
   }
   .main-navigation .line-border {
     display: none;
@@ -545,7 +544,6 @@ h2 {
 /*--- HEADER ---*/
 /*--- HERO ---*/
 .hero {
-  background-image: url(../img/hero/krasnoyarsk.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -3077,6 +3075,7 @@ h2 {
     transition: transform 0.2s ease-in-out;
     position: fixed;
     top: 60px;
+    padding: 20px;
   }
 }
 .dasbord-wrapper__content {
@@ -3182,6 +3181,11 @@ h2 {
   padding-bottom: 68px;
   border-bottom: 2.41px solid #f0f0f0;
 }
+@media (max-width: 1120px) {
+  .ii__link span {
+    padding-bottom: 8px;
+  }
+}
 .ii__img {
   margin-bottom: 50px;
   border-radius: 100%;
@@ -3194,21 +3198,46 @@ h2 {
     box-shadow: 0 0 0 15px rgba(90, 153, 220, 0), inset 0 1px 0 #F1A501;
   }
 }
+@media (max-width: 1120px) {
+  .ii__img {
+    width: 60px;
+    margin-bottom: 20px;
+  }
+}
 
 .menu-dasbord-list {
   margin-top: 77px;
   padding-left: 0;
 }
+@media (max-width: 1120px) {
+  .menu-dasbord-list {
+    margin-top: 20px;
+  }
+}
 .menu-dasbord-list__item:not(:last-child) {
   margin-bottom: 50px;
+}
+@media (max-width: 1120px) {
+  .menu-dasbord-list__item:not(:last-child) {
+    margin-bottom: 10px;
+  }
 }
 .menu-dasbord-list__link {
   display: flex;
   align-items: center;
   text-decoration: none;
   font-weight: 500;
-  font-size: 25px;
   color: var(--color-black);
+}
+@media (max-width: 767px) {
+  .menu-dasbord-list__link {
+    font-size: calc(18px + 11.9 * (100vw - 320px) / 1900);
+  }
+}
+@media (min-width: 767px) {
+  .menu-dasbord-list__link {
+    font-size: calc(18px + 7 * 100vw / 1900);
+  }
 }
 .menu-dasbord-list__link--active {
   color: #F66F4D;
@@ -3238,13 +3267,30 @@ h2 {
 .menu-dasbord-list__link svg {
   margin-right: 5px;
 }
+@media (max-width: 1120px) {
+  .menu-dasbord-list__link svg {
+    width: 20px;
+  }
+}
 
 .social-cart {
   display: block;
   margin-top: 56px;
 }
+@media (max-width: 1120px) {
+  .social-cart {
+    margin-top: 26px;
+  }
+}
 .social-cart__img {
   width: 100%;
+}
+@media (max-width: 1120px) {
+  .social-cart__img {
+    display: block;
+    width: 60%;
+    margin: 0 auto;
+  }
 }
 
 .menu-dasbord-link {
@@ -4760,18 +4806,36 @@ h2 {
 }
 .money-wrapper__title {
   font-weight: 500;
-  font-size: 18px;
   line-height: 120%;
   color: #fff;
 }
+@media (max-width: 767px) {
+  .money-wrapper__title {
+    font-size: calc(16px + 3.4 * (100vw - 320px) / 1900);
+  }
+}
+@media (min-width: 767px) {
+  .money-wrapper__title {
+    font-size: calc(16px + 2 * 100vw / 1900);
+  }
+}
 .money-wrapper__price {
   font-weight: 700;
-  font-size: 24px;
   line-height: 75%;
   letter-spacing: 0.02em;
   color: #fff;
   margin-top: 24px;
   margin-bottom: 24px;
+}
+@media (max-width: 767px) {
+  .money-wrapper__price {
+    font-size: calc(18px + 10.2 * (100vw - 320px) / 1900);
+  }
+}
+@media (min-width: 767px) {
+  .money-wrapper__price {
+    font-size: calc(18px + 6 * 100vw / 1900);
+  }
 }
 
 .old-marshrut {
@@ -4829,8 +4893,23 @@ h2 {
   align-items: center;
   justify-content: space-between;
 }
+@media (max-width: 770px) {
+  .wrapper-date-const {
+    flex-direction: column;
+  }
+}
 .wrapper-date-const__img:not(:last-child) {
   margin-right: 10px;
+}
+@media (max-width: 770px) {
+  .wrapper-date-const__img:not(:last-child) {
+    margin-right: 0px;
+  }
+}
+@media (max-width: 770px) {
+  .wrapper-date-const__item {
+    margin-top: 30px;
+  }
 }
 .wrapper-сonstr {
   width: 100%;
@@ -4839,6 +4918,11 @@ h2 {
 .const-image {
   margin-top: 60px;
   width: 100%;
+}
+@media (max-width: 1120px) {
+  .const-image {
+    width: 100%;
+  }
 }
 
 .hero-map {
