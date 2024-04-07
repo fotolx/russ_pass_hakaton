@@ -1,5 +1,6 @@
+/*
 const flagCountry = document.querySelector('.flag-country');
-  let clicked = false;
+let clicked = false;
 
   flagCountry.addEventListener('click', () => {
     if (!clicked) {
@@ -17,3 +18,4 @@ const flagCountry = document.querySelector('.flag-country');
     }
     clicked = !clicked;
   });
+  */

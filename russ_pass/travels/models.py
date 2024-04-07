@@ -226,6 +226,7 @@ class Accommodation(models.Model):
     type = models.ForeignKey(AccommodationType, on_delete=models.CASCADE, verbose_name="Тип жилья")
     price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, verbose_name="Стоимость")
     rating = models.FloatField(blank=True, verbose_name="Рейтинг")
+    short = models.CharField(max_length=50, blank=True, verbose_name="Кратко")
     description = models.TextField(blank=True, verbose_name="Описание")
     image_preview = models.ImageField(upload_to='images/small/', blank=True, verbose_name="Превью")
     image_big = models.ImageField(upload_to='images/big/', blank=True, verbose_name="Большое изображение")

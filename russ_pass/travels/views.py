@@ -38,7 +38,7 @@ def dyn_home(request):
     return render(request, 'russpass/dyn/index.html')
 
 class ParkDetails(DetailView):
-    template_name = 'russpass/dyn/park.html'
+    # template_name = 'russpass/dyn/park.html'
     queryset = Route.objects.all()
 
     def get_context_data(self, **kwargs): 
