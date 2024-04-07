@@ -22,6 +22,9 @@
     <!-- HEADER -->
     <header class="header header--dasbord">
         <div class="container container-header">
+            <button class="burger-dashbord" data-burger-dashbord>
+                <span class="burger-dashbord__line"></span>
+            </button>
             <div class="header-content">
                 <div class="main-navigation main-navigation--dashbord">
                     <div class="logo">
@@ -58,8 +61,8 @@
                         <div class="location__text" id="local">Твой регион</div>
                     </div>
                 </div>
-                <div class="storag storag--dashbord">
-                    <div class="login login--dashbord">
+                <div class="storag storag--dashbord"></div>
+                <div class="login login--dashbord">
                         <div class="flag-country">
                             <img src="{% static 'russpass/img/icon/flag.png' %}" class="flag-country__img" alt="">
                             <span> Русский / ₽  </span>
@@ -87,7 +90,6 @@
                         </a>
                       {% endif %}
                     </div>
-                </div>
             </div>
         </div>
     </header>
@@ -585,6 +587,7 @@
                     <div class="dasbord-wrapper__freind">
                         <div class="my-freind">
                             <div class="my-freind__title">Мои друзья</div>
+                            <div class="group-popular-wrapper">
                             <div class="group-freind">
                                 <div class="group-freind__item">
                                     <span><img src="{% static 'russpass/img/person/1.png' %}" class="group-freind__img" alt=""></span>
@@ -654,9 +657,11 @@
                                     <div class="name-content__circle"><span></span></div>
                                 </div>
                             </div>
+                            </div>
                         </div>
                         <div class="popular-marshrut">
                             <div class="popular-marshrut__title">Пройденные маршруты</div>
+                            <div class="group-popular-wrapper">
                             <div class="group-popular">
                                 <div class="group-popular__item">
                                     <img src="{% static 'russpass/img/person/6.png' %}" class="group-popular__img" alt="">
@@ -707,6 +712,7 @@
                                     </div>
                                 </div>
                                 <a href="#" class="btn">Оставить отзыв</a>
+                            </div>
                             </div>
                             <a href="" class="btn-load">Загрузить ещё</a>
                         </div>
