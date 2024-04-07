@@ -152,6 +152,7 @@ h2 {
     padding: 20px;
     padding-bottom: 0;
     transition: transform 0.2s ease-in-out;
+    dispaly: none;
   }
   .main-navigation .line-border {
     display: none;
