@@ -23,6 +23,9 @@
     <!-- HEADER -->
     <header class="header header--dasbord">
         <div class="container container-header">
+            <button class="burger-dashbord" data-burger-dashbord>
+                <span class="burger-dashbord__line"></span>
+            </button>
             <div class="header-content">
                 <div class="main-navigation main-navigation--dashbord">
                     <div class="logo">
@@ -60,7 +63,9 @@
                     </div>
                 </div>
                 <div class="storag storag--dashbord">
-                    <div class="login login--dashbord">
+                    
+                </div>
+                <div class="login login--dashbord">
                         <div class="flag-country">
                            <img src="{% static 'russpass/img/icon/flag.png' %}" class="flag-country__img" alt="">
                             <span> Русский / ₽  </span>
@@ -88,7 +93,6 @@
                         </a>
                       {% endif %}
                     </div>
-                </div>
             </div>
         </div>
     </header>
@@ -516,6 +520,7 @@
     <script src="{% static 'russpass/js/card.js' %}"></script>
     <script src="{% static 'russpass/js/card-delete.js' %}"></script>
     <script src="{% static 'russpass/js/opacity-btn.js' %}"></script>
+      <script src="{% static 'russpass/js/burger-dashbord.js' %}"></script>
 
     <script>
         if ('serviceWorker' in navigator) {
