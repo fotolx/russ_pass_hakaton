@@ -67,7 +67,7 @@ urlpatterns = [
     # Static pages
     # path("", TemplateView.as_view(template_name="russpass/index.html"), name='main'),
     path("dashboard/", TemplateView.as_view(template_name="russpass/dashboard.html"), name='dashboard'),
-    path("marshrut/", TemplateView.as_view(template_name="russpass/marshrut.html"), name='marshrut'),
+    # path("marshrut/", TemplateView.as_view(template_name="russpass/marshrut.html"), name='marshrut'),
     # path("park/", TemplateView.as_view(template_name="russpass/park.html"), name='park'),
     path("plan/", TemplateView.as_view(template_name="russpass/plan.html"), name='plan'),
     path("bonus/", TemplateView.as_view(template_name="russpass/bonus.html"), name='bonus'),
