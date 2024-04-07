@@ -9,7 +9,7 @@ ymaps.ready(function () {
 
     var myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
         balloonContentBody: [
-            `<div style="display:inline"><input type="file" class="input-map" id="map-local" capture="user"></div>
+            `<div style="display:inline"><input type="file" class="input-map" id="map-local" accept="image/*" capture></div>
             <div style="font-size:14px">Загрузи фото этой точки и получи очки и бонусы</div>`,
         ].join('')
     }, {
