@@ -8,6 +8,7 @@ ymaps.ready(function () {
     });
 
     var myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
+        hintContent: 'Собственный значок метки с контентом',
         balloonContentBody: [
             `<div style="display:flex; align-items: center">
                 <div class="wrapper-camera">
@@ -31,10 +32,27 @@ ymaps.ready(function () {
                 </div>
             </div>
             `,
-        ].join('')
-    }, {
+        ].join(''),
+        iconContent: '',
+
+    },
+    {
+        // Опции.
+        // Необходимо указать данный тип макета.
+        iconLayout: 'default#image',
+        // Своё изображение иконки метки.
+        iconImageHref: '/static/russpass/img/12.svg',
+        // Размеры метки.
+        iconImageSize: [60, 60],
+        // Смещение левого верхнего угла иконки относительно
+        // её "ножки" (точки привязки).
+        iconImageOffset: [-5, -38]
+    },
+     {
         preset: 'islands#redDotIcon'
-    });
+    },);
+
+    
 
     myMap.geoObjects.add(myPlacemark);
 });
