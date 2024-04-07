@@ -217,17 +217,20 @@
                     </div>
                     <div class="slider-wrapper ">
                           <div class="list-location carousel">
-                            <div class="card" data-id="1">
+                            <!-- CARD START -->
+                            {% if routes %} 
+                            {% for route in routes %}
+                            <div class="card" data-id="r{{ route.id }}">
                                 <div class="image-mask image-mask--hover">
-                                    <img src="{% static 'russpass/img/marshrut/ergaki.png' %}" class="card__img" alt="">
+                                    <img src="{{ route.preview_small.url }}" class="card__img" alt="">
                                     <div class="mask">
                                         <a href="#" class="mask__link">Добавь<br> в свой маршрут</a>
                                     </div>
                                 </div>
-                                <a href="{% url 'park' %}" class="card__link">
-                                    <div class="card__title">Природный парк Ергаки</div>
+                                <a href="/park/{{ route.id }}" class="card__link">
+                                    <div class="card__title">{{ route.name }}</div>
                                 </a>
-                                <div class="card__text">Горный пеший маршрут</div>
+                                <div class="card__text">{{ route.type }}</div>
                                 <div class="card-lits">
                                     <div class="card-lits__item">
                                         <svg width="23" height="20" viewBox="0 0 23 20" fill="none"
@@ -243,24 +246,17 @@
                                                 </clipPath>
                                             </defs>
                                         </svg>
-                                        <span class="reiting-card">4.5</span>
+                                        <span class="reiting-card">{{ route.rating }}</span>
                                     </div>
-                                    <div class="card-lits__item km-card">4.2 км</div>
-                                    <div class="card-lits__item level-card">Простой</div>
+                                    <div class="card-lits__item km-card">{{ route.route_len }}</div>
+                                    <div class="card-lits__item level-card">{{ route.level }}</div>
                                 </div>
                                 <div class="card-group">
+                                    {% for tags in route.tags.all %}
                                     <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/1.png' %}" class="icon-one" alt="">
+                                        <img src="{{ tags.icon.url }}" class="icon-one" alt="">
                                     </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/2.png' %}" class="icon-two" alt="">
-                                    </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/3.png' %}" class="icon-free" alt="">
-                                    </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/4.png' %}" class="icon-fout" alt="">
-                                    </div>
+                                    {% endfor %}
                                 </div>
                                 <button type="button" class="like">
                                     <svg width="25" height="32" viewBox="0 0 25 32" fill="none"
@@ -281,261 +277,11 @@
 
                                 </button>
                             </div>
-                            <div class="card" data-id="2">
-                                <div class="image-mask image-mask--hover">
-                                    <img src="{% static 'russpass/img/marshrut/vulkan.png' %}" class="card__img" alt="">
-                                    <div class="mask">
-                                        <a href="#" class="mask__link">Добавь<br> в свой маршрут</a>
-                                    </div>
-                                </div>
-                                <a href="#" class="card__link">
-                                    <div class="card__title">Спящий вулкан Карадак</div>
-                                </a>
-                                <div class="card__text">Пешая прогулка с гидом</div>
-                                <div class="card-lits">
-                                    <div class="card-lits__item">
-                                        <svg width="23" height="20" viewBox="0 0 23 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <g clip-path="url(#clip0_178_413)">
-                                                <path
-                                                    d="M10.4141 0.416511L7.8633 5.58839L2.15627 6.42042C1.13283 6.56885 0.722675 7.83057 1.46486 8.55323L5.59377 12.5767L4.61721 18.2603C4.44142 19.2876 5.52346 20.0571 6.42971 19.5767L11.5352 16.8931L16.6406 19.5767C17.5469 20.0532 18.6289 19.2876 18.4531 18.2603L17.4766 12.5767L21.6055 8.55323C22.3477 7.83057 21.9375 6.56885 20.9141 6.42042L15.2071 5.58839L12.6563 0.416511C12.1992 -0.505364 10.875 -0.517083 10.4141 0.416511Z" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_178_413">
-                                                    <rect width="22.5" height="20" fill="white"
-                                                        transform="translate(0.285156 -0.279297)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <span class="reiting-card">4.9</span>
-                                    </div>
-                                    <div class="card-lits__item km-card">10.6 км</div>
-                                    <div class="card-lits__item level-card">Сложный</div>
-                                </div>
-                                <div class="card-group">
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/1.png' %}" class="icon-one" alt="">
-                                    </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/5.png' %}" class="icon-two" alt="">
-                                    </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/6.png' %}" class="icon-free" alt="">
-                                    </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/4.png' %}" class="icon-fout" alt="">
-                                    </div>
-                                </div>
-                                <button type="button" class="like">
-                                    <svg width="25" height="32" viewBox="0 0 25 32" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg" stroke-width="1">
-                                        <g clip-path="url(#clip0_170_1104)">
-                                            <path
-                                                d="M12.2784 9.17478L11.5154 9.82178L12.2784 10.7218L13.0414 9.82178L12.2784 9.17478ZM12.3084 24.9988L11.6414 25.7448C11.8248 25.9087 12.062 25.9993 12.3079 25.9993C12.5538 25.9993 12.7911 25.9087 12.9744 25.7448L12.3084 25.0008V24.9988ZM13.0414 8.52878C10.7494 5.82578 6.78744 5.00078 3.78944 7.58478L5.09544 9.10078C7.10544 7.36778 9.81044 7.80978 11.5154 9.82178L13.0414 8.52878ZM3.78944 7.58478C0.886443 10.0878 0.466443 14.2958 2.75944 17.2728L4.34444 16.0528C2.70444 13.9228 2.99044 10.9148 5.09444 9.09978L3.79044 7.58478H3.78944ZM21.7964 17.2728C24.0814 14.3078 23.7264 10.0658 20.7564 7.57578L19.4714 9.10878C21.5964 10.8898 21.8624 13.9118 20.2124 16.0528L21.7964 17.2728ZM20.7564 7.57578C17.7264 5.03478 13.8154 5.81578 11.5164 8.52878L13.0414 9.82178C14.7384 7.81978 17.4084 7.37878 19.4714 9.10878L20.7564 7.57578ZM2.76044 17.2728C3.64044 18.4148 5.49044 20.1958 7.25844 21.8198C9.04644 23.4638 10.8434 25.0318 11.6414 25.7448L12.9744 24.2538C12.1504 23.5178 10.3874 21.9788 8.61144 20.3478C6.81544 18.6968 5.09944 17.0328 4.34444 16.0528L2.76044 17.2728ZM12.9744 25.7448C13.7784 25.0268 15.5544 23.4628 17.3314 21.8168C19.0844 20.1918 20.9184 18.4128 21.7964 17.2728L20.2124 16.0528C19.4554 17.0358 17.7524 18.6998 15.9724 20.3498C14.2134 21.9798 12.4594 23.5228 11.6424 24.2538L12.9744 25.7448Z" />
-                                            <path
-                                                d="M9.64009 7.59766L12.1713 8.71094L13.59 8.20988L15.6764 7.62569L19.5988 8.12642L20.9341 10.185L22.3528 12.8556L21.3792 15.7487L19.0702 19.3651L14.9531 22.7033L13.284 24.4003L11.8096 24.3725L9.44503 22.9537L6.1068 19.8937L3.63095 16.3329L2.76858 13.6901L2.60254 11.2421L4.10439 8.68279L6.66361 7.68133L9.64009 7.59766Z" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_170_1104">
-                                                <rect width="22" height="20" fill="white"
-                                                    transform="translate(1.28516 6)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </button>
-                            </div>
-                            <div class="card" data-id="3">
-                                <div class="image-mask image-mask--hover">
-                                    <img src="{% static 'russpass/img/marshrut/surikovo.png' %}" class="card__img" alt="">
-                                    <div class="mask">
-                                        <a href="#" class="mask__link">Добавь<br> в свой маршрут</a>
-                                    </div>
-                                </div>
-                                <a href="#" class="card__link">
-                                    <div class="card__title">Музей-усадьба В.Сурикова</div>
-                                </a>
-                                <div class="card__text">Городская прогулка</div>
-                                <div class="card-lits">
-                                    <div class="card-lits__item">
-                                        <svg width="23" height="20" viewBox="0 0 23 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <g clip-path="url(#clip0_178_413)">
-                                                <path
-                                                    d="M10.4141 0.416511L7.8633 5.58839L2.15627 6.42042C1.13283 6.56885 0.722675 7.83057 1.46486 8.55323L5.59377 12.5767L4.61721 18.2603C4.44142 19.2876 5.52346 20.0571 6.42971 19.5767L11.5352 16.8931L16.6406 19.5767C17.5469 20.0532 18.6289 19.2876 18.4531 18.2603L17.4766 12.5767L21.6055 8.55323C22.3477 7.83057 21.9375 6.56885 20.9141 6.42042L15.2071 5.58839L12.6563 0.416511C12.1992 -0.505364 10.875 -0.517083 10.4141 0.416511Z" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_178_413">
-                                                    <rect width="22.5" height="20" fill="white"
-                                                        transform="translate(0.285156 -0.279297)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <span class="reiting-card">4.9</span>
-                                    </div>
-                                    <div class="card-lits__item km-card">1.7 км</div>
-                                    <div class="card-lits__item level-card">Простой</div>
-                                </div>
-                                <div class="card-group">
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/1.png' %}" class="icon-one" alt="">
-                                    </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/5.png' %}" class="icon-two" alt="">
-                                    </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/6.png' %}" class="icon-free" alt="">
-                                    </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/4.png' %}" class="icon-fout" alt="">
-                                    </div>
-                                </div>
-                                <button type="button" class="like">
-                                    <svg width="25" height="32" viewBox="0 0 25 32" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg" stroke-width="1">
-                                        <g clip-path="url(#clip0_170_1104)">
-                                            <path
-                                                d="M12.2784 9.17478L11.5154 9.82178L12.2784 10.7218L13.0414 9.82178L12.2784 9.17478ZM12.3084 24.9988L11.6414 25.7448C11.8248 25.9087 12.062 25.9993 12.3079 25.9993C12.5538 25.9993 12.7911 25.9087 12.9744 25.7448L12.3084 25.0008V24.9988ZM13.0414 8.52878C10.7494 5.82578 6.78744 5.00078 3.78944 7.58478L5.09544 9.10078C7.10544 7.36778 9.81044 7.80978 11.5154 9.82178L13.0414 8.52878ZM3.78944 7.58478C0.886443 10.0878 0.466443 14.2958 2.75944 17.2728L4.34444 16.0528C2.70444 13.9228 2.99044 10.9148 5.09444 9.09978L3.79044 7.58478H3.78944ZM21.7964 17.2728C24.0814 14.3078 23.7264 10.0658 20.7564 7.57578L19.4714 9.10878C21.5964 10.8898 21.8624 13.9118 20.2124 16.0528L21.7964 17.2728ZM20.7564 7.57578C17.7264 5.03478 13.8154 5.81578 11.5164 8.52878L13.0414 9.82178C14.7384 7.81978 17.4084 7.37878 19.4714 9.10878L20.7564 7.57578ZM2.76044 17.2728C3.64044 18.4148 5.49044 20.1958 7.25844 21.8198C9.04644 23.4638 10.8434 25.0318 11.6414 25.7448L12.9744 24.2538C12.1504 23.5178 10.3874 21.9788 8.61144 20.3478C6.81544 18.6968 5.09944 17.0328 4.34444 16.0528L2.76044 17.2728ZM12.9744 25.7448C13.7784 25.0268 15.5544 23.4628 17.3314 21.8168C19.0844 20.1918 20.9184 18.4128 21.7964 17.2728L20.2124 16.0528C19.4554 17.0358 17.7524 18.6998 15.9724 20.3498C14.2134 21.9798 12.4594 23.5228 11.6424 24.2538L12.9744 25.7448Z" />
-                                            <path
-                                                d="M9.64009 7.59766L12.1713 8.71094L13.59 8.20988L15.6764 7.62569L19.5988 8.12642L20.9341 10.185L22.3528 12.8556L21.3792 15.7487L19.0702 19.3651L14.9531 22.7033L13.284 24.4003L11.8096 24.3725L9.44503 22.9537L6.1068 19.8937L3.63095 16.3329L2.76858 13.6901L2.60254 11.2421L4.10439 8.68279L6.66361 7.68133L9.64009 7.59766Z" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_170_1104">
-                                                <rect width="22" height="20" fill="white"
-                                                    transform="translate(1.28516 6)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-
-                                </button>
-                            </div>
-                            <div class="card" data-id="4">
-                                <div class="image-mask image-mask--hover">
-                                    <img src="{% static 'russpass/img/marshrut/velo.png' %}" class="card__img" alt="">
-                                    <div class="mask">
-                                        <a href="#" class="mask__link">Добавь<br> в свой маршрут</a>
-                                    </div>
-                                </div>
-                                <a href="park.html" class="card__link">
-                                    <div class="card__title">Природный парк Ергаки</div>
-                                </a>
-                                <div class="card__text">Вело</div>
-                                <div class="card-lits">
-                                    <div class="card-lits__item">
-                                        <svg width="23" height="20" viewBox="0 0 23 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <g clip-path="url(#clip0_178_413)">
-                                                <path
-                                                    d="M10.4141 0.416511L7.8633 5.58839L2.15627 6.42042C1.13283 6.56885 0.722675 7.83057 1.46486 8.55323L5.59377 12.5767L4.61721 18.2603C4.44142 19.2876 5.52346 20.0571 6.42971 19.5767L11.5352 16.8931L16.6406 19.5767C17.5469 20.0532 18.6289 19.2876 18.4531 18.2603L17.4766 12.5767L21.6055 8.55323C22.3477 7.83057 21.9375 6.56885 20.9141 6.42042L15.2071 5.58839L12.6563 0.416511C12.1992 -0.505364 10.875 -0.517083 10.4141 0.416511Z" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_178_413">
-                                                    <rect width="22.5" height="20" fill="white"
-                                                        transform="translate(0.285156 -0.279297)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <span class="reiting-card">4.5</span>
-                                    </div>
-                                    <div class="card-lits__item km-card">4.2 км</div>
-                                    <div class="card-lits__item level-card">Простой</div>
-                                </div>
-                                <div class="card-group">
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/2.png' %}" class="icon-one" alt="">
-                                    </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/5.png' %}" class="icon-two" alt="">
-                                    </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/6.png' %}" class="icon-free" alt="">
-                                    </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/7.png' %}" class="icon-fout" alt="">
-                                    </div>
-                                </div>
-                                <button type="button" class="like">
-                                    <svg width="25" height="32" viewBox="0 0 25 32" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg" stroke-width="1">
-                                        <g clip-path="url(#clip0_170_1104)">
-                                            <path
-                                                d="M12.2784 9.17478L11.5154 9.82178L12.2784 10.7218L13.0414 9.82178L12.2784 9.17478ZM12.3084 24.9988L11.6414 25.7448C11.8248 25.9087 12.062 25.9993 12.3079 25.9993C12.5538 25.9993 12.7911 25.9087 12.9744 25.7448L12.3084 25.0008V24.9988ZM13.0414 8.52878C10.7494 5.82578 6.78744 5.00078 3.78944 7.58478L5.09544 9.10078C7.10544 7.36778 9.81044 7.80978 11.5154 9.82178L13.0414 8.52878ZM3.78944 7.58478C0.886443 10.0878 0.466443 14.2958 2.75944 17.2728L4.34444 16.0528C2.70444 13.9228 2.99044 10.9148 5.09444 9.09978L3.79044 7.58478H3.78944ZM21.7964 17.2728C24.0814 14.3078 23.7264 10.0658 20.7564 7.57578L19.4714 9.10878C21.5964 10.8898 21.8624 13.9118 20.2124 16.0528L21.7964 17.2728ZM20.7564 7.57578C17.7264 5.03478 13.8154 5.81578 11.5164 8.52878L13.0414 9.82178C14.7384 7.81978 17.4084 7.37878 19.4714 9.10878L20.7564 7.57578ZM2.76044 17.2728C3.64044 18.4148 5.49044 20.1958 7.25844 21.8198C9.04644 23.4638 10.8434 25.0318 11.6414 25.7448L12.9744 24.2538C12.1504 23.5178 10.3874 21.9788 8.61144 20.3478C6.81544 18.6968 5.09944 17.0328 4.34444 16.0528L2.76044 17.2728ZM12.9744 25.7448C13.7784 25.0268 15.5544 23.4628 17.3314 21.8168C19.0844 20.1918 20.9184 18.4128 21.7964 17.2728L20.2124 16.0528C19.4554 17.0358 17.7524 18.6998 15.9724 20.3498C14.2134 21.9798 12.4594 23.5228 11.6424 24.2538L12.9744 25.7448Z" />
-                                            <path
-                                                d="M9.64009 7.59766L12.1713 8.71094L13.59 8.20988L15.6764 7.62569L19.5988 8.12642L20.9341 10.185L22.3528 12.8556L21.3792 15.7487L19.0702 19.3651L14.9531 22.7033L13.284 24.4003L11.8096 24.3725L9.44503 22.9537L6.1068 19.8937L3.63095 16.3329L2.76858 13.6901L2.60254 11.2421L4.10439 8.68279L6.66361 7.68133L9.64009 7.59766Z" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_170_1104">
-                                                <rect width="22" height="20" fill="white"
-                                                    transform="translate(1.28516 6)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-
-                                </button>
-                            </div>
-                            <div class="card" data-id="5">
-                                <div class="image-mask image-mask--hover">
-                                    <img src="{% static 'russpass/img/marshrut/ergaki.png' %}" class="card__img" alt="">
-                                    <div class="mask">
-                                        <a href="#" class="mask__link">Добавь<br> в свой маршрут</a>
-                                    </div>
-                                </div>
-                                <a href="park.html" class="card__link">
-                                    <div class="card__title">Природный парк Ергаки</div>
-                                </a>
-                                <div class="card__text">Вело</div>
-                                <div class="card-lits">
-                                    <div class="card-lits__item">
-                                        <svg width="23" height="20" viewBox="0 0 23 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <g clip-path="url(#clip0_178_413)">
-                                                <path
-                                                    d="M10.4141 0.416511L7.8633 5.58839L2.15627 6.42042C1.13283 6.56885 0.722675 7.83057 1.46486 8.55323L5.59377 12.5767L4.61721 18.2603C4.44142 19.2876 5.52346 20.0571 6.42971 19.5767L11.5352 16.8931L16.6406 19.5767C17.5469 20.0532 18.6289 19.2876 18.4531 18.2603L17.4766 12.5767L21.6055 8.55323C22.3477 7.83057 21.9375 6.56885 20.9141 6.42042L15.2071 5.58839L12.6563 0.416511C12.1992 -0.505364 10.875 -0.517083 10.4141 0.416511Z" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_178_413">
-                                                    <rect width="22.5" height="20" fill="white"
-                                                        transform="translate(0.285156 -0.279297)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <span class="reiting-card">4.5</span>
-                                    </div>
-                                    <div class="card-lits__item km-card">4.2 км</div>
-                                    <div class="card-lits__item level-card">Простой</div>
-                                </div>
-                                <div class="card-group">
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/1.png' %}" class="icon-one" alt="">
-                                    </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/2.png' %}" class="icon-two" alt="">
-                                    </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/3.png' %}" class="icon-free" alt="">
-                                    </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/4.png' %}" class="icon-fout" alt="">
-                                    </div>
-                                </div>
-                                <button type="button" class="like">
-                                    <svg width="25" height="32" viewBox="0 0 25 32" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg" stroke-width="1">
-                                        <g clip-path="url(#clip0_170_1104)">
-                                            <path
-                                                d="M12.2784 9.17478L11.5154 9.82178L12.2784 10.7218L13.0414 9.82178L12.2784 9.17478ZM12.3084 24.9988L11.6414 25.7448C11.8248 25.9087 12.062 25.9993 12.3079 25.9993C12.5538 25.9993 12.7911 25.9087 12.9744 25.7448L12.3084 25.0008V24.9988ZM13.0414 8.52878C10.7494 5.82578 6.78744 5.00078 3.78944 7.58478L5.09544 9.10078C7.10544 7.36778 9.81044 7.80978 11.5154 9.82178L13.0414 8.52878ZM3.78944 7.58478C0.886443 10.0878 0.466443 14.2958 2.75944 17.2728L4.34444 16.0528C2.70444 13.9228 2.99044 10.9148 5.09444 9.09978L3.79044 7.58478H3.78944ZM21.7964 17.2728C24.0814 14.3078 23.7264 10.0658 20.7564 7.57578L19.4714 9.10878C21.5964 10.8898 21.8624 13.9118 20.2124 16.0528L21.7964 17.2728ZM20.7564 7.57578C17.7264 5.03478 13.8154 5.81578 11.5164 8.52878L13.0414 9.82178C14.7384 7.81978 17.4084 7.37878 19.4714 9.10878L20.7564 7.57578ZM2.76044 17.2728C3.64044 18.4148 5.49044 20.1958 7.25844 21.8198C9.04644 23.4638 10.8434 25.0318 11.6414 25.7448L12.9744 24.2538C12.1504 23.5178 10.3874 21.9788 8.61144 20.3478C6.81544 18.6968 5.09944 17.0328 4.34444 16.0528L2.76044 17.2728ZM12.9744 25.7448C13.7784 25.0268 15.5544 23.4628 17.3314 21.8168C19.0844 20.1918 20.9184 18.4128 21.7964 17.2728L20.2124 16.0528C19.4554 17.0358 17.7524 18.6998 15.9724 20.3498C14.2134 21.9798 12.4594 23.5228 11.6424 24.2538L12.9744 25.7448Z" />
-                                            <path
-                                                d="M9.64009 7.59766L12.1713 8.71094L13.59 8.20988L15.6764 7.62569L19.5988 8.12642L20.9341 10.185L22.3528 12.8556L21.3792 15.7487L19.0702 19.3651L14.9531 22.7033L13.284 24.4003L11.8096 24.3725L9.44503 22.9537L6.1068 19.8937L3.63095 16.3329L2.76858 13.6901L2.60254 11.2421L4.10439 8.68279L6.66361 7.68133L9.64009 7.59766Z" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_170_1104">
-                                                <rect width="22" height="20" fill="white"
-                                                    transform="translate(1.28516 6)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-
-                                </button>
-                            </div>
+                            {% endfor %}
+                            {% else %}
+                            <h2>&nbsp;</h2> <h2 style="text-align: center;">Путешествий нет. (</h2><h2>&nbsp;</h2>
+                            {% endif %}
+                            <!-- CARD END -->
                         </div>
                         <button type="button" class="prev btn-slider">
                             <svg width="11" height="19" viewBox="0 0 11 19" fill="none"
@@ -561,300 +307,74 @@
                     </div>
                     <div class="slider-wrapper">
                        <div class="list-location carousel">
-                            <div class="card" data-id="6">
-                                <img src="{% static 'russpass/img/marshrut/bul.png' %}" class="card__img" alt="">
-                                <a href="#" class="card__link">
-                                    <div class="card__title">Ресторан Булгаков</div>
-                                </a>
-                                <div class="card__text">Пешая прогулка с гидом</div>
-                                <div class="card-lits">
-                                    <div class="card-lits__item">
-                                        <svg width="23" height="20" viewBox="0 0 23 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <g clip-path="url(#clip0_178_413)">
-                                                <path
-                                                    d="M10.4141 0.416511L7.8633 5.58839L2.15627 6.42042C1.13283 6.56885 0.722675 7.83057 1.46486 8.55323L5.59377 12.5767L4.61721 18.2603C4.44142 19.2876 5.52346 20.0571 6.42971 19.5767L11.5352 16.8931L16.6406 19.5767C17.5469 20.0532 18.6289 19.2876 18.4531 18.2603L17.4766 12.5767L21.6055 8.55323C22.3477 7.83057 21.9375 6.56885 20.9141 6.42042L15.2071 5.58839L12.6563 0.416511C12.1992 -0.505364 10.875 -0.517083 10.4141 0.416511Z" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_178_413">
-                                                    <rect width="22.5" height="20" fill="white"
-                                                        transform="translate(0.285156 -0.279297)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <span class="reiting-card">4.5</span>
-                                    </div>
-                                    <div class="card-lits__item km-card">1 200 ₽</div>
-                                    <div class="card-lits__item level-card"></div>
-                                </div>
-                                <div class="card-group">
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/10.png' %}" class="icon-one" alt="">
-                                    </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/2.png' %}" class="icon-two" alt="">
-                                    </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/3.png' %}" class="icon-free" alt="">
-                                    </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/12.png' %}" class="icon-fout" alt="">
-                                    </div>
-                                </div>
-                                <button type="button" class="like">
-                                    <svg width="25" height="32" viewBox="0 0 25 32" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg" stroke-width="1">
-                                        <g clip-path="url(#clip0_170_1104)">
-                                            <path
-                                                d="M12.2784 9.17478L11.5154 9.82178L12.2784 10.7218L13.0414 9.82178L12.2784 9.17478ZM12.3084 24.9988L11.6414 25.7448C11.8248 25.9087 12.062 25.9993 12.3079 25.9993C12.5538 25.9993 12.7911 25.9087 12.9744 25.7448L12.3084 25.0008V24.9988ZM13.0414 8.52878C10.7494 5.82578 6.78744 5.00078 3.78944 7.58478L5.09544 9.10078C7.10544 7.36778 9.81044 7.80978 11.5154 9.82178L13.0414 8.52878ZM3.78944 7.58478C0.886443 10.0878 0.466443 14.2958 2.75944 17.2728L4.34444 16.0528C2.70444 13.9228 2.99044 10.9148 5.09444 9.09978L3.79044 7.58478H3.78944ZM21.7964 17.2728C24.0814 14.3078 23.7264 10.0658 20.7564 7.57578L19.4714 9.10878C21.5964 10.8898 21.8624 13.9118 20.2124 16.0528L21.7964 17.2728ZM20.7564 7.57578C17.7264 5.03478 13.8154 5.81578 11.5164 8.52878L13.0414 9.82178C14.7384 7.81978 17.4084 7.37878 19.4714 9.10878L20.7564 7.57578ZM2.76044 17.2728C3.64044 18.4148 5.49044 20.1958 7.25844 21.8198C9.04644 23.4638 10.8434 25.0318 11.6414 25.7448L12.9744 24.2538C12.1504 23.5178 10.3874 21.9788 8.61144 20.3478C6.81544 18.6968 5.09944 17.0328 4.34444 16.0528L2.76044 17.2728ZM12.9744 25.7448C13.7784 25.0268 15.5544 23.4628 17.3314 21.8168C19.0844 20.1918 20.9184 18.4128 21.7964 17.2728L20.2124 16.0528C19.4554 17.0358 17.7524 18.6998 15.9724 20.3498C14.2134 21.9798 12.4594 23.5228 11.6424 24.2538L12.9744 25.7448Z" />
-                                            <path
-                                                d="M9.64009 7.59766L12.1713 8.71094L13.59 8.20988L15.6764 7.62569L19.5988 8.12642L20.9341 10.185L22.3528 12.8556L21.3792 15.7487L19.0702 19.3651L14.9531 22.7033L13.284 24.4003L11.8096 24.3725L9.44503 22.9537L6.1068 19.8937L3.63095 16.3329L2.76858 13.6901L2.60254 11.2421L4.10439 8.68279L6.66361 7.68133L9.64009 7.59766Z" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_170_1104">
-                                                <rect width="22" height="20" fill="white"
-                                                    transform="translate(1.28516 6)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
 
-                                </button>
-                            </div>
-                            <div class="card" data-id="7">
-                                <img src="{% static 'russpass/img/marshrut/fre.png' %}" class="card__img" alt="">
-                                <a href="#" class="card__link">
-                                    <div class="card__title">Ресторан Fressco</div>
-                                </a>
-                                <div class="card__text">Европейская кухня</div>
-                                <div class="card-lits">
-                                    <div class="card-lits__item">
-                                        <svg width="23" height="20" viewBox="0 0 23 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <g clip-path="url(#clip0_178_413)">
-                                                <path
-                                                    d="M10.4141 0.416511L7.8633 5.58839L2.15627 6.42042C1.13283 6.56885 0.722675 7.83057 1.46486 8.55323L5.59377 12.5767L4.61721 18.2603C4.44142 19.2876 5.52346 20.0571 6.42971 19.5767L11.5352 16.8931L16.6406 19.5767C17.5469 20.0532 18.6289 19.2876 18.4531 18.2603L17.4766 12.5767L21.6055 8.55323C22.3477 7.83057 21.9375 6.56885 20.9141 6.42042L15.2071 5.58839L12.6563 0.416511C12.1992 -0.505364 10.875 -0.517083 10.4141 0.416511Z" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_178_413">
-                                                    <rect width="22.5" height="20" fill="white"
-                                                        transform="translate(0.285156 -0.279297)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <span class="reiting-card">4.5</span>
-                                    </div>
-                                    <div class="card-lits__item km-card">2 200 ₽</div>
-                                    <div class="card-lits__item level-card"></div>
-                                </div>
-                                <div class="card-group">
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/10.png' %}" class="icon-one" alt="">
-                                    </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/2.png' %}" class="icon-two" alt="">
-                                    </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/3.png' %}" class="icon-free" alt="">
-                                    </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/12.png' %}" class="icon-fout" alt="">
-                                    </div>
-                                </div>
-                                <button type="button" class="like">
-                                    <svg width="25" height="32" viewBox="0 0 25 32" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg" stroke-width="1">
-                                        <g clip-path="url(#clip0_170_1104)">
+                        <!-- CARD START -->
+                        {% if foods %} 
+                        {% for food in foods %}
+                        <div class="card" data-id="f{{ food.id }}">
+                            <img src="{{ food.image_preview.url }}" class="card__img" alt="">
+                            <a href="#" class="card__link">
+                                <div class="card__title">{{ food.name }}</div>
+                            </a>
+                            <div class="card__text">{{ food.type }}</div>
+                            <div class="card-lits">
+                                <div class="card-lits__item">
+                                    <svg width="23" height="20" viewBox="0 0 23 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_178_413)">
                                             <path
-                                                d="M12.2784 9.17478L11.5154 9.82178L12.2784 10.7218L13.0414 9.82178L12.2784 9.17478ZM12.3084 24.9988L11.6414 25.7448C11.8248 25.9087 12.062 25.9993 12.3079 25.9993C12.5538 25.9993 12.7911 25.9087 12.9744 25.7448L12.3084 25.0008V24.9988ZM13.0414 8.52878C10.7494 5.82578 6.78744 5.00078 3.78944 7.58478L5.09544 9.10078C7.10544 7.36778 9.81044 7.80978 11.5154 9.82178L13.0414 8.52878ZM3.78944 7.58478C0.886443 10.0878 0.466443 14.2958 2.75944 17.2728L4.34444 16.0528C2.70444 13.9228 2.99044 10.9148 5.09444 9.09978L3.79044 7.58478H3.78944ZM21.7964 17.2728C24.0814 14.3078 23.7264 10.0658 20.7564 7.57578L19.4714 9.10878C21.5964 10.8898 21.8624 13.9118 20.2124 16.0528L21.7964 17.2728ZM20.7564 7.57578C17.7264 5.03478 13.8154 5.81578 11.5164 8.52878L13.0414 9.82178C14.7384 7.81978 17.4084 7.37878 19.4714 9.10878L20.7564 7.57578ZM2.76044 17.2728C3.64044 18.4148 5.49044 20.1958 7.25844 21.8198C9.04644 23.4638 10.8434 25.0318 11.6414 25.7448L12.9744 24.2538C12.1504 23.5178 10.3874 21.9788 8.61144 20.3478C6.81544 18.6968 5.09944 17.0328 4.34444 16.0528L2.76044 17.2728ZM12.9744 25.7448C13.7784 25.0268 15.5544 23.4628 17.3314 21.8168C19.0844 20.1918 20.9184 18.4128 21.7964 17.2728L20.2124 16.0528C19.4554 17.0358 17.7524 18.6998 15.9724 20.3498C14.2134 21.9798 12.4594 23.5228 11.6424 24.2538L12.9744 25.7448Z" />
-                                            <path
-                                                d="M9.64009 7.59766L12.1713 8.71094L13.59 8.20988L15.6764 7.62569L19.5988 8.12642L20.9341 10.185L22.3528 12.8556L21.3792 15.7487L19.0702 19.3651L14.9531 22.7033L13.284 24.4003L11.8096 24.3725L9.44503 22.9537L6.1068 19.8937L3.63095 16.3329L2.76858 13.6901L2.60254 11.2421L4.10439 8.68279L6.66361 7.68133L9.64009 7.59766Z" />
+                                                d="M10.4141 0.416511L7.8633 5.58839L2.15627 6.42042C1.13283 6.56885 0.722675 7.83057 1.46486 8.55323L5.59377 12.5767L4.61721 18.2603C4.44142 19.2876 5.52346 20.0571 6.42971 19.5767L11.5352 16.8931L16.6406 19.5767C17.5469 20.0532 18.6289 19.2876 18.4531 18.2603L17.4766 12.5767L21.6055 8.55323C22.3477 7.83057 21.9375 6.56885 20.9141 6.42042L15.2071 5.58839L12.6563 0.416511C12.1992 -0.505364 10.875 -0.517083 10.4141 0.416511Z" />
                                         </g>
                                         <defs>
-                                            <clipPath id="clip0_170_1104">
-                                                <rect width="22" height="20" fill="white"
-                                                    transform="translate(1.28516 6)" />
+                                            <clipPath id="clip0_178_413">
+                                                <rect width="22.5" height="20" fill="white"
+                                                    transform="translate(0.285156 -0.279297)" />
                                             </clipPath>
                                         </defs>
                                     </svg>
+                                    <span class="reiting-card">{{ food.rating }}</span>
+                                </div>
+                                <div class="card-lits__item km-card">{{ food.cost|floatformat:0 }} ₽</div>
+                                <div class="card-lits__item level-card"></div>
+                            </div>
+                            <div class="card-group">
+                                <div class="card-group__link">
+                                    <img src="{% static 'russpass/img/icon/10.png' %}" class="icon-one" alt="">
+                                </div>
+                                <div class="card-group__link">
+                                    <img src="{% static 'russpass/img/icon/2.png' %}" class="icon-two" alt="">
+                                </div>
+                                <div class="card-group__link">
+                                    <img src="{% static 'russpass/img/icon/3.png' %}" class="icon-free" alt="">
+                                </div>
+                                <div class="card-group__link">
+                                    <img src="{% static 'russpass/img/icon/12.png' %}" class="icon-fout" alt="">
+                                </div>
+                            </div>
+                            <button type="button" class="like">
+                                <svg width="25" height="32" viewBox="0 0 25 32" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg" stroke-width="1">
+                                    <g clip-path="url(#clip0_170_1104)">
+                                        <path
+                                            d="M12.2784 9.17478L11.5154 9.82178L12.2784 10.7218L13.0414 9.82178L12.2784 9.17478ZM12.3084 24.9988L11.6414 25.7448C11.8248 25.9087 12.062 25.9993 12.3079 25.9993C12.5538 25.9993 12.7911 25.9087 12.9744 25.7448L12.3084 25.0008V24.9988ZM13.0414 8.52878C10.7494 5.82578 6.78744 5.00078 3.78944 7.58478L5.09544 9.10078C7.10544 7.36778 9.81044 7.80978 11.5154 9.82178L13.0414 8.52878ZM3.78944 7.58478C0.886443 10.0878 0.466443 14.2958 2.75944 17.2728L4.34444 16.0528C2.70444 13.9228 2.99044 10.9148 5.09444 9.09978L3.79044 7.58478H3.78944ZM21.7964 17.2728C24.0814 14.3078 23.7264 10.0658 20.7564 7.57578L19.4714 9.10878C21.5964 10.8898 21.8624 13.9118 20.2124 16.0528L21.7964 17.2728ZM20.7564 7.57578C17.7264 5.03478 13.8154 5.81578 11.5164 8.52878L13.0414 9.82178C14.7384 7.81978 17.4084 7.37878 19.4714 9.10878L20.7564 7.57578ZM2.76044 17.2728C3.64044 18.4148 5.49044 20.1958 7.25844 21.8198C9.04644 23.4638 10.8434 25.0318 11.6414 25.7448L12.9744 24.2538C12.1504 23.5178 10.3874 21.9788 8.61144 20.3478C6.81544 18.6968 5.09944 17.0328 4.34444 16.0528L2.76044 17.2728ZM12.9744 25.7448C13.7784 25.0268 15.5544 23.4628 17.3314 21.8168C19.0844 20.1918 20.9184 18.4128 21.7964 17.2728L20.2124 16.0528C19.4554 17.0358 17.7524 18.6998 15.9724 20.3498C14.2134 21.9798 12.4594 23.5228 11.6424 24.2538L12.9744 25.7448Z" />
+                                        <path
+                                            d="M9.64009 7.59766L12.1713 8.71094L13.59 8.20988L15.6764 7.62569L19.5988 8.12642L20.9341 10.185L22.3528 12.8556L21.3792 15.7487L19.0702 19.3651L14.9531 22.7033L13.284 24.4003L11.8096 24.3725L9.44503 22.9537L6.1068 19.8937L3.63095 16.3329L2.76858 13.6901L2.60254 11.2421L4.10439 8.68279L6.66361 7.68133L9.64009 7.59766Z" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_170_1104">
+                                            <rect width="22" height="20" fill="white"
+                                                transform="translate(1.28516 6)" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
 
-                                </button>
-                            </div>
-                            <div class="card" data-id="8">
-                                <img src="{% static 'russpass/img/marshrut/tun.png' %}" class="card__img" alt="">
-                                <a href="#" class="card__link">
-                                    <div class="card__title">Tunguska Ресторан</div>
-                                </a>
-                                <div class="card__text">Сибирская кухня</div>
-                                <div class="card-lits">
-                                    <div class="card-lits__item">
-                                        <svg width="23" height="20" viewBox="0 0 23 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <g clip-path="url(#clip0_178_413)">
-                                                <path
-                                                    d="M10.4141 0.416511L7.8633 5.58839L2.15627 6.42042C1.13283 6.56885 0.722675 7.83057 1.46486 8.55323L5.59377 12.5767L4.61721 18.2603C4.44142 19.2876 5.52346 20.0571 6.42971 19.5767L11.5352 16.8931L16.6406 19.5767C17.5469 20.0532 18.6289 19.2876 18.4531 18.2603L17.4766 12.5767L21.6055 8.55323C22.3477 7.83057 21.9375 6.56885 20.9141 6.42042L15.2071 5.58839L12.6563 0.416511C12.1992 -0.505364 10.875 -0.517083 10.4141 0.416511Z" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_178_413">
-                                                    <rect width="22.5" height="20" fill="white"
-                                                        transform="translate(0.285156 -0.279297)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <span class="reiting-card">4.5</span>
-                                    </div>
-                                    <div class="card-lits__item km-card">3 500 ₽</div>
-                                    <div class="card-lits__item level-card"></div>
-                                </div>
-                                <div class="card-group">
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/10.png' %}" class="icon-one" alt="">
-                                    </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/2.png' %}" class="icon-two" alt="">
-                                    </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/3.png' %}" class="icon-free" alt="">
-                                    </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/12.png' %}" class="icon-fout" alt="">
-                                    </div>
-                                </div>
-                                <button type="button" class="like">
-                                    <svg width="25" height="32" viewBox="0 0 25 32" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg" stroke-width="1">
-                                        <g clip-path="url(#clip0_170_1104)">
-                                            <path
-                                                d="M12.2784 9.17478L11.5154 9.82178L12.2784 10.7218L13.0414 9.82178L12.2784 9.17478ZM12.3084 24.9988L11.6414 25.7448C11.8248 25.9087 12.062 25.9993 12.3079 25.9993C12.5538 25.9993 12.7911 25.9087 12.9744 25.7448L12.3084 25.0008V24.9988ZM13.0414 8.52878C10.7494 5.82578 6.78744 5.00078 3.78944 7.58478L5.09544 9.10078C7.10544 7.36778 9.81044 7.80978 11.5154 9.82178L13.0414 8.52878ZM3.78944 7.58478C0.886443 10.0878 0.466443 14.2958 2.75944 17.2728L4.34444 16.0528C2.70444 13.9228 2.99044 10.9148 5.09444 9.09978L3.79044 7.58478H3.78944ZM21.7964 17.2728C24.0814 14.3078 23.7264 10.0658 20.7564 7.57578L19.4714 9.10878C21.5964 10.8898 21.8624 13.9118 20.2124 16.0528L21.7964 17.2728ZM20.7564 7.57578C17.7264 5.03478 13.8154 5.81578 11.5164 8.52878L13.0414 9.82178C14.7384 7.81978 17.4084 7.37878 19.4714 9.10878L20.7564 7.57578ZM2.76044 17.2728C3.64044 18.4148 5.49044 20.1958 7.25844 21.8198C9.04644 23.4638 10.8434 25.0318 11.6414 25.7448L12.9744 24.2538C12.1504 23.5178 10.3874 21.9788 8.61144 20.3478C6.81544 18.6968 5.09944 17.0328 4.34444 16.0528L2.76044 17.2728ZM12.9744 25.7448C13.7784 25.0268 15.5544 23.4628 17.3314 21.8168C19.0844 20.1918 20.9184 18.4128 21.7964 17.2728L20.2124 16.0528C19.4554 17.0358 17.7524 18.6998 15.9724 20.3498C14.2134 21.9798 12.4594 23.5228 11.6424 24.2538L12.9744 25.7448Z" />
-                                            <path
-                                                d="M9.64009 7.59766L12.1713 8.71094L13.59 8.20988L15.6764 7.62569L19.5988 8.12642L20.9341 10.185L22.3528 12.8556L21.3792 15.7487L19.0702 19.3651L14.9531 22.7033L13.284 24.4003L11.8096 24.3725L9.44503 22.9537L6.1068 19.8937L3.63095 16.3329L2.76858 13.6901L2.60254 11.2421L4.10439 8.68279L6.66361 7.68133L9.64009 7.59766Z" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_170_1104">
-                                                <rect width="22" height="20" fill="white"
-                                                    transform="translate(1.28516 6)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-
-                                </button>
-                            </div>
-                            <div class="card" data-id="9">
-                                <img src="{% static 'russpass/img/marshrut/velo.png' %}" class="card__img" alt="">
-                                <a href="{% url 'park' %}" class="card__link">
-                                    <div class="card__title">Природный парк Ергаки</div>
-                                </a>
-                                <div class="card__text">Вело</div>
-                                <div class="card-lits">
-                                    <div class="card-lits__item">
-                                        <svg width="23" height="20" viewBox="0 0 23 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <g clip-path="url(#clip0_178_413)">
-                                                <path
-                                                    d="M10.4141 0.416511L7.8633 5.58839L2.15627 6.42042C1.13283 6.56885 0.722675 7.83057 1.46486 8.55323L5.59377 12.5767L4.61721 18.2603C4.44142 19.2876 5.52346 20.0571 6.42971 19.5767L11.5352 16.8931L16.6406 19.5767C17.5469 20.0532 18.6289 19.2876 18.4531 18.2603L17.4766 12.5767L21.6055 8.55323C22.3477 7.83057 21.9375 6.56885 20.9141 6.42042L15.2071 5.58839L12.6563 0.416511C12.1992 -0.505364 10.875 -0.517083 10.4141 0.416511Z" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_178_413">
-                                                    <rect width="22.5" height="20" fill="white"
-                                                        transform="translate(0.285156 -0.279297)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <span class="reiting-card">4.9</span>
-                                    </div>
-                                    <div class="card-lits__item km-card">1 200 ₽</div>
-                                    <div class="card-lits__item level-card"></div>
-                                </div>
-                                <div class="card-group">
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/10.png' %}" class="icon-one" alt="">
-                                    </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/2.png' %}" class="icon-two" alt="">
-                                    </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/3.png' %}" class="icon-free" alt="">
-                                    </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/12.png' %}" class="icon-fout" alt="">
-                                    </div>
-                                </div>
-                                <button type="button" class="like">
-                                    <svg width="25" height="32" viewBox="0 0 25 32" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg" stroke-width="1">
-                                        <g clip-path="url(#clip0_170_1104)">
-                                            <path
-                                                d="M12.2784 9.17478L11.5154 9.82178L12.2784 10.7218L13.0414 9.82178L12.2784 9.17478ZM12.3084 24.9988L11.6414 25.7448C11.8248 25.9087 12.062 25.9993 12.3079 25.9993C12.5538 25.9993 12.7911 25.9087 12.9744 25.7448L12.3084 25.0008V24.9988ZM13.0414 8.52878C10.7494 5.82578 6.78744 5.00078 3.78944 7.58478L5.09544 9.10078C7.10544 7.36778 9.81044 7.80978 11.5154 9.82178L13.0414 8.52878ZM3.78944 7.58478C0.886443 10.0878 0.466443 14.2958 2.75944 17.2728L4.34444 16.0528C2.70444 13.9228 2.99044 10.9148 5.09444 9.09978L3.79044 7.58478H3.78944ZM21.7964 17.2728C24.0814 14.3078 23.7264 10.0658 20.7564 7.57578L19.4714 9.10878C21.5964 10.8898 21.8624 13.9118 20.2124 16.0528L21.7964 17.2728ZM20.7564 7.57578C17.7264 5.03478 13.8154 5.81578 11.5164 8.52878L13.0414 9.82178C14.7384 7.81978 17.4084 7.37878 19.4714 9.10878L20.7564 7.57578ZM2.76044 17.2728C3.64044 18.4148 5.49044 20.1958 7.25844 21.8198C9.04644 23.4638 10.8434 25.0318 11.6414 25.7448L12.9744 24.2538C12.1504 23.5178 10.3874 21.9788 8.61144 20.3478C6.81544 18.6968 5.09944 17.0328 4.34444 16.0528L2.76044 17.2728ZM12.9744 25.7448C13.7784 25.0268 15.5544 23.4628 17.3314 21.8168C19.0844 20.1918 20.9184 18.4128 21.7964 17.2728L20.2124 16.0528C19.4554 17.0358 17.7524 18.6998 15.9724 20.3498C14.2134 21.9798 12.4594 23.5228 11.6424 24.2538L12.9744 25.7448Z" />
-                                            <path
-                                                d="M9.64009 7.59766L12.1713 8.71094L13.59 8.20988L15.6764 7.62569L19.5988 8.12642L20.9341 10.185L22.3528 12.8556L21.3792 15.7487L19.0702 19.3651L14.9531 22.7033L13.284 24.4003L11.8096 24.3725L9.44503 22.9537L6.1068 19.8937L3.63095 16.3329L2.76858 13.6901L2.60254 11.2421L4.10439 8.68279L6.66361 7.68133L9.64009 7.59766Z" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_170_1104">
-                                                <rect width="22" height="20" fill="white"
-                                                    transform="translate(1.28516 6)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-
-                                </button>
-                            </div>
-                            <div class="card" data-id="10">
-                                <img src="{% static 'russpass/img/marshrut/ergaki.png' %}" class="card__img" alt="">
-                                <a href="park.html" class="card__link">
-                                    <div class="card__title">Природный парк Ергаки</div>
-                                </a>
-                                <div class="card__text">Вело</div>
-                                <div class="card-lits">
-                                    <div class="card-lits__item">
-                                        <svg width="23" height="20" viewBox="0 0 23 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <g clip-path="url(#clip0_178_413)">
-                                                <path
-                                                    d="M10.4141 0.416511L7.8633 5.58839L2.15627 6.42042C1.13283 6.56885 0.722675 7.83057 1.46486 8.55323L5.59377 12.5767L4.61721 18.2603C4.44142 19.2876 5.52346 20.0571 6.42971 19.5767L11.5352 16.8931L16.6406 19.5767C17.5469 20.0532 18.6289 19.2876 18.4531 18.2603L17.4766 12.5767L21.6055 8.55323C22.3477 7.83057 21.9375 6.56885 20.9141 6.42042L15.2071 5.58839L12.6563 0.416511C12.1992 -0.505364 10.875 -0.517083 10.4141 0.416511Z" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_178_413">
-                                                    <rect width="22.5" height="20" fill="white"
-                                                        transform="translate(0.285156 -0.279297)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <span class="reiting-card">4.8</span>
-                                    </div>
-                                    <div class="card-lits__item km-card">3 800 ₽</div>
-                                    <div class="card-lits__item level-card"></div>
-                                </div>
-                                <div class="card-group">
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/1.png' %}" class="icon-one" alt="">
-                                    </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/2.png' %}" class="icon-two" alt="">
-                                    </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/3.png' %}" class="icon-free" alt="">
-                                    </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/4.png' %}" class="icon-fout" alt="">
-                                    </div>
-                                </div>
-                                <button type="button" class="like">
-                                    <svg width="25" height="32" viewBox="0 0 25 32" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg" stroke-width="1">
-                                        <g clip-path="url(#clip0_170_1104)">
-                                            <path
-                                                d="M12.2784 9.17478L11.5154 9.82178L12.2784 10.7218L13.0414 9.82178L12.2784 9.17478ZM12.3084 24.9988L11.6414 25.7448C11.8248 25.9087 12.062 25.9993 12.3079 25.9993C12.5538 25.9993 12.7911 25.9087 12.9744 25.7448L12.3084 25.0008V24.9988ZM13.0414 8.52878C10.7494 5.82578 6.78744 5.00078 3.78944 7.58478L5.09544 9.10078C7.10544 7.36778 9.81044 7.80978 11.5154 9.82178L13.0414 8.52878ZM3.78944 7.58478C0.886443 10.0878 0.466443 14.2958 2.75944 17.2728L4.34444 16.0528C2.70444 13.9228 2.99044 10.9148 5.09444 9.09978L3.79044 7.58478H3.78944ZM21.7964 17.2728C24.0814 14.3078 23.7264 10.0658 20.7564 7.57578L19.4714 9.10878C21.5964 10.8898 21.8624 13.9118 20.2124 16.0528L21.7964 17.2728ZM20.7564 7.57578C17.7264 5.03478 13.8154 5.81578 11.5164 8.52878L13.0414 9.82178C14.7384 7.81978 17.4084 7.37878 19.4714 9.10878L20.7564 7.57578ZM2.76044 17.2728C3.64044 18.4148 5.49044 20.1958 7.25844 21.8198C9.04644 23.4638 10.8434 25.0318 11.6414 25.7448L12.9744 24.2538C12.1504 23.5178 10.3874 21.9788 8.61144 20.3478C6.81544 18.6968 5.09944 17.0328 4.34444 16.0528L2.76044 17.2728ZM12.9744 25.7448C13.7784 25.0268 15.5544 23.4628 17.3314 21.8168C19.0844 20.1918 20.9184 18.4128 21.7964 17.2728L20.2124 16.0528C19.4554 17.0358 17.7524 18.6998 15.9724 20.3498C14.2134 21.9798 12.4594 23.5228 11.6424 24.2538L12.9744 25.7448Z" />
-                                            <path
-                                                d="M9.64009 7.59766L12.1713 8.71094L13.59 8.20988L15.6764 7.62569L19.5988 8.12642L20.9341 10.185L22.3528 12.8556L21.3792 15.7487L19.0702 19.3651L14.9531 22.7033L13.284 24.4003L11.8096 24.3725L9.44503 22.9537L6.1068 19.8937L3.63095 16.3329L2.76858 13.6901L2.60254 11.2421L4.10439 8.68279L6.66361 7.68133L9.64009 7.59766Z" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_170_1104">
-                                                <rect width="22" height="20" fill="white"
-                                                    transform="translate(1.28516 6)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </button>
-                            </div>
+                            </button>
+                        </div>
+                        {% endfor %}
+                        {% else %}
+                           <h2>&nbsp;</h2> <h2 style="text-align: center;">Поесть негде. (</h2><h2>&nbsp;</h2>
+                        {% endif %}
+                        <!-- CARD END -->
                         </div>
                         <button type="button" class="prev btn-slider">
                             <svg width="11" height="19" viewBox="0 0 11 19" fill="none"
@@ -1054,106 +574,7 @@
                                     </svg>
                                 </button>
                             </div>
-                            <div class="card" data-id="14">
-                                <img src="{% static 'russpass/img/marshrut/velo.png' %}" class="card__img" alt="">
-                                <a href="park.html" class="card__link">
-                                    <div class="card__title">Природный парк Ергаки</div>
-                                </a>
-                                <div class="card__text">Вело</div>
-                                <div class="card-lits">
-                                    <div class="card-lits__item">
-                                        <svg width="23" height="20" viewBox="0 0 23 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <g clip-path="url(#clip0_178_413)">
-                                                <path
-                                                    d="M10.4141 0.416511L7.8633 5.58839L2.15627 6.42042C1.13283 6.56885 0.722675 7.83057 1.46486 8.55323L5.59377 12.5767L4.61721 18.2603C4.44142 19.2876 5.52346 20.0571 6.42971 19.5767L11.5352 16.8931L16.6406 19.5767C17.5469 20.0532 18.6289 19.2876 18.4531 18.2603L17.4766 12.5767L21.6055 8.55323C22.3477 7.83057 21.9375 6.56885 20.9141 6.42042L15.2071 5.58839L12.6563 0.416511C12.1992 -0.505364 10.875 -0.517083 10.4141 0.416511Z" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_178_413">
-                                                    <rect width="22.5" height="20" fill="white"
-                                                        transform="translate(0.285156 -0.279297)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <span class="reiting-card">4.5</span>
-                                    </div>
-                                    <div class="card-lits__item km-card">4 400 ₽</div>
-                                    <div class="card-lits__item level-card"></div>
-                                </div>
-                                <div class="card-group">
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/10.png' %}" class="icon-one" alt="">
-                                    </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/2.png' %}" class="icon-two" alt="">
-                                    </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/3.png' %}" class="icon-free" alt="">
-                                    </div>
-                                    <div class="card-group__link">
-                                        <img src="{% static 'russpass/img/icon/12.png' %}" class="icon-fout" alt="">
-                                    </div>
-                                </div>
-                                <button type="button" class="like">
-                                    <svg width="25" height="32" viewBox="0 0 25 32" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg" stroke-width="1">
-                                        <g clip-path="url(#clip0_170_1104)">
-                                            <path
-                                                d="M12.2784 9.17478L11.5154 9.82178L12.2784 10.7218L13.0414 9.82178L12.2784 9.17478ZM12.3084 24.9988L11.6414 25.7448C11.8248 25.9087 12.062 25.9993 12.3079 25.9993C12.5538 25.9993 12.7911 25.9087 12.9744 25.7448L12.3084 25.0008V24.9988ZM13.0414 8.52878C10.7494 5.82578 6.78744 5.00078 3.78944 7.58478L5.09544 9.10078C7.10544 7.36778 9.81044 7.80978 11.5154 9.82178L13.0414 8.52878ZM3.78944 7.58478C0.886443 10.0878 0.466443 14.2958 2.75944 17.2728L4.34444 16.0528C2.70444 13.9228 2.99044 10.9148 5.09444 9.09978L3.79044 7.58478H3.78944ZM21.7964 17.2728C24.0814 14.3078 23.7264 10.0658 20.7564 7.57578L19.4714 9.10878C21.5964 10.8898 21.8624 13.9118 20.2124 16.0528L21.7964 17.2728ZM20.7564 7.57578C17.7264 5.03478 13.8154 5.81578 11.5164 8.52878L13.0414 9.82178C14.7384 7.81978 17.4084 7.37878 19.4714 9.10878L20.7564 7.57578ZM2.76044 17.2728C3.64044 18.4148 5.49044 20.1958 7.25844 21.8198C9.04644 23.4638 10.8434 25.0318 11.6414 25.7448L12.9744 24.2538C12.1504 23.5178 10.3874 21.9788 8.61144 20.3478C6.81544 18.6968 5.09944 17.0328 4.34444 16.0528L2.76044 17.2728ZM12.9744 25.7448C13.7784 25.0268 15.5544 23.4628 17.3314 21.8168C19.0844 20.1918 20.9184 18.4128 21.7964 17.2728L20.2124 16.0528C19.4554 17.0358 17.7524 18.6998 15.9724 20.3498C14.2134 21.9798 12.4594 23.5228 11.6424 24.2538L12.9744 25.7448Z" />
-                                            <path
-                                                d="M9.64009 7.59766L12.1713 8.71094L13.59 8.20988L15.6764 7.62569L19.5988 8.12642L20.9341 10.185L22.3528 12.8556L21.3792 15.7487L19.0702 19.3651L14.9531 22.7033L13.284 24.4003L11.8096 24.3725L9.44503 22.9537L6.1068 19.8937L3.63095 16.3329L2.76858 13.6901L2.60254 11.2421L4.10439 8.68279L6.66361 7.68133L9.64009 7.59766Z" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_170_1104">
-                                                <rect width="22" height="20" fill="white"
-                                                    transform="translate(1.28516 6)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </button>
-                            </div>
-                            <div class="card" data-id="15">
-                                <img src="{% static 'russpass/img/marshrut/ergaki.png' %}" class="card__img" alt="">
-                                <a href="{% url 'park' %}" class="card__link">
-                                    <div class="card__title">Природный парк Ергаки</div>
-                                </a>
-                                <div class="card__text">Вело</div>
-                                <div class="card-lits">
-                                    <div class="card-lits__item">
-                                        <svg width="23" height="20" viewBox="0 0 23 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <g clip-path="url(#clip0_178_413)">
-                                                <path
-                                                    d="M10.4141 0.416511L7.8633 5.58839L2.15627 6.42042C1.13283 6.56885 0.722675 7.83057 1.46486 8.55323L5.59377 12.5767L4.61721 18.2603C4.44142 19.2876 5.52346 20.0571 6.42971 19.5767L11.5352 16.8931L16.6406 19.5767C17.5469 20.0532 18.6289 19.2876 18.4531 18.2603L17.4766 12.5767L21.6055 8.55323C22.3477 7.83057 21.9375 6.56885 20.9141 6.42042L15.2071 5.58839L12.6563 0.416511C12.1992 -0.505364 10.875 -0.517083 10.4141 0.416511Z" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_178_413">
-                                                    <rect width="22.5" height="20" fill="white"
-                                                        transform="translate(0.285156 -0.279297)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <span>4.5</span>
-                                    </div>
-                                    <div class="card-lits__item">4.5 км</div>
-                                </div>
-                                <div class="card-group">
-                                    <div class="card-group__link">
-                                        <svg width="38" height="31" viewBox="0 0 38 31" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <g clip-path="url(#clip0_180_834)">
-                                                <path
-                                                    d="M36.8945 9.82564C26.6308 0.332422 10.6678 0.335898 0.408103 9.82564C0.0222796 10.1825 0.0147485 10.7867 0.387827 11.1569L2.3714 13.1248C2.7271 13.4782 3.29946 13.4858 3.66906 13.1469C12.1224 5.40258 25.179 5.40084 33.6341 13.1469C34.0037 13.4858 34.5761 13.4776 34.9318 13.1248L36.9153 11.1569C37.2878 10.7867 37.2803 10.1825 36.8945 9.82564ZM18.6513 21.2451C16.6034 21.2451 14.9437 22.9048 14.9437 24.9527C14.9437 27.0006 16.6034 28.6603 18.6513 28.6603C20.6992 28.6603 22.3589 27.0006 22.3589 24.9527C22.3589 22.9048 20.6992 21.2451 18.6513 21.2451ZM30.3923 16.4026C23.7151 10.4976 13.58 10.504 6.91033 16.4026C6.5106 16.756 6.49785 17.3695 6.87731 17.7437L8.87246 19.7128C9.22005 20.0558 9.77967 20.0789 10.1499 19.7591C15.0132 15.5551 22.3004 15.5643 27.1521 19.7591C27.5223 20.0789 28.0819 20.0563 28.4295 19.7128L30.4247 17.7437C30.8047 17.3695 30.7914 16.7554 30.3923 16.4026Z"
-                                                    fill="#2D3134" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_180_834">
-                                                    <rect width="37.0761" height="29.6609" fill="white"
-                                                        transform="translate(0.113281 0.853516)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                    </div>
+                            
                                 </div>
                                 <button type="button" class="like">
                                     <svg width="25" height="32" viewBox="0 0 25 32" fill="none"

@@ -12,7 +12,7 @@ urlpatterns = [
     # path("marshrut/", TemplateView.as_view(template_name="russpass/marshrut.html"), name='marshrut'),
     # path("park/", TemplateView.as_view(template_name="russpass/park.html"), name='park'),
     
-    path('dyn/park/<int:pk>', ParkDetails.as_view(), name='park_details'),
-    path('dyn/index/', RoutesList.as_view(template_name="russpass/dyn/index.html"), name='dyn_home'), 
+    path('park/<int:pk>', ParkDetails.as_view(), name='park'),
+    path('', RoutesList.as_view(template_name="russpass/index.html"), name='main'), 
     path('dyn/marshrut/', RoutesList.as_view(template_name="russpass/dyn/marshrut.html"), name='dyn_marshrut'), 
 ]

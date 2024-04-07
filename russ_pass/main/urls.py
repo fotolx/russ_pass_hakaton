@@ -65,10 +65,10 @@ urlpatterns = [
     path('password-change/', ChangePasswordView.as_view(), name='password_change'),
 
     # Static pages
-    path("", TemplateView.as_view(template_name="russpass/index.html"), name='main'),
+    # path("", TemplateView.as_view(template_name="russpass/index.html"), name='main'),
     path("dashboard/", TemplateView.as_view(template_name="russpass/dashboard.html"), name='dashboard'),
     path("marshrut/", TemplateView.as_view(template_name="russpass/marshrut.html"), name='marshrut'),
-    path("park/", TemplateView.as_view(template_name="russpass/park.html"), name='park'),
+    # path("park/", TemplateView.as_view(template_name="russpass/park.html"), name='park'),
     path("plan/", TemplateView.as_view(template_name="russpass/plan.html"), name='plan'),
     path("bonus/", TemplateView.as_view(template_name="russpass/bonus.html"), name='bonus'),
     path("constructor/", TemplateView.as_view(template_name="russpass/constructor.html"), name='constructor'),
