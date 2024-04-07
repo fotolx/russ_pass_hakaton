@@ -8,33 +8,51 @@ ymaps.ready(function () {
     });
 
     var myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
+        hintContent: 'Собственный значок метки с контентом',
         balloonContentBody: [
             `<div style="display:flex; align-items: center">
                 <div class="wrapper-camera">
                    <input type="file" class="input-map" id="map-local" capture="user" style="display:none">
                    <label for="map-local" style="cursor:pointer; margin-right: 10px">
-                       <img src="/static/russpass/img/camera.png"/>
+                       <img src="/static/russpas/img/camera.png"/>
                    </label>
                 </div>
                 <div class="wrapper-content" >
                     <div style="font-size:14px">Загрузи фото этой точки <br> и получи очки и бонусы</div>
                     <div style="display:flex; align-items: center">
                         <div style="display:flex; align-items: center; margin-right: 10px">
-                             <img src="/static/russpass/img/icon/bonus.png">
+                             <img src="/static/russpas/img/icon/bonus.png">
                              <div class="title" style="font-size: 12px; color: #2D3134; font-weight: 600;">+ 15</div>
                         </div>
                         <div style="display:flex; align-items: center">
-                            <img src="/static/russpass/img/icon/ruk.png">
+                            <img src="/static/russpas/img/icon/ruk.png">
                             <div class="title" style="font-size: 12px; color: #2D3134; font-weight: 600;">+ 8</div>
                         </div>
                     </div>
                 </div>
             </div>
             `,
-        ].join('')
-    }, {
+        ].join(''),
+        iconContent: '',
+
+    },
+    {
+        // Опции.
+        // Необходимо указать данный тип макета.
+        iconLayout: 'default#image',
+        // Своё изображение иконки метки.
+        iconImageHref: '/static/russpas/img/12.svg',
+        // Размеры метки.
+        iconImageSize: [60, 60],
+        // Смещение левого верхнего угла иконки относительно
+        // её "ножки" (точки привязки).
+        iconImageOffset: [-5, -38]
+    },
+     {
         preset: 'islands#redDotIcon'
-    });
+    },);
+
+    
 
     myMap.geoObjects.add(myPlacemark);
 });
